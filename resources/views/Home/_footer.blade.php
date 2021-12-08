@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="logo">
-              <img src="assets/images/header-logo.png" alt="">
+              <img src="{{asset('assets')}}/images/header-logo.png" alt="">
             </div>
           </div>
           <div class="col-md-12">
@@ -57,8 +57,8 @@
 
 
     <!-- Additional Scripts -->
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/owl.js"></script>
+    <script src="{{asset('assets')}}/js/custom.js"></script>
+    <script src="{{asset('assets')}}/js/owl.js"></script>
 
 
     <script language = "text/Javascript"> 

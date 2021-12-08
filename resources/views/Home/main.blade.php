@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Welcome | Home Page')
+@section('title', 'Welcome!')
 
 @section('header')
   @parent
