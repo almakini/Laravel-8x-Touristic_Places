@@ -7,52 +7,60 @@
   <meta type="description" content="@yield('description')">
   <meta type="keywords" content="@yield('keywords')">
   <meta name="author" content="Almakini">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
 
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{asset('assets')}}/css/fontawesome.css">
-    <link rel="stylesheet" href="{{asset('assets')}}/css/tooplate-main.css">
-    <link rel="stylesheet" href="{{asset('assets')}}/css/owl.css">
-<!--
-Tooplate 2114 Pixie
-https://www.tooplate.com/view/2114-pixie
--->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="{{asset('assets')}}/css/animate.css">
+  <!-- Icomoon Icon Fonts-->
+  <link rel="stylesheet" href="{{asset('assets')}}/css/icomoon.css">
+  <!-- Bootstrap  -->
+  <link rel="stylesheet" href="{{asset('assets')}}/css/bootstrap.css">
+  <!-- Superfish -->
+  <link rel="stylesheet" href="{{asset('assets')}}/css/superfish.css">
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="{{asset('assets')}}/css/magnific-popup.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="{{asset('assets')}}/css/bootstrap-datepicker.min.css">
+  <!-- CS Select -->
+  <link rel="stylesheet" href="{{asset('assets')}}/css/cs-select.css">
+  <link rel="stylesheet" href="{{asset('assets')}}/css/cs-skin-border.css">
+
+  <link rel="stylesheet" href="{{asset('assets')}}/css/style.css">
+   
+  <!-- Modernizr JS -->
+	<script src="{{asset('assets')}}/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]--> 
+
+  
 </head>
 <body>
+<div id="fh5co-wrapper">
+  <div id="fh5co-page">
+    @include('Home._header')
 
 
-<div class="jumbotron text-center">
-  <h1>Header</h1>
-  @include('Home._header')
-</div>
-  
-<div class="container">
-  <div class="row">
-
-    @yield('sidebar')
-
-    @section('content')
-    <div class="col-sm-8">
-        <div style="background-color:#4eaa89;">
-            <h3>Slider<h3>
-        </div>
-        <br>
-        <hr>
-      <h3>Content</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-    </div>
-    @show
+    @include('Home._footer')
   </div>
+	<!-- END fh5co-page -->
 </div>
-<div class="jumbotron text-center">
-  <h1>Footer</h1>
-  @include('Home._footer')
-  @yield('footer')
-</div>
+<!-- END fh5co-wrapper -->
 </body>
 </html>
