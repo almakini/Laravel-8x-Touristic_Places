@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [MainController::class, 'main'])->name('home');
+Route::get('/about', [MainController::class, 'about'])->name('about');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

@@ -2,18 +2,17 @@
 
 @section('title', 'Welcome!')
 
-@section('header')
-  @parent
+@section('description')
+  Discover The Beauty of Chad
 @endsection
 
-@section('slidebar')
-  @parent
+@section('keywords', 'tourism, Chad, Zakouma, Ounianga')
+
+@section('top')
+  @include('Home._top')
 @endsection
 
 @section('content')
-  @parent
+  <h2>This is the content of Index page<h2>
 @endsection
 
-@section('footer')
-  @parent
-@endsection

@@ -48,16 +48,25 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]--> 
-
+  
+  @yield('css')
+  @yield('js')
   
 </head>
 <body>
 <div id="fh5co-wrapper">
   <div id="fh5co-page">
+    @yield('header')
     @include('Home._header')
+    
+    @section('top')
+    @show
 
+    @section('content')
+    @show
 
     @include('Home._footer')
+    @yield('footer')
   </div>
 	<!-- END fh5co-page -->
 </div>
