@@ -65,8 +65,8 @@
     @section('content')
     @show
 
-    @include('Home._footer')
     @yield('footer')
+    @include('Home._footer')
   </div>
 	<!-- END fh5co-page -->
 </div>

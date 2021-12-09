@@ -67,18 +67,11 @@
 				</div>
 			</div>
 		</footer>
-
-	
-
 	</div>
 	<!-- END fh5co-page -->
-
-	</div>
-	<!-- END fh5co-wrapper -->
-
+  </div>
+  <!-- END fh5co-wrapper -->
 	<!-- jQuery -->
-
-
 	<script src="{{asset('assets')}}/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="{{asset('assets')}}/js/jquery.easing.1.3.js"></script>
