@@ -37,4 +37,12 @@ class HomeController extends Controller
             return view('Admin.login');
         }
     }
+    public function logout(request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }
 }

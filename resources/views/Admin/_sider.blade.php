@@ -4,6 +4,16 @@
         <aside class="left-sidebar" data-sidebarbg="skin5">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
+                <!-- User -->
+                <div class="">
+                    <img src="{{asset('admin_assets')}}/images/chad.png" width="15" height="15">
+                </div>
+                <div class="">
+                    @auth
+                    <a href="#" class="sidebar-item sidebar-link waves-effect waves-dark sidebar-link">{{Auth::user()->name}}</a>
+                    <a href="{{route('admin_logout')}}" class="">Logout</a>
+                    @endauth
+                </div>
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="pt-4">
