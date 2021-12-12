@@ -6,7 +6,7 @@
             <div class="scroll-sidebar">
                 <!-- User -->
                 <div class="">
-                    <img src="{{asset('admin_assets')}}/images/chad.png" width="15" height="15">
+                    <img>
                 </div>
                 <div class="">
                     @auth
