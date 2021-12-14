@@ -22,6 +22,7 @@ Route::get('/', function () {
 //User
 Route::get('/home', [MainController::class, 'main'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');
+Route::get('/contact-us', [MainController::class, 'contact'])->name('contact-us');
 
 //Admin
 Route::post('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_index');//->middleware('auth:auth');

@@ -12,4 +12,7 @@ class MainController extends Controller
     public function about(){
         return view('Home.about');
     }
+    public function contact(){
+        return view('Home.contact-us');
+    }
 }
