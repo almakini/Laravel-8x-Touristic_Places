@@ -1,8 +1,8 @@
 <footer>
 			<div id="footer">
 				<div class="container">
-					<div class="row row-bottom-padded-md">
-						<div class="col-md-6 col-sm-6 col-xs-12 fh5co-footer-link">
+					<div class="row row-bottom-padded-md" style="text-align:center;">
+						<!-- <div class="col-md-6 col-sm-6 col-xs-12 fh5co-footer-link">
 							<h3>Categories</h3>
 							<ul>
 								<li><a href="#">Beaches</a></li>
@@ -17,10 +17,19 @@
 								<li><a href="#">Squares</a></li>
 								<li><a href="#">Skiing</a></li>	
 							</ul>
+						</div> -->
+						<div class="col-md-3 col-sm-3 col-xs-3 fh5co-footer-link">
+							<ul>
+								<li><h3><a href="about">Categories</a></h3></li>
+							</ul>
 						</div>
-						<div class="col-md-5 col-sm-5 col-xs-12 fh5co-footer-link">
+						<div class="col-md-6 col-sm-6 col-xs-5 fh5co-footer-link">
 							<ul>
 								<li><h3><a href="about">About Tchad Baladi</a></h3></li>
+							</ul>
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-4 fh5co-footer-link">
+							<ul>
 								<li><h3><a href="contact-us">Contact Us</a></h3></li>
 							</ul>
 						</div>
