@@ -33,7 +33,9 @@ a:hover {
   text-decoration: none;
   color: #F78536;
 }
-
+.disp-block a{
+  display: block;
+}
 p, ul, ol {
   margin-bottom: 1.5em;
   font-size: 16px;

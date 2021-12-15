@@ -7,7 +7,7 @@
 							<div class="desc2 animate-box">
 								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">	
 									<h2>Do You Want To Visit Somewhere?</h2>
-									<p><a class="btn btn-primary btn-lg" href="#">Search a Place</a></p> 
+									<p><a class="btn btn-primary btn-lg" href="search_place">Search a Place</a></p> 
 								</div>
 							</div>
 						</div>
