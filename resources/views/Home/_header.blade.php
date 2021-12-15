@@ -9,21 +9,25 @@
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="index.html">Home</a></li>
 							<li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Vacations</a>
+								<a href="vacation.html" class="fh5co-sub-ddown">Categories</a>
 								<ul class="fh5co-sub-menu">
-									<li><a href="#">Family</a></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
+									<li><a href="#">Beaches</a></li>
+									<li><a href="#">Palaces</a></li>
+									<li><a href="#">Mountains</a></li>
+									<li><a href="#">Forests</a></li>
+									<li><a href="#">Zoo Parks</a></li>
+									<li><a href="#">Museums</a></li>
+									<li><a href="#">Falls</a></li>
+									<li><a href="#">Skyscrapers</a></li>
+									<li><a href="#">Parks</a></li>
+									<li><a href="#">Squares</a></li>
+									<li><a href="#">Skiing</a></li>
 								</ul>
 							</li>
-							<li><a href="flight.html">Flights</a></li>
-							<li><a href="hotel.html">Hotel</a></li>
-							<li><a href="car.html">Car</a></li>
-							<li><a href="blog.html">Blog</a></li>
-              <li><a href="about">About Us</a></li>
+              				<li><a href="about">About Us</a></li>
 							<li><a href="contact-us">Contact</a></li>
+							<li><a href="signin">Sign In</a></li>
+							<li><a href="signup">Sign Up</a></li>
 						</ul>
 					</nav>
 				</div>
