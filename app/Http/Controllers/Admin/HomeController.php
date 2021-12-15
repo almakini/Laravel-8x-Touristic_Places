@@ -23,11 +23,6 @@ class HomeController extends Controller
                 'email' => ['required', 'email'],
                 'password' => ['required'],
             ]);
-            // $credentials = $request->only('email', 'password');
-            // $credentials = $request->input();
-            // $request->session()->put('email', $credentials['email'], 'pass', $credentials['password']);
-            // $email = session('email');
-            // $pass = session('pass');
             if(Auth::attempt($credentials)){
                 $request->session()->regenerate();
 

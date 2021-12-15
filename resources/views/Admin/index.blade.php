@@ -5,5 +5,3 @@
 @section('content')
     @include('Admin._content')
 @endsection
-
-            
