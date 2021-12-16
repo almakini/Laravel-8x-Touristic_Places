@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'About Us')
+@section('title', 'Contact Information')
 
 @section('description')
   Discover The Beauty of Chad

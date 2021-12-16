@@ -1,3 +1,6 @@
+<?php
+use Illuminate\Support\Facades\Route;
+?>
 <!--Start of header-->
 		<header id="fh5co-header-section" class="sticky-banner">
 			<div class="container">
@@ -7,9 +10,9 @@
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li class="active"><a href="index.html">Home</a></li>
-							<li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Categories</a>
+							<li class="{{Route::currentRouteName() === 'home' ? 'active' : ''}}"><a href="{{route('home')}}">Home</a></li>
+							<li class=" {{Route::currentRouteName() === 'categories' ? 'active' : '' }}">
+								<a href="#" class="fh5co-sub-ddown">Categories</a>
 								<ul class="fh5co-sub-menu">
 									<li><a href="#">Beaches</a></li>
 									<li><a href="#">Palaces</a></li>
@@ -24,10 +27,11 @@
 									<li><a href="#">Skiing</a></li>
 								</ul>
 							</li>
-              				<li><a href="about">About Us</a></li>
-							<li><a href="contact-us">Contact</a></li>
-							<li><a href="signin">Sign In</a></li>
-							<li><a href="signup">Sign Up</a></li>
+							<li class="{{Route::currentRouteName() === 'search_place' ? 'active' : '' }}"><a href="places">Places</a></li>							
+              				<li class="{{Route::currentRouteName() === 'about' ? 'active' : '' }}"><a href="about">About Us</a></li>
+							<li class="{{Route::currentRouteName() === 'contact-us' ? 'active' : '' }}"><a href="contact-us">Contact</a></li>
+							<li class="{{Route::currentRouteName() === 'signin' ? 'active' : '' }}"><a href="signin">Sign In</a></li>
+							<li class="{{Route::currentRouteName() === 'signup' ? 'active' : '' }}"><a href="signup">Sign Up</a></li>
 						</ul>
 					</nav>
 				</div>

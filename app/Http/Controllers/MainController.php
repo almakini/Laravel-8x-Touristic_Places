@@ -18,4 +18,13 @@ class MainController extends Controller
     public function search_place(){
         return view('Home.search_place');
     }
+    public function places(){
+        return view('Home.places');
+    }
+    public function signin(){
+        return view('Home.signin');
+    }
+    public function signup(){
+        return view('Home.signup');
+    }
 }

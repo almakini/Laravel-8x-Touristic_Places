@@ -24,6 +24,9 @@ Route::get('/home', [MainController::class, 'main'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/contact-us', [MainController::class, 'contact'])->name('contact-us');
 Route::get('/search_place', [MainController::class, 'search_place'])->name('search_place');
+Route::get('/places', [MainController::class, 'places'])->name('places');
+Route::get('/signin', [MainController::class, 'signin'])->name('signin');
+Route::get('/signup', [MainController::class, 'signup'])->name('signup');
 
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
