@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::get('/home', [MainController::class, 'main'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/contact-us', [MainController::class, 'contact'])->name('contact-us');
+Route::get('/search_place', [MainController::class, 'search_place'])->name('search_place');
 
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function (){

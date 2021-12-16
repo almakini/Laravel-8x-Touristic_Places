@@ -15,4 +15,7 @@ class MainController extends Controller
     public function contact(){
         return view('Home.contact-us');
     }
+    public function search_place(){
+        return view('Home.search_place');
+    }
 }
