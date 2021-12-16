@@ -11,7 +11,7 @@
 @section('top')
   @include('Home._top')
 @endsection
-
+@yield('active', '')
 @section('content')
 <div id="fh5co-blog-section" class="fh5co-section-gray">
 <div class="container">
