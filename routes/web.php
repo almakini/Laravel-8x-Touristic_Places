@@ -15,18 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/laravel', function () {
     return view('welcome');
 });
 
 //User
-Route::get('/home', [MainController::class, 'main'])->name('home');
+Route::get('/', [MainController::class, 'main'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/contact-us', [MainController::class, 'contact'])->name('contact-us');
 Route::get('/search_place', [MainController::class, 'search_place'])->name('search_place');
 Route::get('/places', [MainController::class, 'places'])->name('places');
 Route::get('/signin', [MainController::class, 'signin'])->name('signin');
 Route::get('/signup', [MainController::class, 'signup'])->name('signup');
+Route::get('/place_details', [MainController::class, 'place_details'])->name('place_details');
 
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
@@ -38,7 +39,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('category/show', [App\Http\Controllers\Admin\CategoryController::class, 'show'])->name('admin_category_show');
 });
 
-Route::post('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_index');
+Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_index');
 Route::get('/admin/login', [App\Http\Controllers\Admin\HomeController::class, 'login'])->name('admin_login');
 Route::get('/admin/pass_forgotten', [App\Http\Controllers\Admin\HomeController::class, 'pass_forgotten'])->name('admin_pass_forgotten');
 Route::post('/admin/logincheck', [App\Http\Controllers\Admin\HomeController::class, 'logincheck'])->name('admin_logincheck');
@@ -46,8 +47,8 @@ Route::post('/dashbord', [App\Http\Controllers\Admin\HomeController::class, 'log
 Route::post('/admin/logout', [App\Http\Controllers\Admin\HomeController::class, 'logout'])->name('admin_logout');
 
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 ?>

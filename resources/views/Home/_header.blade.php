@@ -27,11 +27,11 @@ use Illuminate\Support\Facades\Route;
 									<li><a href="#">Skiing</a></li>
 								</ul>
 							</li>
-							<li class="{{Route::currentRouteName() === 'search_place' ? 'active' : '' }}"><a href="places">Places</a></li>							
-              				<li class="{{Route::currentRouteName() === 'about' ? 'active' : '' }}"><a href="about">About Us</a></li>
-							<li class="{{Route::currentRouteName() === 'contact-us' ? 'active' : '' }}"><a href="contact-us">Contact</a></li>
-							<li class="{{Route::currentRouteName() === 'signin' ? 'active' : '' }}"><a href="signin">Sign In</a></li>
-							<li class="{{Route::currentRouteName() === 'signup' ? 'active' : '' }}"><a href="signup">Sign Up</a></li>
+							<li class="{{Route::currentRouteName() === 'places' ? 'active' : '' }}"><a href="{{route('places')}}">Places</a></li>							
+              				<li class="{{Route::currentRouteName() === 'about' ? 'active' : '' }}"><a href="{{route('about')}}">About Us</a></li>
+							<li class="{{Route::currentRouteName() === 'contact-us' ? 'active' : '' }}"><a href="{{route('contact-us')}}">Contact</a></li>
+							<li><a href="{{route('login')}}">Sign In</a></li>
+							<li><a href="{{route('register')}}">Sign Up</a></li>
 						</ul>
 					</nav>
 				</div>

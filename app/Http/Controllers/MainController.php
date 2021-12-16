@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Monarobase\CountryList\CountryListFacade;
 
 class MainController extends Controller
 {
@@ -16,10 +17,15 @@ class MainController extends Controller
         return view('Home.contact-us');
     }
     public function search_place(){
-        return view('Home.search_place');
+        $countries = CountryListFacade::getList('en');
+
+        return view('Home.search_place', compact('countries'));
     }
     public function places(){
         return view('Home.places');
+    }
+    public function place_details(){
+        return view('Home.place_details');
     }
     public function signin(){
         return view('Home.signin');
