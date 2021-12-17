@@ -13,7 +13,11 @@
                 </div>
                 <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Basic Datatable</h5>
+                                <div>
+                                <form action="{{route('admin_category_add')}}">
+                                <button type="submit" class="btn btn-primary">Add a category</button>
+</form>
+</div>
                                 <div class="table-responsive">
                                     <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                                         <div class="row">
@@ -91,30 +95,3 @@
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
 @endsection
-
-@section('footer')
-<!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="{{asset('admin_assets')}}/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{asset('admin_assets')}}/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="{{asset('admin_assets')}}/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="{{asset('admin_assets')}}/extra-libs/sparkline/sparkline.js"></script>
-    <!--Wave Effects -->
-    <script src="{{asset('admin_assets')}}/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="{{asset('admin_assets')}}/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="{{asset('admin_assets')}}/js/custom.min.js"></script>
-    <!-- this page js -->
-    <script src="{{asset('admin_assets')}}/extra-libs/multicheck/datatable-checkbox-init.js"></script>
-    <script src="{{asset('admin_assets')}}/extra-libs/multicheck/jquery.multicheck.js"></script>
-    <script src="{{asset('admin_assets')}}/extra-libs/DataTables/datatables.min.js"></script>
-    <script>
-        /****************************************
-         *       Basic Table                   *
-         ****************************************/
-        $('#zero_config').DataTable();
-    </script>
-    @endsection

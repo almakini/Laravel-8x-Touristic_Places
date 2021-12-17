@@ -1,18 +1,19 @@
 <?php
 use Illuminate\Support\Facades\Route;
 ?>
+<div class="sticky-wrapper" style="height:96px;">
 <!--Start of header-->
-		<header id="fh5co-header-section" class="sticky-banner">
+		<header id="fh5co-header-section" class="sticky-banner stuck">
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
 					<h1 id="fh5co-logo"><a href="home"><i class="icon-airplane"></i>Tchad Baladi</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
-						<ul class="sf-menu" id="fh5co-primary-menu">
+						<ul class="sf-menu sf-js-enabled sf-arrows" id="fh5co-primary-menu" style="touch-action: pan-y;">
 							<li class="{{Route::currentRouteName() === 'home' ? 'active' : ''}}"><a href="{{route('home')}}">Home</a></li>
 							<li class=" {{Route::currentRouteName() === 'categories' ? 'active' : '' }}">
-								<a href="#" class="fh5co-sub-ddown">Categories</a>
+								<a href="#" class="fh5co-sub-ddown ">Categories</a>
 								<ul class="fh5co-sub-menu">
 									<li><a href="#">Beaches</a></li>
 									<li><a href="#">Palaces</a></li>
@@ -38,4 +39,4 @@ use Illuminate\Support\Facades\Route;
 			</div>
 		</header>
 		<!-- end:header-top -->
-	
+</div>

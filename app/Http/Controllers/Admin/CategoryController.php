@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = DB::select('select * from categories');
-        return view('Admin.category', ['categories'=>$categories]);
+        return view('Admin.category', ['categories' => $categories]);
     }
 
     /**
@@ -85,8 +85,8 @@ class CategoryController extends Controller
         //
     }
     //Add
-    public function add()
+    public function add(Request $request)
     {
-        //
+        return view('Admin.add_category');
     }
 }

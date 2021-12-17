@@ -39,6 +39,14 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('category/show', [App\Http\Controllers\Admin\CategoryController::class, 'show'])->name('admin_category_show');
 });
 
+Route::middleware('auth')->prefix('users')->group(function (){
+    Route::get('/', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('users');
+    Route::get('/add', [App\Http\Controllers\Admin\UsersController::class, 'add'])->name('users_add');
+    Route::get('/update', [App\Http\Controllers\Admin\UsersController::class, 'update'])->name('users_update');
+    Route::get('/delete', [App\Http\Controllers\Admin\UsersController::class, 'destroy'])->name('users_delete');
+    Route::get('/show', [App\Http\Controllers\Admin\UsersController::class, 'show'])->name('users_show');
+});
+
 Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_index');
 Route::get('/admin/login', [App\Http\Controllers\Admin\HomeController::class, 'login'])->name('admin_login');
 Route::get('/admin/pass_forgotten', [App\Http\Controllers\Admin\HomeController::class, 'pass_forgotten'])->name('admin_pass_forgotten');
