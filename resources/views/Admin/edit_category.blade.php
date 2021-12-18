@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="card">
-    <form class="form-horizontal" action="{{route('admin_category_create')}}" method="post">
+    <form class="form-horizontal" action="{{route('admin_category_update', ['id'=>$category->id])}}" method="post">
         @csrf
         <div class="card-body">
             <h4 class="card-title">Update a category</h4>
@@ -12,9 +12,10 @@
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Parent</label>
                 <div class="col-sm-9">
                     <select class="select2 form-select shadow-none select2-hidden-accessible" name="parent_id" style="">
-                        <option data-select2-id="3" value="0">Main Category</option>
+                        <option data-select2-id="3" value="{{$category->parent_id}}">{{$category->title}}</option>
                         @foreach($categories as $cat)
-                        <option data-select2-id="3" value="{{$cat->id}}">{{$cat->title}}</option>
+                        <option data-select2-id="3" value="{{$cat->id}}" @if ($cat->id == $category->parent_id) selected
+                            @endif>{{$cat->title}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -37,6 +38,7 @@
                 <label class="col-sm-3 text-end control-label col-form-label">Status</label>
                 <div class="col-sm-9" data-select2-id="11">
                     <select class="select2 form-select shadow-none select2-hidden-accessible" name="status" style="">
+                        <option data-select2-id="3" selected>{{$category->status}}</option>
                         <option data-select2-id="3">True</option>
                         <option data-select2-id="3">False</option>
                     </select>

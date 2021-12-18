@@ -2,6 +2,8 @@
 
 use App\http\Controllers\MainController;
 use App\http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,19 +36,20 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_index');
     Route::get('category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin_category');
     Route::get('category/add', [App\Http\Controllers\Admin\CategoryController::class, 'add'])->name('admin_category_add');
-    Route::get('category/update/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('admin_category_update');
+    Route::post('category/update/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('admin_category_update');
+    Route::get('category/edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('admin_category_edit');
     Route::get('category/delete/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('admin_category_delete');
     Route::post('category/create', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('admin_category_create');
     Route::get('category/show', [App\Http\Controllers\Admin\CategoryController::class, 'show'])->name('admin_category_show');
+
+    Route::get('users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin_users');
+    Route::get('user/add', [App\Http\Controllers\Admin\UserController::class, 'add'])->name('admin_user_add');
+    Route::post('user/update/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin_user_update');
+    Route::get('user/edit/{id}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin_user_edit');
+    Route::get('user/delete/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('admin_user_delete');
+    Route::get('user/show', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('admin_user_show');
 });
 
-Route::middleware('auth')->prefix('users')->group(function (){
-    Route::get('/', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('users');
-    Route::get('/add', [App\Http\Controllers\Admin\UsersController::class, 'add'])->name('users_add');
-    Route::get('/update', [App\Http\Controllers\Admin\UsersController::class, 'update'])->name('users_update');
-    Route::get('/delete', [App\Http\Controllers\Admin\UsersController::class, 'destroy'])->name('users_delete');
-    Route::get('/show', [App\Http\Controllers\Admin\UsersController::class, 'show'])->name('users_show');
-});
 
 Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_index');
 Route::get('/admin/login', [App\Http\Controllers\Admin\HomeController::class, 'login'])->name('admin_login');

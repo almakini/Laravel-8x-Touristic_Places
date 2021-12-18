@@ -90,7 +90,7 @@
                                         <td>{{$cat->description}}</td>
                                         <td>{{$cat->image}}</td>
                                         <td>{{$cat->status}}</td>
-                                        <td><a href="{{route('admin_category_update', ['id'=>$cat->id])}}">Edit</a></td>
+                                        <td><a href="{{route('admin_category_edit', ['id'=>$cat->id])}}">Edit</a></td>
                                         <td><a href="{{route('admin_category_delete', ['id'=>$cat->id])}}"
                                                 onclick="return confirm('Do you want to delete?')">Delete</a>
                                         </td>

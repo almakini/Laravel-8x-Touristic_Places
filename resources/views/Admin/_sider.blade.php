@@ -23,7 +23,7 @@
                                     class="mdi mdi-view-dashboard"></i><span class="hide-menu">Categories</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{route('users')}}" aria-expanded="false"><i
+                                href="{{route('admin_users')}}" aria-expanded="false"><i
                                     class="mdi mdi-view-dashboard"></i><span class="hide-menu">Users</span></a></li>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i

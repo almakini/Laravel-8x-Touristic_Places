@@ -19,7 +19,8 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="dataTables_length" id="zero_config_length">
                                 <label>Show
-                                    <select name="zero_config_length" aria-controls="zero_config" class="form-control form-control-sm">
+                                    <select name="zero_config_length" aria-controls="zero_config"
+                                        class="form-control form-control-sm">
                                         <option value="10">10</option>
                                         <option value="25">25</option>
                                         <option value="50">50</option>
@@ -32,21 +33,34 @@
                         <div class="col-sm-12 col-md-6">
                             <div id="zero_config_filter" class="dataTables_filter">
                                 <label>Search:
-                                    <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="zero_config">
+                                    <input type="search" class="form-control form-control-sm" placeholder=""
+                                        aria-controls="zero_config">
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <table id="zero_config" class="table table-striped table-bordered dataTable" role="grid" aria-describedby="zero_config_info">
+                            <table id="zero_config" class="table table-striped table-bordered dataTable" role="grid"
+                                aria-describedby="zero_config_info">
                                 <thead>
                                     <tr role="row">
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 72.2969px;">ID</th>
-                                        <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 58.0781px;">Name</th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 72.2969px;">Email</th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 61.125px;">Edit</th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 61.125px;">Delete</th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Position: activate to sort column ascending"
+                                            style="width: 72.2969px;">ID</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending"
+                                            style="width: 58.0781px;">Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Position: activate to sort column ascending"
+                                            style="width: 72.2969px;">Email</th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Start date: activate to sort column ascending"
+                                            style="width: 61.125px;">Edit</th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Start date: activate to sort column ascending"
+                                            style="width: 61.125px;">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,9 +69,8 @@
                                         <td>{{$user->id}}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td><a href="#">Edit</a></td>
-                                        <td><a href="#">Delete</a></td>
-
+                                        <td><a href="{{route('admin_user_edit', ['id'=>$user->id])}}">Edit</a></td>
+                                        <td><a href="{{route('admin_user_delete', ['id'=>$user->id])}}">Delete</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -73,14 +86,24 @@
                         <div class="col-sm-12 col-md-7">
                             <div class="dataTables_paginate paging_simple_numbers" id="zero_config_paginate">
                                 <ul class="pagination">
-                                    <li class="paginate_button page-item previous disabled" id="zero_config_previous"><a href="#" aria-controls="zero_config" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                    <li class="paginate_button page-item active"><a href="#" aria-controls="zero_config" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="zero_config" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="zero_config" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="zero_config" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="zero_config" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="zero_config" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
-                                    <li class="paginate_button page-item next" id="zero_config_next"><a href="#" aria-controls="zero_config" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                                    <li class="paginate_button page-item previous disabled" id="zero_config_previous"><a
+                                            href="#" aria-controls="zero_config" data-dt-idx="0" tabindex="0"
+                                            class="page-link">Previous</a></li>
+                                    <li class="paginate_button page-item active"><a href="#" aria-controls="zero_config"
+                                            data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="zero_config"
+                                            data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="zero_config"
+                                            data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="zero_config"
+                                            data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="zero_config"
+                                            data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="zero_config"
+                                            data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
+                                    <li class="paginate_button page-item next" id="zero_config_next"><a href="#"
+                                            aria-controls="zero_config" data-dt-idx="7" tabindex="0"
+                                            class="page-link">Next</a></li>
                                 </ul>
                             </div>
                         </div>

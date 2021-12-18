@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,40 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         $users = DB::select('select * from users');
+        
         return view('admin/users', ['users' => $users]);
-    }
-
-    /**
-     * Insert data
-     * Show the form for creating a new resource.
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -64,11 +32,7 @@ class CategoryController extends Controller
             ->where('id', $id)
             ->get();
         // $user = DB::select("select * from users where id = '$id'");
-        return view('Admin.edit_user', [
-            'user' => $user
-        ]);
-
-        //
+        return view('Admin.edit_user', ['user' => $user]);
     }
 
     /**
@@ -104,10 +68,5 @@ class CategoryController extends Controller
             ->where('id', $id)
             ->delete();
         return redirect()->intended('admin/users');
-    }
-    //Add
-    public function add(Request $request)
-    {
-        
     }
 }
