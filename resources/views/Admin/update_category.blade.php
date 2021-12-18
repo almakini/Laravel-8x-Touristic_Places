@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'Adding Category')
+@section('title', 'Updating Category')
 
 @section('content')
 <div class="card">
     <form class="form-horizontal" action="{{route('admin_category_create')}}" method="post">
         @csrf
         <div class="card-body">
-            <h4 class="card-title">Add a category</h4>
+            <h4 class="card-title">Update a category</h4>
             <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Parent</label>
                 <div class="col-sm-9">
@@ -22,13 +22,15 @@
             <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Title</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="title" id="lname" placeholder="Title">
+                    <input type="text" class="form-control" name="title" id="lname" placeholder="Title"
+                        value="{{$category->title}}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Keywords</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="keywords" id="lname" placeholder="Keywords">
+                    <input type="text" class="form-control" name="keywords" id="lname" placeholder="Keywords"
+                        value="{{$category->keywords}}">
                 </div>
             </div>
             <div class="form-group row">
@@ -43,12 +45,12 @@
             <div class="form-group row">
                 <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Description</label>
                 <div class="col-sm-9">
-                    <textarea name="description" class="form-control"></textarea>
+                    <textarea name="description" class="form-control">{{$category->description}}"</textarea>
                 </div>
             </div>
         </div>
         <div style="text-align:center; float:right; margin-right:17px;" class="form-group">
-            <button type="submit" class=" btn btn-primary" style="text-align:center;">Add</button>
+            <button type="submit" class=" btn btn-primary" style="text-align:center;">Update</button>
         </div>
 
     </form>

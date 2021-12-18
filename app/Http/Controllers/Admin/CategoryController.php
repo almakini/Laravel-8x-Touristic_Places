@@ -20,13 +20,21 @@ class CategoryController extends Controller
     }
 
     /**
+     * Insert data
      * Show the form for creating a new resource.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        DB::table('categories')->insert([
+            'parent_id'=>$request->input('parent_id'),
+            'title'=>$request->input('title'),
+            'keywords'=>$request->input('keywords'),
+            'status'=>$request->input('status'),
+            'description'=>$request->input('description')
+        ]);
+        return redirect()->intended('admin/category');
     }
 
     /**
@@ -71,7 +79,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categories = DB::select('select * from categories');
+        $category = DB::table('categories')->distinct()->where('id', $id)->get();
+        return view('Admin.update_category', ['category' => $category, 'categories' => $categories]);
     }
 
     /**
@@ -82,11 +92,15 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('categories')->where('id', $id)->delete();
+        return redirect()->intended('admin/category');
     }
     //Add
     public function add(Request $request)
     {
-        return view('Admin.add_category');
+        $categories = DB::select('select * from categories where parent_id = 1');
+        // print_r($categories);
+        // exit();
+        return view('Admin.add_category', ['categories' => $categories]);
     }
 }

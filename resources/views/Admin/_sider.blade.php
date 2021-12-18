@@ -10,7 +10,8 @@
                 </div>
                 <div class="">
                     @auth
-                    <a href="#" class="sidebar-item sidebar-link waves-effect waves-dark sidebar-link">{{Auth::user()->name}}</a>
+                    <a href="#"
+                        class="sidebar-item sidebar-link waves-effect waves-dark sidebar-link">{{Auth::user()->name}}</a>
                     <a href="{{route('admin_logout')}}" class="">Logout</a>
                     @endauth
                 </div>
@@ -18,19 +19,20 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="pt-4">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{route('admin_category')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                                    class="hide-menu">Categories</span></a></li>
-                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{route('users')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                                    class="hide-menu">Users</span></a></li>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i
-                                            class="mdi mdi-note-outline"></i><span class="hide-menu"> Form Basic
-                                        </span></a></li>
-                                <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i
-                                            class="mdi mdi-note-plus"></i><span class="hide-menu"> Form Wizard
-                                        </span></a></li>
-                            </ul>
+                                href="{{route('admin_category')}}" aria-expanded="false"><i
+                                    class="mdi mdi-view-dashboard"></i><span class="hide-menu">Categories</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{route('users')}}" aria-expanded="false"><i
+                                    class="mdi mdi-view-dashboard"></i><span class="hide-menu">Users</span></a></li>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i
+                                        class="mdi mdi-note-outline"></i><span class="hide-menu"> Form Basic
+                                    </span></a></li>
+                            <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i
+                                        class="mdi mdi-note-plus"></i><span class="hide-menu"> Form Wizard
+                                    </span></a></li>
+                        </ul>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="pages-buttons.html" aria-expanded="false"><i
@@ -85,4 +87,3 @@
         </aside>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        
