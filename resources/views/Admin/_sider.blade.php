@@ -25,6 +25,9 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{route('admin_users')}}" aria-expanded="false"><i
                                     class="mdi mdi-view-dashboard"></i><span class="hide-menu">Users</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{route('admin_places')}}" aria-expanded="false"><i
+                                    class="mdi mdi-view-dashboard"></i><span class="hide-menu">Places</span></a></li>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i
                                         class="mdi mdi-note-outline"></i><span class="hide-menu"> Form Basic

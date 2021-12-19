@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -28,11 +29,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = DB::table('users')
-            ->where('id', $id)
-            ->get();
+        $user = User::find($id);
         // $user = DB::select("select * from users where id = '$id'");
-        return view('Admin.edit_user', ['user' => $user]);
+        return view('Admin.edit_user', ['user' => $user,]);
     }
 
     /**
@@ -42,12 +41,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category, $id)
+    public function update(Request $request, User $user, $id)
     {
         // $data = DB::select('select * from users where id = '$id'');
-        $data = DB::table('users')
-            ->where('id', $id)
-            ->get();
+        $data = User::find($id);
         $data->id = $request->input('id');
         $data->name = $request->input('name');
         $data->email = $request->input('email');

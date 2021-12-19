@@ -52,32 +52,32 @@
                                     <tr role="row">
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px;">ID</th>
+                                            style="width: 72.2969px; text-align:center;"><b>ID</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px;">Parent ID</th>
+                                            style="width: 72.2969px; text-align:center;"><b>Parent ID</b></th>
                                         <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-sort="ascending"
                                             aria-label="Name: activate to sort column descending"
-                                            style="width: 58.0781px;">Title</th>
+                                            style="width: 58. 0781px; text-align:center;"><b>Title</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px;">Keywords</th>
+                                            style="width: 72.2969px; text-align:center;"><b>Keywords</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px;">Description</th>
+                                            style="width: 50.5781px; text-align:center;"><b>Description</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Age: activate to sort column ascending"
-                                            style="width: 25.7969px;">Image</th>
+                                            style="width: 25.7969px; text-align:center;"><b>Image</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Start date: activate to sort column ascending"
-                                            style="width: 61.125px;">Status</th>
+                                            style="width: 61.125px; text-align:center;"><b>Status</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Start date: activate to sort column ascending"
-                                            style="width: 61.125px;">Edit</th>
+                                            style="width: 61.125px; text-align:center;"><b>Edit</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Start date: activate to sort column ascending"
-                                            style="width: 61.125px;">Delete</th>
+                                            style="width: 61.125px; text-align:center;"><b>Delete</b></th>
                                     </tr>
                                 </thead>
                                 <tbody>

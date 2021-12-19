@@ -1,18 +1,23 @@
 @extends('layouts.admin')
 
-@section('title', 'Categories List')
+@section('title', 'Places List')
 
 @section('content')
+
 <!-- ============================================================== -->
 <!-- Container fluid  -->
 <!-- ============================================================== -->
 <div class="container-fluid">
     <div class="row mb-2 align-items-center">
-        <h3>Users List</h3>
+        <h3>Places List</h3>
     </div>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Users</h5>
+            <div>
+                <form action="{{route('admin_place_add')}}">
+                    <button type="submit" class="btn btn-primary">Add a place</button>
+                </form>
+            </div>
             <div class="table-responsive">
                 <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                     <div class="row">
@@ -48,13 +53,43 @@
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Position: activate to sort column ascending"
                                             style="width: 72.2969px; text-align:center;"><b>ID</b></th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Position: activate to sort column ascending"
+                                            style="width: 72.2969px; text-align:center;"><b>Parent ID</b></th>
                                         <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-sort="ascending"
                                             aria-label="Name: activate to sort column descending"
-                                            style="width: 58. 0781px; text-align:center;"><b>Name</b></th>
+                                            style="width: 58.0781px; text-align:center;"><b>Title</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px; text-align:center;"><b>Email</b></th>
+                                            style="width: 72.2969px; text-align:center;"><b>Keywords</b></th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 50.5781px; text-align:center;"><b>Description</b></th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 50.5781px; text-align:center;"><b>Detail</b></th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 50.5781px; text-align:center;"><b>Country</b></th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 50.5781px; text-align:center;"><b>City</b></th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 50.5781px; text-align:center;"><b>Address</b></th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Age: activate to sort column ascending"
+                                            style="width: 25.7969px; text-align:center;"><b>Image</b></th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 50.5781px; text-align:center;"><b>Slug</b></th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 50.5781px; text-align:center;"><b>User ID</b></th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Start date: activate to sort column ascending"
+                                            style="width: 61.125px; text-align:center;"><b>Status</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Start date: activate to sort column ascending"
                                             style="width: 61.125px; text-align:center;"><b>Edit</b></th>
@@ -64,13 +99,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($users as $user)
+                                    @foreach($places as $place)
                                     <tr role="row" class="odd">
-                                        <td>{{$user->id}}</td>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td><a href="{{route('admin_user_edit', ['id'=>$user->id])}}">Edit</a></td>
-                                        <td><a href="{{route('admin_user_delete', ['id'=>$user->id])}}">Delete</a></td>
+                                        <td>{{$place->id}}</td>
+                                        <td>{{$place->parent_id}}</td>
+                                        <td>{{$place->title}}</td>
+                                        <td>{{$place->keywords}}</td>
+                                        <td>{{$place->description}}</td>
+                                        <td>{{$place->detail}}</td>
+                                        <td>{{$place->country}}</td>
+                                        <td>{{$place->city}}</td>
+                                        <td>{{$place->address}}</td>
+                                        <td>{{$place->image}}</td>
+                                        <td>{{$place->slug}}</td>
+                                        <td>{{$place->user_id}}</td>
+                                        <td>{{$place->status}}</td>
+                                        <td><a href="{{route('admin_place_edit', ['id'=>$place->id])}}">Edit</a></td>
+                                        <td><a href="{{route('admin_place_delete', ['id'=>$place->id])}}"
+                                                onclick="return confirm('Do you want to delete?')">Delete</a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
