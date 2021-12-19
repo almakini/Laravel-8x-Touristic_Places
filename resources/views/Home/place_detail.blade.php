@@ -22,14 +22,17 @@ Discover The Beauty of Chad
         <div class="row row-bottom-padded-md">
             <div class="">
                 <div class="fh5co-blog animate-box">
-                    <img class="img-responsive" src="{{asset('assets')}}/images/tiger.jpg" alt="">
+                    <div class="text-center">
+                        <img class="img-responsive" src="{{asset('assets')}}/images/tiger.jpg" alt="">
+                    </div>
                     <div class="blog-text">
                         <div class="prod-title">
-                            <h3>{{$place->title}}</h3>
+
                             <span class="posted_by">{{$place->city}}, {{$place->country}}</span>
-                            <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
+                            <span class="comment"><a href="#comments">21<i class="icon-bubble2"></i></a></span>
+                            <h3><i>{{$place->description}}</i></h3>
                             <p>{{$place->detail}}</p>
-                            <h3>Comments</h3>
+                            <h3 id="comments">Comments</h3>
                         </div>
                         <div class="row">
 

@@ -29,7 +29,7 @@ class CategoryController extends Controller
     public function create(Request $request)
     {
         DB::table('categories')->insert([
-            'parent_id' => $request->input('parent_id'),
+            // 'parent_id' => $request->input('parent_id'),
             'title' => $request->input('title'),
             'keywords' => $request->input('keywords'),
             'status' => $request->input('status'),
@@ -89,7 +89,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category, $id)
     {
         $data = Category::find($id);
-        $data->parent_id = $request->input('parent_id');
+        // $data->parent_id = $request->input('parent_id');
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
         $data->status = $request->input('status');

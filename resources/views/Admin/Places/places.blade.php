@@ -101,21 +101,24 @@
                                 <tbody>
                                     @foreach($places as $place)
                                     <tr role="row" class="odd">
-                                        <td>{{$place->id}}</td>
-                                        <td>{{$place->parent_id}}</td>
-                                        <td>{{$place->title}}</td>
-                                        <td>{{$place->keywords}}</td>
-                                        <td>{{$place->description}}</td>
-                                        <td>{{$place->detail}}</td>
-                                        <td>{{$place->country}}</td>
-                                        <td>{{$place->city}}</td>
-                                        <td>{{$place->address}}</td>
-                                        <td>{{$place->image}}</td>
-                                        <td>{{$place->slug}}</td>
-                                        <td>{{$place->user_id}}</td>
-                                        <td>{{$place->status}}</td>
-                                        <td><a href="{{route('admin_place_edit', ['id'=>$place->id])}}">Edit</a></td>
-                                        <td><a href="{{route('admin_place_delete', ['id'=>$place->id])}}"
+                                        <td style="text-align:center;">{{$place->id}}</td>
+                                        <td style="text-align:center;">{{$place->category_id}}</td>
+                                        <td style="text-align:center;">{{$place->title}}</td>
+                                        <td style="text-align:center;">{{$place->keywords}}</td>
+                                        <td style="text-align:center;">{{$place->description}}</td>
+                                        <td style="text-align:center;">{{$place->detail}}</td>
+                                        <td style="text-align:center;">{{$place->country}}</td>
+                                        <td style="text-align:center;">{{$place->city}}</td>
+                                        <td style="text-align:center;">{{$place->address}}</td>
+                                        <td style="text-align:center;">{{$place->image}}</td>
+                                        <td style="text-align:center;">{{$place->slug}}</td>
+                                        <td style="text-align:center;">{{$place->user_id}}</td>
+                                        <td style="text-align:center;">{{$place->status}}</td>
+                                        <td style="text-align:center;"><a
+                                                href="{{route('admin_place_edit', ['id'=>$place->id])}}">Edit</a>
+                                        </td>
+                                        <td style="text-align:center;"><a
+                                                href="{{route('admin_place_delete', ['id'=>$place->id])}}"
                                                 onclick="return confirm('Do you want to delete?')">Delete</a>
                                         </td>
                                     </tr>

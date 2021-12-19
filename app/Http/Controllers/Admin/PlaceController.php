@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Place;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PlaceController extends Controller
@@ -28,11 +29,17 @@ class PlaceController extends Controller
     public function create(Request $request)
     {
         DB::table('places')->insert([
-            'parent_id' => $request->input('parent_id'),
+            'category_id' => $request->input('category_id'),
             'title' => $request->input('title'),
             'keywords' => $request->input('keywords'),
-            'status' => $request->input('status'),
             'description' => $request->input('description'),
+            'detail' => $request->input('detail'),
+            'country' => $request->input('country'),
+            'city' => $request->input('city'),
+            'address' => $request->input('address'),
+            'slug' => $request->input('slug'),
+            'user_id' => $request->input('user_id'),
+            'status' => $request->input('status'),
         ]);
         return redirect()->intended('admin/place');
     }
@@ -65,14 +72,13 @@ class PlaceController extends Controller
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function edit(Place $place, $id)
+    public function edit(Place $place, Category $category, $id)
     {
-        $places = DB::select('select * from places');
-        // $place = DB::table('places')->distinct()->where('id', $id)->get();
-        $place = place::find($id);
+        $categories = DB::select('select * from categories');
+        $place = Place::find($id);
         return view('Admin.Places.edit_place', [
             'place' => $place,
-            'places' => $places,
+            'categories' => $categories,
         ]);
     }
 
@@ -86,11 +92,17 @@ class PlaceController extends Controller
     public function update(Request $request, Place $place, $id)
     {
         $data = place::find($id);
-        $data->parent_id = $request->input('parent_id');
+        $data->category_id = $request->input('category_id');
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
-        $data->status = $request->input('status');
         $data->description = $request->input('description');
+        $data->detail = $request->input('detail');
+        $data->country = $request->input('country');
+        $data->city = $request->input('city');
+        $data->address = $request->input('address');
+        $data->slug = $request->input('slug');
+        $data->user_id = $request->input('user_id');
+        $data->status = $request->input('status');
         $data->save();
 
         return redirect()->intended('admin/place');
@@ -112,11 +124,28 @@ class PlaceController extends Controller
     //Add
     public function add(Request $request)
     {
-        $places = DB::select(
-            'select * from places'
+        $categories = DB::select(
+            'select * from categories'
         );
         // print_r($places);
         // exit();
-        return view('Admin.Places.add_place', ['places' => $places]);
+        return view('Admin.Places.add_place', ['categories' => $categories]);
+    }
+
+    //Place Detail
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Place  $place
+     * @return \Illuminate\Http\Response
+     */
+    public function detail(Place $place, Category $category, $id)
+    {
+        $categories = DB::select('select * from categories');
+        $place = Place::find($id);
+        return view('Home.place_detail', [
+            'place' => $place,
+            'categories' => $categories,
+        ]);
     }
 }

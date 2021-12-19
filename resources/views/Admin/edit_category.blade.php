@@ -8,7 +8,7 @@
         @csrf
         <div class="card-body">
             <h4 class="card-title">Update a category</h4>
-            <div class="form-group row">
+            <!-- <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Parent</label>
                 <div class="col-sm-9">
                     <select class="select2 form-select shadow-none select2-hidden-accessible" name="parent_id" style="">
@@ -19,7 +19,7 @@
                         @endforeach
                     </select>
                 </div>
-            </div>
+            </div> -->
             <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Title</label>
                 <div class="col-sm-9">

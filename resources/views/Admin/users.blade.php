@@ -66,11 +66,13 @@
                                 <tbody>
                                     @foreach($users as $user)
                                     <tr role="row" class="odd">
-                                        <td>{{$user->id}}</td>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td><a href="{{route('admin_user_edit', ['id'=>$user->id])}}">Edit</a></td>
-                                        <td><a href="{{route('admin_user_delete', ['id'=>$user->id])}}">Delete</a></td>
+                                        <td style="text-align:center;">{{$user->id}}</td>
+                                        <td style="text-align:center;">{{$user->name}}</td>
+                                        <td style="text-align:center;">{{$user->email}}</td>
+                                        <td style="text-align:center;"><a
+                                                href="{{route('admin_user_edit', ['id'=>$user->id])}}">Edit</a></td>
+                                        <td style="text-align:center;"><a
+                                                href="{{route('admin_user_delete', ['id'=>$user->id])}}">Delete</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

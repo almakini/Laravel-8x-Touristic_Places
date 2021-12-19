@@ -4,11 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Monarobase\CountryList\CountryListFacade;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use App\Models\Place;
+use App\Models\Category;
 
 class MainController extends Controller
 {
     public function main(){
-        return view('Home.main');
+        $categories = DB::select('select * from categories');
+        $places = DB::select('select * from places');
+        return view('Home.main', [
+            'places' => $places,
+            'categories' => $categories,
+        ]);
     }
     public function about(){
         return view('Home.about');

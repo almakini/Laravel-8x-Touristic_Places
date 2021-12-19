@@ -58,6 +58,8 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('user/edit/{id}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin_user_edit');
     Route::get('user/delete/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('admin_user_delete');
     Route::get('user/show', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('admin_user_show');
+
+    Route::get('place/detail/{id}', [App\Http\Controllers\Admin\PlaceController::class, 'detail'])->name('place_detail');
 });
 
 
