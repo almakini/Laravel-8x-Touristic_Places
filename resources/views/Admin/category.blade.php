@@ -53,9 +53,9 @@
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Position: activate to sort column ascending"
                                             style="width: 72.2969px; text-align:center;"><b>ID</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                        <!-- <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px; text-align:center;"><b>Parent ID</b></th>
+                                            style="width: 72.2969px; text-align:center;"><b>Parent ID</b></th> -->
                                         <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-sort="ascending"
                                             aria-label="Name: activate to sort column descending"
@@ -83,15 +83,16 @@
                                 <tbody>
                                     @foreach($categories as $cat)
                                     <tr role="row" class="odd">
-                                        <td>{{$cat->id}}</td>
-                                        <td>{{$cat->parent_id}}</td>
-                                        <td>{{$cat->title}}</td>
-                                        <td>{{$cat->keywords}}</td>
-                                        <td>{{$cat->description}}</td>
-                                        <td>{{$cat->image}}</td>
-                                        <td>{{$cat->status}}</td>
-                                        <td><a href="{{route('admin_category_edit', ['id'=>$cat->id])}}">Edit</a></td>
-                                        <td><a href="{{route('admin_category_delete', ['id'=>$cat->id])}}"
+                                        <td style="text-align:center;">{{$cat->id}}</td>
+                                        <td style="text-align:center;">{{$cat->title}}</td>
+                                        <td style="text-align:center;">{{$cat->keywords}}</td>
+                                        <td style="text-align:center;">{{$cat->description}}</td>
+                                        <td style="text-align:center;">{{$cat->image}}</td>
+                                        <td style="text-align:center;">{{$cat->status}}</td>
+                                        <td style="text-align:center;"><a
+                                                href="{{route('admin_category_edit', ['id'=>$cat->id])}}">Edit</a></td>
+                                        <td style="text-align:center;"><a
+                                                href="{{route('admin_category_delete', ['id'=>$cat->id])}}"
                                                 onclick="return confirm('Do you want to delete?')">Delete</a>
                                         </td>
                                     </tr>
