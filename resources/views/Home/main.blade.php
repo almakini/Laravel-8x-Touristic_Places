@@ -27,8 +27,9 @@ Discover The Beauty of Chad
             @foreach($places as $place)
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="fh5co-blog animate-box">
-                    <a href="{{route('place_detail', ['id'=>$place->id])}}"><img class="img-responsive"
-                            src="{{asset('assets')}}/images/tiger.jpg" alt=""></a>
+                    <a href="{{route('place_detail', ['id'=>$place->id])}}">@if ($place->image)
+                        <img class="img-responsive" style="height:300px;" src="{{Storage::url($place->image)}}" alt="">
+                        @endif</a>
                     <div class="blog-text">
                         <div class="prod-title">
                             <h3><a href="{{route('place_detail', ['id'=>$place->id])}}">{{$place->title}}</a></h3>

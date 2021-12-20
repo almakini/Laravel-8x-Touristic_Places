@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Place;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -17,6 +19,7 @@ class PlaceController extends Controller
      */
     public function index()
     {
+        
         $places = DB::select('select * from places');
         return view('Admin.Places.places', ['places' => $places]);
     }
@@ -28,19 +31,20 @@ class PlaceController extends Controller
      */
     public function create(Request $request)
     {
-        DB::table('places')->insert([
-            'category_id' => $request->input('category_id'),
-            'title' => $request->input('title'),
-            'keywords' => $request->input('keywords'),
-            'description' => $request->input('description'),
-            'detail' => $request->input('detail'),
-            'country' => $request->input('country'),
-            'city' => $request->input('city'),
-            'address' => $request->input('address'),
-            'slug' => $request->input('slug'),
-            'user_id' => $request->input('user_id'),
-            'status' => $request->input('status'),
-        ]);
+        $data = new Place;
+        $data->category_id = $request->input('category_id');
+        $data->title = $request->input('title');
+        $data->keywords = $request->input('keywords');
+        $data->description = $request->input('description');
+        $data->detail = $request->input('detail');
+        $data->country = $request->input('country');
+        $data->city = $request->input('city');
+        $data->address = $request->input('address');
+        $data->image = Storage::putFile('image', $request->file('image'));
+        $data->slug = $request->input('slug');
+        $data->user_id = Auth::id();
+        $data->status = $request->input('status');
+        $data->save();
         return redirect()->intended('admin/place');
     }
 
@@ -74,6 +78,7 @@ class PlaceController extends Controller
      */
     public function edit(Place $place, Category $category, $id)
     {
+        
         $categories = DB::select('select * from categories');
         $place = Place::find($id);
         return view('Admin.Places.edit_place', [
@@ -100,8 +105,10 @@ class PlaceController extends Controller
         $data->country = $request->input('country');
         $data->city = $request->input('city');
         $data->address = $request->input('address');
+        $data->image = Storage::putFile('image', $request->file('image'));
+    //   $data->image = $request->file->store('public/image');
         $data->slug = $request->input('slug');
-        $data->user_id = $request->input('user_id');
+        $data->user_id = Auth::id();
         $data->status = $request->input('status');
         $data->save();
 

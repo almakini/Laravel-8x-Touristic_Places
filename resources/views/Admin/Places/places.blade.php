@@ -65,12 +65,6 @@
                                             style="width: 72.2969px; text-align:center;"><b>Keywords</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>Description</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>Detail</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Office: activate to sort column ascending"
                                             style="width: 50.5781px; text-align:center;"><b>Country</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
@@ -79,8 +73,8 @@
                                             colspan="1" aria-label="Office: activate to sort column ascending"
                                             style="width: 50.5781px; text-align:center;"><b>Address</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Age: activate to sort column ascending"
-                                            style="width: 25.7969px; text-align:center;"><b>Image</b></th>
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 50.5781px; text-align:center;"><b>Image</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
                                             style="width: 50.5781px; text-align:center;"><b>Slug</b></th>
@@ -105,12 +99,14 @@
                                         <td style="text-align:center;">{{$place->category_id}}</td>
                                         <td style="text-align:center;">{{$place->title}}</td>
                                         <td style="text-align:center;">{{$place->keywords}}</td>
-                                        <td style="text-align:center;">{{$place->description}}</td>
-                                        <td style="text-align:center;">{{$place->detail}}</td>
                                         <td style="text-align:center;">{{$place->country}}</td>
                                         <td style="text-align:center;">{{$place->city}}</td>
                                         <td style="text-align:center;">{{$place->address}}</td>
-                                        <td style="text-align:center;">{{$place->image}}</td>
+                                        <td style="text-align:center;">
+                                            @if ($place->image)
+                                            <img src="{{Storage::url($place->image)}}" witdth="50" height="70" alt="">
+                                            @endif
+                                        </td>
                                         <td style="text-align:center;">{{$place->slug}}</td>
                                         <td style="text-align:center;">{{$place->user_id}}</td>
                                         <td style="text-align:center;">{{$place->status}}</td>

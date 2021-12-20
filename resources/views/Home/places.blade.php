@@ -3,13 +3,15 @@
 @section('title', 'Welcome!')
 
 @section('description')
-  Discover The Beauty of Chad
+Discover The Beauty of Chad
 @endsection
 
 @section('keywords', 'tourism, Chad, Zakouma, Ounianga')
 
+@section('js')
+
 @section('top')
-  @include('Home._top')
+@include('Home._top')
 @endsection
 
 @section('content')

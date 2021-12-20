@@ -23,7 +23,11 @@ Discover The Beauty of Chad
             <div class="">
                 <div class="fh5co-blog animate-box">
                     <div class="text-center">
-                        <img class="img-responsive" src="{{asset('assets')}}/images/tiger.jpg" alt="">
+                        @if ($place->image)
+                        <img class="img-responsive"
+                            style="display: block; margin-left: auto; margin-right: auto;width: 80%; height:550px;"
+                            src="{{Storage::url($place->image)}}" alt="">
+                        @endif
                     </div>
                     <div class="blog-text">
                         <div class="prod-title">
