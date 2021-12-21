@@ -77,6 +77,9 @@
                                             style="width: 50.5781px; text-align:center;"><b>Image</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 50.5781px; text-align:center;"><b>Images Galery</b></th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
                                             style="width: 50.5781px; text-align:center;"><b>Slug</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
@@ -107,6 +110,10 @@
                                             <img src="{{Storage::url($place->image)}}" witdth="50" height="70" alt="">
                                             @endif
                                         </td>
+                                        <td style="text-align:center;"><a
+                                                href="{{route('admin_image_show', ['place_id'=>$place->id])}}">Show</a>
+                                        </td>
+                                        <td style="text-align:center;">{{$place->user_id}}</td>
                                         <td style="text-align:center;">{{$place->slug}}</td>
                                         <td style="text-align:center;">{{$place->user_id}}</td>
                                         <td style="text-align:center;">{{$place->status}}</td>
