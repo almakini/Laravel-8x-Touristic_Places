@@ -78,7 +78,8 @@
                                         </td>
                                         <td style="text-align:center;"><a
                                                 href="{{route('admin_image_delete', ['id'=>$image->id, 'place_id'=>$image->place_id])}}"
-                                                onclick="return confirm('Do you want to delete?')">Delete</a>
+                                                onclick="return confirm('Do you want to delete?')"
+                                                class="me-2 mdi mdi-delete"></a>
                                         </td>
                                     </tr>
                                     @endforeach

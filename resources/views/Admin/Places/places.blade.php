@@ -113,16 +113,17 @@
                                         <td style="text-align:center;"><a
                                                 href="{{route('admin_image_show', ['place_id'=>$place->id])}}">Show</a>
                                         </td>
-                                        <td style="text-align:center;">{{$place->user_id}}</td>
                                         <td style="text-align:center;">{{$place->slug}}</td>
                                         <td style="text-align:center;">{{$place->user_id}}</td>
                                         <td style="text-align:center;">{{$place->status}}</td>
                                         <td style="text-align:center;"><a
-                                                href="{{route('admin_place_edit', ['id'=>$place->id])}}">Edit</a>
+                                                href="{{route('admin_place_edit', ['id'=>$place->id])}}"
+                                                class="fas fa-edit"></a>
                                         </td>
                                         <td style="text-align:center;"><a
                                                 href="{{route('admin_place_delete', ['id'=>$place->id])}}"
-                                                onclick="return confirm('Do you want to delete?')">Delete</a>
+                                                onclick="return confirm('Do you want to delete?')"
+                                                class="me-2 mdi mdi-delete"></a>
                                         </td>
                                     </tr>
                                     @endforeach

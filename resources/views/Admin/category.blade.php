@@ -90,10 +90,12 @@
                                         <td style="text-align:center;">{{$cat->image}}</td>
                                         <td style="text-align:center;">{{$cat->status}}</td>
                                         <td style="text-align:center;"><a
-                                                href="{{route('admin_category_edit', ['id'=>$cat->id])}}">Edit</a></td>
+                                                href="{{route('admin_category_edit', ['id'=>$cat->id])}}"
+                                                class="fas fa-edit"></a></td>
                                         <td style="text-align:center;"><a
                                                 href="{{route('admin_category_delete', ['id'=>$cat->id])}}"
-                                                onclick="return confirm('Do you want to delete?')">Delete</a>
+                                                onclick="return confirm('Do you want to delete?')"
+                                                class="me-2 mdi mdi-delete"></a>
                                         </td>
                                     </tr>
                                     @endforeach
