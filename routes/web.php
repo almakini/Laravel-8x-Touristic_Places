@@ -33,6 +33,7 @@ Route::get('/place_details', [MainController::class, 'place_details'])->name('pl
 
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
+    //Category
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_index');
     Route::get('category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin_category');
     Route::get('category/add', [App\Http\Controllers\Admin\CategoryController::class, 'add'])->name('admin_category_add');
@@ -61,7 +62,11 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::post('store/{place_id}', [App\Http\Controllers\Admin\ImageController::class, 'store'])->name('admin_image_store');
         Route::get('show/{place_id}', [App\Http\Controllers\Admin\ImageController::class, 'show'])->name('admin_image_show');
     });
-    
+
+    //Setting
+    Route::get('setting', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
+    Route::post('setting/update/{id}', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
+
     Route::get('users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin_users');
     Route::get('user/add', [App\Http\Controllers\Admin\UserController::class, 'add'])->name('admin_user_add');
     Route::post('user/update/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin_user_update');
