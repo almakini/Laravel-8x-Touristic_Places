@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Updating Place')
+@section('title', 'Editing Place')
 
 @section('js')
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
@@ -19,12 +19,15 @@
 @section('content')
 
 @section('content')
+<div class="row mb-2 align-items-center">
+    <h3>Editing Place</h3>
+</div>
 <div class="card">
     <form class="form-horizontal" action="{{route('admin_place_update', ['id'=>$place->id])}}" method="post"
         enctype="multipart/form-data">
         @csrf
         <div class="card-body">
-            <h4 class="card-title">Update a place</h4>
+            <h4 class="card-title">Edit the place</h4>
             <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Category</label>
                 <div class="col-sm-9">
@@ -91,10 +94,9 @@
             <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Image</label>
                 <div class="col-sm-9">
-                    <input type="file" class="form-control" name="image" id="lname" placeholder="Image"
-                        value="{{$place->image}}">
+                    <input type="file" class="form-control" name="image" id="lname" placeholder="Image">
                     @if ($place->image)
-                    <img src="{{Storage::url($place->image)}}" height="70" alt="">
+                    <div style="margin-top:4px;"><img src="{{Storage::url($place->image)}}" height="70" alt=""></div>
                     @endif
                 </div>
             </div>
@@ -105,13 +107,13 @@
                         value="{{$place->slug}}">
                 </div>
             </div>
-            <div class="form-group row">
+            <!-- <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">User ID</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" name="user_id" id="lname" placeholder="User ID"
                         value="{{$place->user_id}}">
                 </div>
-            </div>
+            </div> -->
             <div class="form-group row">
                 <label class="col-sm-3 text-end control-label col-form-label">Status</label>
                 <div class="col-sm-9" data-select2-id="11">

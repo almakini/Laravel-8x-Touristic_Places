@@ -6,7 +6,7 @@
   Discover The Beauty of Chad
 @endsection
 
-@section('keywords', 'about, Tchad Baladi, about us, Tchad')
+@section('keywords', 'about, Baladi, about us, Tchad')
 
 
 @section('content')

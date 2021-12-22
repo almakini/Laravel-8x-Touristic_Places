@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Updating Place')
+@section('title', 'Settings')
 
 @section('js')
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
@@ -19,6 +19,9 @@
 @section('content')
 
 @section('content')
+<div class="row mb-2 align-items-center">
+    <h3>Settings</h3>
+</div>
 <div class="card">
     <!-- Nav tabs -->
     <form class="form-horizontal" action="{{route('admin_setting_update', ['id'=>$data->id])}}" method="post"
@@ -45,7 +48,7 @@
                     <div class="form-group row">
                         <label for="lname" class="col-sm-3 text-end control-label col-form-label">ID</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="id" id="lname" placeholder="ID"
+                            <input type="number" class="form-control" name="id" id="lname" placeholder="ID"
                                 value="{{$data->id}}">
                         </div>
                     </div>
@@ -100,7 +103,7 @@
                     <div class="form-group row">
                         <label for="lname" class="col-sm-3 text-end control-label col-form-label">Email</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="email" id="lname" placeholder="Email"
+                            <input type="email" class="form-control" name="email" id="lname" placeholder="Email"
                                 value="{{$data->email}}">
                         </div>
                     </div>
@@ -131,8 +134,8 @@
                     <div class="form-group row">
                         <label for="lname" class="col-sm-3 text-end control-label col-form-label">SMTP Email</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="smtpemail" id="lname" placeholder="SMTP Email"
-                                value="{{$data->smtpemail}}">
+                            <input type="email" class="form-control" name="smtpemail" id="lname"
+                                placeholder="SMTP Email" value="{{$data->smtpemail}}">
                         </div>
                     </div>
                     <div class="form-group row">

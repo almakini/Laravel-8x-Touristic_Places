@@ -34,6 +34,7 @@ Route::get('/place_details', [MainController::class, 'place_details'])->name('pl
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
     //Category
+    Route::get('/logout', [App\Http\Controllers\Admin\HomeController::class, 'logout'])->name('admin_logout');
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_index');
     Route::get('category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin_category');
     Route::get('category/add', [App\Http\Controllers\Admin\CategoryController::class, 'add'])->name('admin_category_add');
@@ -83,7 +84,7 @@ Route::get('/admin/login', [App\Http\Controllers\Admin\HomeController::class, 'l
 Route::get('/admin/pass_forgotten', [App\Http\Controllers\Admin\HomeController::class, 'pass_forgotten'])->name('admin_pass_forgotten');
 Route::post('/admin/logincheck', [App\Http\Controllers\Admin\HomeController::class, 'logincheck'])->name('admin_logincheck');
 Route::post('/dashbord', [App\Http\Controllers\Admin\HomeController::class, 'logincheck']);
-Route::post('/admin/logout', [App\Http\Controllers\Admin\HomeController::class, 'logout'])->name('admin_logout');
+// Route::post('/admin/logout', [App\Http\Controllers\Admin\HomeController::class, 'logout'])->name('admin_logout');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

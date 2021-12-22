@@ -3,12 +3,16 @@
 @section('title', 'Adding Category')
 
 @section('content')
+<div class="row mb-2 align-items-center">
+    <h3>Adding Category</h3>
+</div>
 <div class="card">
-    <form class="form-horizontal" action="{{route('admin_category_create')}}" method="post">
+    <form class="form-horizontal" action="{{route('admin_category_create')}}" method="post"
+        enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <h4 class="card-title">Add a category</h4>
-            <!-- <div class="form-group row">
+            <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Parent</label>
                 <div class="col-sm-9">
                     <select class="select2 form-select shadow-none select2-hidden-accessible" name="parent_id" style="">
@@ -18,7 +22,7 @@
                         @endforeach
                     </select>
                 </div>
-            </div> -->
+            </div>
             <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Title</label>
                 <div class="col-sm-9">
@@ -32,6 +36,18 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Description</label>
+                <div class="col-sm-9">
+                    <textarea name="description" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="lname" class="col-sm-3 text-end control-label col-form-label">Image</label>
+                <div class="col-sm-9">
+                    <input type="file" class="form-control" name="image" id="lname" placeholder="Image">
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="col-sm-3 text-end control-label col-form-label">Status</label>
                 <div class="col-sm-9" data-select2-id="11">
                     <select class="select2 form-select shadow-none select2-hidden-accessible" name="status" style="">
@@ -40,17 +56,10 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Description</label>
-                <div class="col-sm-9">
-                    <textarea name="description" class="form-control"></textarea>
-                </div>
-            </div>
         </div>
         <div style="text-align:center; float:right; margin-right:17px;" class="form-group">
             <button type="submit" class=" btn btn-primary" style="text-align:center;">Add</button>
         </div>
-
     </form>
 </div>
 @endsection

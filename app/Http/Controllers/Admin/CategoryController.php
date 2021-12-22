@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -17,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = DB::select('select * from categories');
-        return view('Admin.category', ['categories' => $categories]);
+        return view('Admin.Categories.category', ['categories' => $categories]);
     }
 
     /**
@@ -28,13 +29,14 @@ class CategoryController extends Controller
      */
     public function create(Request $request)
     {
-        DB::table('categories')->insert([
-            // 'parent_id' => $request->input('parent_id'),
-            'title' => $request->input('title'),
-            'keywords' => $request->input('keywords'),
-            'status' => $request->input('status'),
-            'description' => $request->input('description'),
-        ]);
+        $data = new Category;
+        $data->parent_id = $request->input('parent_id');
+        $data->title = $request->input('title');
+        $data->keywords = $request->input('keywords');
+        $data->description = $request->input('description');
+        $data->image = Storage::putFile('image', $request->file('image'));
+        $data->status = $request->input('status');
+        $data->save();
         return redirect()->intended('admin/category');
     }
 
@@ -71,7 +73,7 @@ class CategoryController extends Controller
         $categories = DB::select('select * from categories');
         // $category = DB::table('categories')->distinct()->where('id', $id)->get();
         $category = Category::find($id);
-        return view('Admin.edit_category', [
+        return view('Admin.Categories.edit_category', [
             'category' => $category,
             'categories' => $categories,
         ]);
@@ -89,7 +91,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category, $id)
     {
         $data = Category::find($id);
-        // $data->parent_id = $request->input('parent_id');
+        $data->parent_id = $request->input('parent_id');
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
         $data->status = $request->input('status');
@@ -118,8 +120,6 @@ class CategoryController extends Controller
         $categories = DB::select(
             'select * from categories'
         );
-        // print_r($categories);
-        // exit();
-        return view('Admin.add_category', ['categories' => $categories]);
+        return view('Admin.Categories.add_category', ['categories' => $categories]);
     }
 }

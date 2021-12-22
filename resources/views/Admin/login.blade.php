@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Admin Login Page">
     <meta name="author" content="Almakini">
-    <title>Tchad Baladi | Admin Login</title>
+    <title>Baladi | Admin Login</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/chad.png">
+    <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/logo-icon.png">
     <!-- Custom CSS -->
     <link href="{{asset('admin_assets')}}/libs/flot/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -18,6 +18,7 @@
     @yield('css')
     @yield('js')
 </head>
+
 <body>
     <div class="main-wrapper">
         <!-- ============================================================== -->
@@ -42,21 +43,27 @@
                         <span class="db"><img src="{{asset('admin_assets')}}/images/logo.png" alt="logo" /></span>
                     </div>
                     <!-- Form -->
-                    <form class="form-horizontal mt-3" id="loginform" action="{{route('admin_logincheck')}}" method="post">
+                    <form class="form-horizontal mt-3" id="loginform" action="{{route('admin_logincheck')}}"
+                        method="post">
                         @csrf
                         <div class="row pb-4">
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="ti-user"></i></span>
+                                        <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i
+                                                class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required="" name="email">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Username"
+                                        aria-label="Username" aria-describedby="basic-addon1" required="" name="email">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-warning text-white h-100" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                        <span class="input-group-text bg-warning text-white h-100" id="basic-addon2"><i
+                                                class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required="" name="password">
+                                    <input type="password" class="form-control form-control-lg" placeholder="Password"
+                                        aria-label="Password" aria-describedby="basic-addon1" required=""
+                                        name="password">
                                 </div>
                             </div>
                         </div>
@@ -64,8 +71,11 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <div class="pt-3">
-                                        <button class="btn btn-info" id="to-recover" type="button"><i class="fa fa-lock me-1"></i><a class="btn text-white" href="/admin/pass_forgotten">Lost password?</a></button>
-                                        <button class="btn btn-success float-end text-white" type="submit" name="submit">Login</button>
+                                        <button class="btn btn-info" id="to-recover" type="button"><i
+                                                class="fa fa-lock me-1"></i><a class="btn text-white"
+                                                href="/admin/pass_forgotten">Lost password?</a></button>
+                                        <button class="btn btn-success float-end text-white" type="submit"
+                                            name="submit">Login</button>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +110,6 @@
     <!-- This page plugin js -->
     <!-- ============================================================== -->
     <script>
-
     $(".preloader").fadeOut();
     // ============================================================== 
     // Login and Recover Password 
@@ -109,8 +118,8 @@
         $("#loginform").slideUp();
         $("#recoverform").fadeIn();
     });
-    $('#to-login').click(function(){
-        
+    $('#to-login').click(function() {
+
         $("#recoverform").hide();
         $("#loginform").fadeIn();
     });

@@ -17,10 +17,12 @@ class PlaceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Place $place)
     {
-        
-        $places = DB::select('select * from places');
+        // $c = place::find(4);
+        // echo $c->category->title;
+        // exit();
+        $places = Place::all();
         return view('Admin.Places.places', ['places' => $places]);
     }
 
@@ -105,8 +107,10 @@ class PlaceController extends Controller
         $data->country = $request->input('country');
         $data->city = $request->input('city');
         $data->address = $request->input('address');
-        $data->image = Storage::putFile('image', $request->file('image'));
-    //   $data->image = $request->file->store('public/image');
+        if($request->file('image') != null)
+        {
+            $data->image = Storage::putFile('image', $request->file('image'));
+        }
         $data->slug = $request->input('slug');
         $data->user_id = Auth::id();
         $data->status = $request->input('status');

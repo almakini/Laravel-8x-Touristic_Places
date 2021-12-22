@@ -15,6 +15,9 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 @section('content')
+<div class="row mb-2 align-items-center">
+    <h3>Adding Place</h3>
+</div>
 <div class="card">
     <form class="form-horizontal" action="{{route('admin_place_create')}}" method="post" enctype="multipart/form-data">
         @csrf

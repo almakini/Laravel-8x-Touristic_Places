@@ -25,7 +25,7 @@
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-5 fh5co-footer-link">
 							<ul>
-								<li><h3><a href="about">About Tchad Baladi</a></h3></li>
+								<li><h3><a href="about">About Baladi</a></h3></li>
 							</ul>
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-4 fh5co-footer-link">
@@ -43,7 +43,7 @@
 								<a href="#"><i class="icon-dribbble2"></i></a>
 								<a href="#"><i class="icon-youtube"></i></a>
 							</p>
-							<p>&copy; Copyright 2022 <i class="icon-heart3"></i> Tchad Baladi. All Rights Reserved.</p>
+							<p>&copy; Copyright 2022 <i class="icon-heart3"></i> Baladi. All Rights Reserved.</p>
 						</div>
 					</div>
 				</div>

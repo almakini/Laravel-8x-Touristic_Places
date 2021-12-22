@@ -23,14 +23,14 @@
                                     class="mdi mdi-view-dashboard"></i><span class="hide-menu">Categories</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{route('admin_users')}}" aria-expanded="false"><i class="fas fa-users"></i><span
-                                    class="hide-menu">Users</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{route('admin_places')}}" aria-expanded="false"><i
                                     class="mdi mdi-view-dashboard"></i><span class="hide-menu">Places</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{route('admin_setting')}}" aria-expanded="false"><i
-                                    class="mdi mdi-view-dashboard"></i><span class="hide-menu">Setting</span></a></li>
+                                    class="mdi mdi-view-dashboard"></i><span class="hide-menu">Settings</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{route('admin_users')}}" aria-expanded="false"><i class="fas fa-users"></i><span
+                                    class="hide-menu">Users</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="home"><i class="icon-airplane"></i>Tchad Baladi</a></h1>
+					<h1 id="fh5co-logo"><a href="home"><i class="icon-airplane"></i>Baladi</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu sf-js-enabled sf-arrows" id="fh5co-primary-menu" style="touch-action: pan-y;">

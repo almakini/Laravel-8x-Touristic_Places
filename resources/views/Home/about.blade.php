@@ -6,7 +6,7 @@
   Discover The Beauty of Chad
 @endsection
 
-@section('keywords', 'about, Tchad Baladi, about us, Tchad')
+@section('keywords', 'about, Baladi, about us, Tchad')
 
 @section('top')
   @include('Home._top')
@@ -17,7 +17,7 @@
 			<div class="container">
   <div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>About Tchad Baladi</h3>
+						<h3>About Baladi</h3>
 					</div>
           <div>
           <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>

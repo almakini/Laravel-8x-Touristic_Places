@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Admin Login Page">
     <meta name="author" content="Almakini">
-    <title>Tchad Baladi | Admin Login</title>
+    <title>Baladi | Admin Login</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/chad.png">
+    <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/logo-icon.png">
     <!-- Custom CSS -->
     <link href="{{asset('admin_assets')}}/libs/flot/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -18,6 +18,7 @@
     @yield('css')
     @yield('js')
 </head>
+
 <body class="bg-dark">
     <div class="main-wrapper">
         <!-- ============================================================== -->
@@ -39,7 +40,8 @@
             <div class="auth-box bg-dark border-top border-secondary">
                 <div id="recoverform">
                     <div class="text-center">
-                        <span class="text-white">Enter your e-mail address below and we will send you instructions how to recover a password.</span>
+                        <span class="text-white">Enter your e-mail address below and we will send you instructions how
+                            to recover a password.</span>
                     </div>
                     <div class="row mt-3">
                         <!-- Form -->
@@ -47,14 +49,17 @@
                             <!-- email -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text bg-danger text-white h-100" id="basic-addon1"><i class="ti-email"></i></span>
+                                    <span class="input-group-text bg-danger text-white h-100" id="basic-addon1"><i
+                                            class="ti-email"></i></span>
                                 </div>
-                                <input type="text" class="form-control form-control-lg" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control form-control-lg" placeholder="Email Address"
+                                    aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                             <!-- pwd -->
                             <div class="row mt-3 pt-3 border-top border-secondary">
                                 <div class="col-12">
-                                    <a class="btn btn-success text-white" href="/admin/login" id="to-login" name="action">Back To Login</a>
+                                    <a class="btn btn-success text-white" href="/admin/login" id="to-login"
+                                        name="action">Back To Login</a>
                                     <button class="btn btn-info float-end" type="button" name="action">Recover</button>
                                 </div>
                             </div>
@@ -89,7 +94,6 @@
     <!-- This page plugin js -->
     <!-- ============================================================== -->
     <script>
-
     $(".preloader").fadeOut();
     // ============================================================== 
     // Login and Recover Password 
@@ -98,8 +102,8 @@
         $("#loginform").slideUp();
         $("#recoverform").fadeIn();
     });
-    $('#to-login').click(function(){
-        
+    $('#to-login').click(function() {
+
         $("#recoverform").hide();
         $("#loginform").fadeIn();
     });

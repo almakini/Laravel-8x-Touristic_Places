@@ -1,25 +1,30 @@
 @extends('layouts.admin')
 
-@section('title', 'Updating Category')
+@section('title', 'Editing Category')
 
 @section('content')
+<div class="row mb-2 align-items-center">
+    <h3>Editing Category</h3>
+</div>
 <div class="card">
     <form class="form-horizontal" action="{{route('admin_category_update', ['id'=>$category->id])}}" method="post">
         @csrf
         <div class="card-body">
-            <h4 class="card-title">Update a category</h4>
-            <!-- <div class="form-group row">
+            <h4 class="card-title">Edit the category</h4>
+            <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Parent</label>
                 <div class="col-sm-9">
                     <select class="select2 form-select shadow-none select2-hidden-accessible" name="parent_id" style="">
-                        <option data-select2-id="3" value="{{$category->parent_id}}">{{$category->title}}</option>
+                        <option data-select2-id="3" value="0" @if($category->parent_id == 0) selected @endif>Main
+                            Category</option>
                         @foreach($categories as $cat)
-                        <option data-select2-id="3" value="{{$cat->id}}" @if ($cat->id == $category->parent_id) selected
+                        <option data-select2-id="3" value="{{$cat->id}}" @if ($cat->id == $category->parent_id)
+                            selected
                             @endif>{{$cat->title}}</option>
                         @endforeach
                     </select>
                 </div>
-            </div> -->
+            </div>
             <div class="form-group row">
                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Title</label>
                 <div class="col-sm-9">
@@ -35,19 +40,20 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-3 text-end control-label col-form-label">Status</label>
-                <div class="col-sm-9" data-select2-id="11">
-                    <select class="select2 form-select shadow-none select2-hidden-accessible" name="status" style="">
-                        <option data-select2-id="3" selected>{{$category->status}}</option>
-                        <option data-select2-id="3">True</option>
-                        <option data-select2-id="3">False</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
                 <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Description</label>
                 <div class="col-sm-9">
                     <textarea name="description" class="form-control">{{$category->description}}"</textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 text-end control-label col-form-label">Status</label>
+                <div class="col-sm-9" data-select2-id="11">
+                    <select class="select2 form-select shadow-none select2-hidden-accessible" name="status" style="">
+                        <option data-select2-id="3" @if ($category->status == 'True') selected
+                            @endif>True</option>
+                        <option data-select2-id="3" @if ($category->status == 'False') selected
+                            @endif>False</option>
+                    </select>
                 </div>
             </div>
         </div>

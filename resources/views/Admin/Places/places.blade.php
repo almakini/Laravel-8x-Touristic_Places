@@ -15,12 +15,13 @@
         <div class="card-body">
             <div>
                 <form action="{{route('admin_place_add')}}">
-                    <button type="submit" class="btn btn-primary">Add a place</button>
+                    <button type="submit" class="btn btn-primary"
+                        style="margin-left:10px; margin-bottom:15px; height:40px;">Add a place</button>
                 </form>
             </div>
             <div class="table-responsive">
                 <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-sm-12 col-md-6">
                             <div class="dataTables_length" id="zero_config_length">
                                 <label>Show
@@ -43,7 +44,7 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-sm-12">
                             <table id="zero_config" class="table table-striped table-bordered dataTable" role="grid"
@@ -55,35 +56,35 @@
                                             style="width: 72.2969px; text-align:center;"><b>ID</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px; text-align:center;"><b>Parent ID</b></th>
+                                            style="width: 72.2969px; text-align:center;"><b>Category</b></th>
                                         <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-sort="ascending"
                                             aria-label="Name: activate to sort column descending"
                                             style="width: 58.0781px; text-align:center;"><b>Title</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                        <!-- <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px; text-align:center;"><b>Keywords</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            style="width: 72.2969px; text-align:center;"><b>Keywords</b></th> -->
+                                        <!-- <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
                                             style="width: 50.5781px; text-align:center;"><b>Country</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>City</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            style="width: 50.5781px; text-align:center;"><b>City</b></th> -->
+                                        <!-- <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>Address</b></th>
+                                            style="width: 50.5781px; text-align:center;"><b>Address</b></th> -->
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
                                             style="width: 50.5781px; text-align:center;"><b>Image</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
                                             style="width: 50.5781px; text-align:center;"><b>Images Galery</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                        <!-- <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
                                             style="width: 50.5781px; text-align:center;"><b>Slug</b></th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>User ID</b></th>
+                                            style="width: 50.5781px; text-align:center;"><b>User ID</b></th> -->
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" aria-label="Start date: activate to sort column ascending"
                                             style="width: 61.125px; text-align:center;"><b>Status</b></th>
@@ -99,12 +100,12 @@
                                     @foreach($places as $place)
                                     <tr role="row" class="odd">
                                         <td style="text-align:center;">{{$place->id}}</td>
-                                        <td style="text-align:center;">{{$place->category_id}}</td>
+                                        <td style="text-align:center;">{{$place->category->title}}</td>
                                         <td style="text-align:center;">{{$place->title}}</td>
-                                        <td style="text-align:center;">{{$place->keywords}}</td>
-                                        <td style="text-align:center;">{{$place->country}}</td>
-                                        <td style="text-align:center;">{{$place->city}}</td>
-                                        <td style="text-align:center;">{{$place->address}}</td>
+                                        <!-- <td style="text-align:center;">{{$place->keywords}}</td> -->
+                                        <!-- <td style="text-align:center;">{{$place->country}}</td>
+                                        <td style="text-align:center;">{{$place->city}}</td> -->
+                                        <!-- <td style="text-align:center;">{{$place->address}}</td> -->
                                         <td style="text-align:center;">
                                             @if ($place->image)
                                             <img src="{{Storage::url($place->image)}}" witdth="50" height="70" alt="">
@@ -113,8 +114,8 @@
                                         <td style="text-align:center;"><a
                                                 href="{{route('admin_image_show', ['place_id'=>$place->id])}}">Show</a>
                                         </td>
-                                        <td style="text-align:center;">{{$place->slug}}</td>
-                                        <td style="text-align:center;">{{$place->user_id}}</td>
+                                        <!-- <td style="text-align:center;">{{$place->slug}}</td>
+                                        <td style="text-align:center;">{{$place->user_id}}</td> -->
                                         <td style="text-align:center;">{{$place->status}}</td>
                                         <td style="text-align:center;"><a
                                                 href="{{route('admin_place_edit', ['id'=>$place->id])}}"
@@ -131,7 +132,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-sm-12 col-md-5">
                             <div class="dataTables_info" id="zero_config_info" role="status" aria-live="polite">
                                 Showing 1 to 10 of 57 entries
@@ -161,7 +162,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

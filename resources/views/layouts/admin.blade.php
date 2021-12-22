@@ -8,9 +8,9 @@
     <meta name="keywords" content="@yield('keywords')">
     <meta name="description" content="@yield('description')">
     <meta name="author" content="Almakini">
-    <title>Tchad Baladi | @yield('title')</title>
+    <title>Baladi | @yield('title')</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/chad.png">
+    <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/logo-icon.png">
     <!-- Custom CSS -->
     <link href="{{asset('admin_assets')}}/libs/flot/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -19,6 +19,7 @@
     @yield('css')
     @yield('js')
 </head>
+
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -29,22 +30,27 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-    
-    @include('Admin._header')
-    @yield('header')
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
-    @include('Admin._sider')
+        @include('Admin._header')
+        @yield('header')
+
+        @include('Admin._sider')
 
         <div class="page-wrapper">
-        @section('content')
-        @show
+            <div class="container-fluid">
+                @section('content')
 
-        @yield('footer')
-        @include('Admin._footer')
+                @show
+
+                @yield('footer')
+                @include('Admin._footer')
+            </div>
         </div>
     </div>
 
     @include('Admin._script_footer')
 </body>
+
 </html>
