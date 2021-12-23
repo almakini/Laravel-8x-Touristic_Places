@@ -11,6 +11,10 @@ use App\Models\Category;
 
 class MainController extends Controller
 {
+    public static function categoryList()
+    {
+        return Category::where('parent_id','=', 0)->with('children')->get();
+    }
     public function main(){
         $categories = DB::select('select * from categories');
         $places = DB::select('select * from places');

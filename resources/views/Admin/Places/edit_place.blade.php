@@ -36,7 +36,8 @@
                         @foreach($categories as $cat)
                         <option data-select2-id="3" value="{{$cat->id}}" @if ($cat->id == $place->category_id)
                             selected
-                            @endif>{{$cat->title}}</option>
+                            @endif>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($cat, $cat->title)}}
+                        </option>
                         @endforeach
                         <option data-select2-id="3" value="0" @if ($place->category_id == 0)
                             selected

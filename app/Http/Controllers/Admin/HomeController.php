@@ -13,10 +13,10 @@ class HomeController extends Controller
         return view('Admin.index');
     }
     public function login(){
-        return view('Admin.login');
+        return view('Admin.Users.login');
     }
     public function pass_forgotten(){
-        return view('Admin.pass_forgotten');
+        return view('Admin.Users.pass_forgotten');
     }
     public function logincheck(Request $request){
         if ($request->isMethod('post')){
@@ -35,7 +35,7 @@ class HomeController extends Controller
             ]);
         }
         else{
-            return view('Admin.login');
+            return view('Admin.Users.login');
         }
     }
     public function logout(request $request){

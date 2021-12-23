@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $users = DB::select('select * from users');
         
-        return view('admin/users', ['users' => $users]);
+        return view('Admin.Users.users', ['users' => $users]);
     }
 
     /**
@@ -31,7 +31,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         // $user = DB::select("select * from users where id = '$id'");
-        return view('Admin.edit_user', ['user' => $user,]);
+        return view('Admin.Users.edit_user', ['user' => $user,]);
     }
 
     /**

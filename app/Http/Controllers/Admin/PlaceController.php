@@ -81,7 +81,7 @@ class PlaceController extends Controller
     public function edit(Place $place, Category $category, $id)
     {
         
-        $categories = DB::select('select * from categories');
+        $categories = Category::with('children')->get();
         $place = Place::find($id);
         return view('Admin.Places.edit_place', [
             'place' => $place,
@@ -135,11 +135,7 @@ class PlaceController extends Controller
     //Add
     public function add(Request $request)
     {
-        $categories = DB::select(
-            'select * from categories'
-        );
-        // print_r($places);
-        // exit();
+        $categories = Category::with('children')->get();
         return view('Admin.Places.add_place', ['categories' => $categories]);
     }
 
@@ -152,7 +148,7 @@ class PlaceController extends Controller
      */
     public function detail(Place $place, Category $category, $id)
     {
-        $categories = DB::select('select * from categories');
+        $categories = Category::with('children')->get();
         $place = Place::find($id);
         return view('Home.place_detail', [
             'place' => $place,

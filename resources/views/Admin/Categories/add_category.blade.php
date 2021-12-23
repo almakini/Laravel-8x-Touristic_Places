@@ -18,7 +18,9 @@
                     <select class="select2 form-select shadow-none select2-hidden-accessible" name="parent_id" style="">
                         <option data-select2-id="3" value="0">Main Category</option>
                         @foreach($categories as $cat)
-                        <option data-select2-id="3" value="{{$cat->id}}">{{$cat->title}}</option>
+                        <option data-select2-id="3" value="{{$cat->id}}">
+                            {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($cat, $cat->title)}}
+                        </option>
                         @endforeach
                     </select>
                 </div>

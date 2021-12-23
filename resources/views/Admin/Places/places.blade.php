@@ -100,7 +100,9 @@
                                     @foreach($places as $place)
                                     <tr role="row" class="odd">
                                         <td style="text-align:center;">{{$place->id}}</td>
-                                        <td style="text-align:center;">{{$place->category->title}}</td>
+                                        <td style="text-align:center;">
+                                            {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($place->category, $place->category->title)}}
+                                        </td>
                                         <td style="text-align:center;">{{$place->title}}</td>
                                         <!-- <td style="text-align:center;">{{$place->keywords}}</td> -->
                                         <!-- <td style="text-align:center;">{{$place->country}}</td>
@@ -112,7 +114,9 @@
                                             @endif
                                         </td>
                                         <td style="text-align:center;"><a
-                                                href="{{route('admin_image_show', ['place_id'=>$place->id])}}">Show</a>
+                                                href="{{route('admin_image_show', ['place_id'=>$place->id])}}"
+                                                class="me-2 mdi mdi-folder-multiple-image"
+                                                onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=500')"></a>
                                         </td>
                                         <!-- <td style="text-align:center;">{{$place->slug}}</td>
                                         <td style="text-align:center;">{{$place->user_id}}</td> -->

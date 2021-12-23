@@ -51,47 +51,26 @@
                             aria-describedby="zero_config_info">
                             <thead>
                                 <tr role="row">
-                                    <!-- <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px; text-align:center;"><b>ID</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px; text-align:center;"><b>Parent ID</b></th> -->
-                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                        colspan="1" aria-sort="ascending"
-                                        aria-label="Name: activate to sort column descending"
-                                        style="width: 58. 0781px; text-align:center;"><b>Title</b></th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Position: activate to sort column ascending"
-                                        style="width: 72.2969px; text-align:center;"><b>Keywords</b></th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Office: activate to sort column ascending"
-                                        style="width: 50.5781px; text-align:center;"><b>Description</b></th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Age: activate to sort column ascending"
-                                        style="width: 25.7969px; text-align:center;"><b>Image</b></th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Start date: activate to sort column ascending"
-                                        style="width: 61.125px; text-align:center;"><b>Status</b></th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Start date: activate to sort column ascending"
-                                        style="width: 61.125px; text-align:center;"><b>Edit</b></th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Start date: activate to sort column ascending"
-                                        style="width: 61.125px; text-align:center;"><b>Delete</b></th>
+                                    <th style="width: 72.2969px; text-align:center;"><b>ID</b></th>
+                                    <th style="width: 72.2969px; text-align:center;"><b>Parent</b></th>
+                                    <th style="width: 58. 0781px; text-align:center;"><b>Title</b></th>
+                                    <th style="width: 25.7969px; text-align:center;"><b>Image</b></th>
+                                    <th style="width: 61.125px; text-align:center;"><b>Status</b></th>
+                                    <th style="width: 61.125px; text-align:center;"><b>Edit</b></th>
+                                    <th style="width: 61.125px; text-align:center;"><b>Delete</b></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($categories as $cat)
                                 <tr role="row" class="odd">
-                                    <!-- <td style="text-align:center;">{{$cat->id}}</td>
-                                        <td style="text-align:center;">{{$cat->parent_id}}</td> -->
+                                    <td style="text-align:center;">{{$cat->id}}</td>
+                                    <td style="text-align:center;">
+                                        {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($cat, $cat->title)}}
+                                    </td>
                                     <td style="text-align:center;">{{$cat->title}}</td>
-                                    <td style="text-align:center;">{{$cat->keywords}}</td>
-                                    <td style="text-align:center;">{{$cat->description}}</td>
                                     <td style="text-align:center;">
                                         @if ($cat->image)
-                                        <img src="{{Storage::url($cat->image)}}" witdth="50" height="70" alt="">
+                                        <img src="{{Storage::url($cat->image)}}" witdth="40" height="50" alt="">
                                         @endif
                                     </td>
                                     <td style="text-align:center;">{{$cat->status}}</td>

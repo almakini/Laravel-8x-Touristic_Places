@@ -10,6 +10,19 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
+    protected $appends = ["getParentsTree"];
+
+    public static function getParentsTree($category, $title)
+    {
+        if($category->parent_id == 0)
+        {
+            return $title;
+        }
+        $parent = Category::find($category->parent_id);
+        $title = $parent->title . ' > ' . $title;
+        
+        return CategoryController::getParentsTree($parent, $title);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +30,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = DB::select('select * from categories');
+        $categories = Category::with('children')->get();
         return view('Admin.Categories.category', ['categories' => $categories]);
     }
 
