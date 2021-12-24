@@ -47,6 +47,15 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label for="lname" class="col-sm-3 text-end control-label col-form-label">Image</label>
+                <div class="col-sm-9">
+                    <input type="file" class="form-control" name="image" id="lname" placeholder="Image">
+                    @if ($category->image)
+                    <div style="margin-top:4px;"><img src="{{Storage::url($category->image)}}" height="70" alt=""></div>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="col-sm-3 text-end control-label col-form-label">Status</label>
                 <div class="col-sm-9" data-select2-id="11">
                     <select class="select2 form-select shadow-none select2-hidden-accessible" name="status" style="">

@@ -47,7 +47,10 @@ class CategoryController extends Controller
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
         $data->description = $request->input('description');
-        $data->image = Storage::putFile('image', $request->file('image'));
+        if($request->file('image') != null)
+        {
+            $data->image = Storage::putFile('image', $request->file('image'));
+        }
         $data->status = $request->input('status');
         $data->save();
         return redirect()->intended('admin/category');
@@ -107,6 +110,10 @@ class CategoryController extends Controller
         $data->parent_id = $request->input('parent_id');
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
+        if($request->file('image') != null)
+        {
+            $data->image = Storage::putFile('image', $request->file('image'));
+        }
         $data->status = $request->input('status');
         $data->description = $request->input('description');
         $data->save();

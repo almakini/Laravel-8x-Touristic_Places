@@ -1,13 +1,12 @@
-@foreach($children as $subCat)
-<ul class="subLevel fh5co-sub-menu">
+<ul class="fh5co-sub-menu">
+    @foreach($children as $subCat)
     @if(count($subCat->children))
     <li class="subItem flexCenter" tabindex="0"><a href="#">{{$subCat->title}}</a>
-    </li>
-    <ul class="subLevel fh5co-sub-menu">
+
         @include('Home.categoryTree', ['children'=>$subCat->children])
-    </ul>
+    </li>
     @else
-    <li><a href="#">{{$subCat->title}}</a></li>
+    <li class="subItem flexCenter" tabindex="0"><a href="#">{{$subCat->title}}</a></li>
     @endif
+    @endforeach
 </ul>
-@endforeach

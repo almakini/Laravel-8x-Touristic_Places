@@ -1,53 +1,68 @@
+@php
+$settings = \App\Http\Controllers\MainController::getSetting();
+@endphp
 <footer>
     <div id="footer">
         <div class="container">
-            <div class="row row-bottom-padded-md" style="text-align:center;">
-                <!-- <div class="col-md-6 col-sm-6 col-xs-12 fh5co-footer-link">
-							<h3>Categories</h3>
-							<ul>
-								<li><a href="#">Beaches</a></li>
-								<li><a href="#">Palaces</a></li>
-								<li><a href="#">Mountains</a></li>
-								<li><a href="#">Forests</a></li>
-								<li><a href="#">Zoo Parks</a></li>
-								<li><a href="#">Museums</a></li>
-								<li><a href="#">Falls</a></li>
-								<li><a href="#">Skyscrapers</a></li>
-								<li><a href="#">Parks</a></li>
-								<li><a href="#">Squares</a></li>
-								<li><a href="#">Skiing</a></li>	
-							</ul>
-						</div> -->
-                <div class="col-md-3 col-sm-3 col-xs-3 fh5co-footer-link">
+            <div class="row row-bottom-padded-md">
+                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                    <h3>About Travel</h3>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
+                        live the blind texts.</p>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                    <h3>Top Flights Routes</h3>
                     <ul>
-                        <li>
-                            <h3><a href="about">Categories</a></h3>
-                        </li>
+                        <li><a href="#">Manila flights</a></li>
+                        <li><a href="#">Dubai flights</a></li>
+                        <li><a href="#">Bangkok flights</a></li>
+                        <li><a href="#">Tokyo Flight</a></li>
+                        <li><a href="#">New York Flights</a></li>
                     </ul>
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-5 fh5co-footer-link">
+                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                    <h3>Top Hotels</h3>
                     <ul>
-                        <li>
-                            <h3><a href="about">About Baladi</a></h3>
-                        </li>
+                        <li><a href="#">Boracay Hotel</a></li>
+                        <li><a href="#">Dubai Hotel</a></li>
+                        <li><a href="#">Singapore Hotel</a></li>
+                        <li><a href="#">Manila Hotel</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-4 fh5co-footer-link">
-                    <ul>
-                        <li>
-                            <h3><a href="contact-us">Contact Us</a></h3>
-                        </li>
-                    </ul>
+                <div class="col-md-6 col-sm-6 col-xs-12 fh5co-footer-link">
+                    <h3>Contact</h3>
+                    @if($settings->company != null)
+                    <strong>Company: </strong> {{$settings->company}}
+                    @endif
+                    <br>
+                    @if($settings->address != null)
+                    <strong>Address: </strong> {{$settings->address}}
+                    @endif
+                    <br>
+                    @if($settings->phone != null)
+                    <strong>Phone: </strong> {{$settings->phone}}
+                    @endif
+                    <br>
+                    @if($settings->fax != null)
+                    <strong>Fax: </strong> {{$settings->fax}}
+                    @endif
+                    <br>
+                    @if($settings->email != null)
+                    <strong>Email : </strong> {{$settings->email}}
+                    @endif
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
                     <p class="fh5co-social-icons">
-                        <a href="#"><i class="icon-twitter2"></i></a>
-                        <a href="#"><i class="icon-facebook2"></i></a>
-                        <a href="#"><i class="icon-instagram"></i></a>
-                        <a href="#"><i class="icon-dribbble2"></i></a>
-                        <a href="#"><i class="icon-youtube"></i></a>
+                        @if($settings->twitter != null)
+                        <a href="{{$settings->twitter}}" target="_blank"><i class="icon-twitter2"></i></a>@endif
+                        @if($settings->facebook != null)
+                        <a href="{{$settings->facebook}}" target="_blank"><i class="icon-facebook2"></i></a>@endif
+                        @if($settings->instagram != null)
+                        <a href="{{$settings->instagram}}" target="_blank"><i class="icon-instagram"></i></a>@endif
+                        @if($settings->youtube != null)
+                        <a href="{{$settings->youtube}}" target="_blank"><i class="icon-youtube"></i></a>@endif
                     </p>
                     <p>&copy; Copyright 2022 <i class="icon-heart3"></i> Baladi. All Rights Reserved.</p>
                 </div>

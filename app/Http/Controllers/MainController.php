@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Place;
 use App\Models\Category;
+use App\Models\Setting;
 
 class MainController extends Controller
 {
@@ -15,14 +16,20 @@ class MainController extends Controller
     {
         return Category::where('parent_id','=', 0)->with('children')->get();
     }
+    public static function getSetting()
+    {
+        return Setting::first();
+    }
+
     public function main(){
-        $categories = DB::select('select * from categories');
-        $places = DB::select('select * from places');
+        $settings = Setting::first();$places = DB::select('select * from places');
         return view('Home.main', [
             'places' => $places,
-            'categories' => $categories,
+            'settings' => $settings,
+            'page' => 'home',
         ]);
     }
+    
     public function about(){
         return view('Home.about');
     }
@@ -33,6 +40,12 @@ class MainController extends Controller
         $countries = CountryListFacade::getList('en');
 
         return view('Home.search_place', compact('countries'));
+    }
+    public function faq(){
+        return view('Home.faq');
+    }
+    public function references(){
+        return view('Home.references');
     }
     public function places(){
         return view('Home.places');

@@ -30,6 +30,8 @@ Route::get('/places', [MainController::class, 'places'])->name('places');
 Route::get('/signin', [MainController::class, 'signin'])->name('signin');
 Route::get('/signup', [MainController::class, 'signup'])->name('signup');
 Route::get('/place_details', [MainController::class, 'place_details'])->name('place_details');
+Route::get('/faq', [MainController::class, 'faq'])->name('faq');
+Route::get('/references', [MainController::class, 'references'])->name('references');
 
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
@@ -78,8 +80,14 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('place/detail/{id}', [App\Http\Controllers\Admin\PlaceController::class, 'detail'])->name('place_detail');
 });
 
+//User middleware
+Route::middleware('auth')->prefix('user')->namespace('user')->group(function (){
+    Route::get('/myprofile', [App\Http\Controllers\UserController::class, 'index'])->name('user_profile');
+    Route::get('/myreviews', [App\Http\Controllers\UserController::class, 'myreviews'])->name('user_reviews');
+    Route::get('/mymessages', [App\Http\Controllers\UserController::class, 'mymessages'])->name('user_messages');
+    Route::get('/myplaces', [App\Http\Controllers\UserController::class, 'myplaces'])->name('user_places');
+});
 
-// Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_index');
 Route::get('/admin/login', [App\Http\Controllers\Admin\HomeController::class, 'login'])->name('admin_login');
 Route::get('/admin/pass_forgotten', [App\Http\Controllers\Admin\HomeController::class, 'pass_forgotten'])->name('admin_pass_forgotten');
 Route::post('/admin/logincheck', [App\Http\Controllers\Admin\HomeController::class, 'logincheck'])->name('admin_logincheck');
