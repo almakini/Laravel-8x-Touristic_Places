@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Baladi | @yield('title')</title>
+    <title>@yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta type="description" content="@yield('description')">
     <meta type="keywords" content="@yield('keywords')">
-    <meta name="author" content="Almakini">
+    <meta name="author" content="@yield('author')">
 
     <!-- Facebook and Twitter integration -->
     <meta property="og:title" content="" />

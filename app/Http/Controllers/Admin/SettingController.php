@@ -86,6 +86,7 @@ class SettingController extends Controller
         $data->phone = $request->input('phone');
         $data->fax = $request->input('fax');
         $data->email = $request->input('email');
+        $data->website = $request->input('website');
         $data->smtpserver = $request->input('smtpserver');
         $data->smtpemail = $request->input('smtpemail');
         $data->smtppassword = $request->input('smtppassword');

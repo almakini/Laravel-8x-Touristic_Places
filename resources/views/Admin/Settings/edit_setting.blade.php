@@ -108,6 +108,13 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="lname" class="col-sm-3 text-end control-label col-form-label">Website</label>
+                        <div class="col-sm-9">
+                            <input type="website" class="form-control" name="website" id="lname" placeholder="Website"
+                                value="{{$data->website}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-3 text-end control-label col-form-label">Status</label>
                         <div class="col-sm-9" data-select2-id="11">
                             <select class="select2 form-select shadow-none select2-hidden-accessible" name="status"
@@ -179,7 +186,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="lname" class="col-sm-3 text-end control-label col-form-label">Email</label>
+                        <label for="lname" class="col-sm-3 text-end control-label col-form-label">Youtube</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" name="youtube" id="lname" placeholder="Youtube"
                                 value="{{$data->youtube}}">

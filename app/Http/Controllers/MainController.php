@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Place;
 use App\Models\Category;
 use App\Models\Setting;
+use App\Models\Message;
 
 class MainController extends Controller
 {
@@ -22,7 +23,8 @@ class MainController extends Controller
     }
 
     public function main(){
-        $settings = Setting::first();$places = DB::select('select * from places');
+        $settings = Setting::first();
+         $places = DB::select('select * from places');
         return view('Home.main', [
             'places' => $places,
             'settings' => $settings,
@@ -58,5 +60,16 @@ class MainController extends Controller
     }
     public function signup(){
         return view('Home.signup');
+    }
+    public function sendmessage(Request $request){
+        $data = new Message();
+        $data->name = $request->input('name');
+        $data->phone = $request->input('phone');
+        $data->email = $request->input('email');
+        $data->subject = $request->input('subject');
+        $data->message = $request->input('message');
+        $data->save();
+        // $session::flash('message', 'This is a message!');
+        return redirect()->route('contact-us')->with('success', 'Your Message is received! You will back to you later on.');
     }
 }

@@ -1,17 +1,17 @@
 @extends('layouts.main')
 
-@section('title', $settings->title)
+@section('title', $settings->title . '| Welcome!')
 
 @section('description')
 {{$settings->description}}
 @endsection
 
-@section('keywords', 'tourism, Chad, Zakouma, Ounianga')
+@section('keywords', $settings->keywords)
 
 @section('top')
 @include('Home._top')
 @endsection
-@yield('active', '')
+
 @section('content')
 <div id="fh5co-blog-section" class="fh5co-section-gray">
     <div class="container">

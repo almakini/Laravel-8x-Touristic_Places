@@ -4,6 +4,7 @@ use App\http\Controllers\MainController;
 use App\http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,8 @@ Route::get('/signup', [MainController::class, 'signup'])->name('signup');
 Route::get('/place_details', [MainController::class, 'place_details'])->name('place_details');
 Route::get('/faq', [MainController::class, 'faq'])->name('faq');
 Route::get('/references', [MainController::class, 'references'])->name('references');
+
+Route::post('/sendmessage', [MainController::class, 'sendmessage'])->name('sendmessage');
 
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
@@ -66,6 +69,17 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('show/{place_id}', [App\Http\Controllers\Admin\ImageController::class, 'show'])->name('admin_image_show');
     });
 
+    //Message
+    Route::prefix('message')->group(function(){
+       Route::get('/', [MessageController::class, 'index'])->name('admin_messages');
+        Route::get('add', [MessageController::class, 'add'])->name('admin_message_add');
+        Route::post('update/{id}', [MessageController::class, 'update'])->name('admin_message_update');
+        Route::get('edit/{id}', [MessageController::class, 'edit'])->name('admin_message_edit');
+        Route::get('delete/{id}', [MessageController::class, 'destroy'])->name('admin_message_delete');
+        
+        Route::get('show/{id}', [MessageController::class, 'show'])->name('admin_message_show');
+    });
+
     //Setting
     Route::get('setting', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
     Route::post('setting/update/{id}', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
@@ -82,6 +96,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
 //User middleware
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function (){
+    Route::get('/profile', [App\Http\Controllers\UserController::class, 'index']);
     Route::get('/myprofile', [App\Http\Controllers\UserController::class, 'index'])->name('user_profile');
     Route::get('/myreviews', [App\Http\Controllers\UserController::class, 'myreviews'])->name('user_reviews');
     Route::get('/mymessages', [App\Http\Controllers\UserController::class, 'mymessages'])->name('user_messages');

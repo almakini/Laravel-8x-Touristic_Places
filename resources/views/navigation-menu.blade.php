@@ -107,17 +107,9 @@
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('My Profile') }}
+                                {{ __('Profile') }}
                             </x-jet-dropdown-link>
-                            <x-jet-dropdown-link href="{{ route('user_places') }}">
-                                {{ __('My Places') }}
-                            </x-jet-dropdown-link>
-                            <x-jet-dropdown-link href="{{ route('user_reviews') }}">
-                                {{ __('My Reviews') }}
-                            </x-jet-dropdown-link>
-                            <x-jet-dropdown-link href="{{ route('user_messages') }}">
-                                {{ __('My Messages') }}
-                            </x-jet-dropdown-link>
+
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                 {{ __('API Tokens') }}

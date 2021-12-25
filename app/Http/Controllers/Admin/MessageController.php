@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Place;
+use App\Models\Category;
 
 class MessageController extends Controller
 {
@@ -15,7 +20,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $messages = Message::all();
+        return view('Admin.Messages.messages', ['messages' => $messages]);
     }
 
     /**
@@ -45,9 +51,13 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show(Message $message, $id)
     {
-        //
+        $message = Message::find($id);
+        
+        return view('Admin.Messages.message_content', [
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -79,8 +89,11 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy(Message $message, $id)
     {
-        //
+        DB::table('messages')
+            ->where('id', $id)
+            ->delete();
+        return redirect()->intended('admin/message');
     }
 }

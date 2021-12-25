@@ -5,7 +5,7 @@
     <!-- SIDEBAR USER TITLE -->
     <div class="profile-usertitle">
         <div class="profile-userpic">
-            <img src="{{asset('admin_assets')}}/images/users.png" class="" alt="" height="10" width="10">
+            <!-- <img src="{{asset('admin_assets')}}/images/users.png" class="" alt="" height="10" width="10"> -->
         </div>
         <div class="profile-usertitle-name">
             {{Auth::user()->name}}

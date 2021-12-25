@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Setting extends Migration
+class AddWebsiteToSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class Setting extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('settings', function (Blueprint $table) {
+            //
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class Setting extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('settings', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
             <a href="#">Categories</a>
             @include('Home._category')
         </li>
-        <li class="menuItem flexCenter {{Route::currentRouteName() === 'places' ? 'active' : '' }}" tabindex="0">
+        <li class="menuItem flexCenter {{Route::currentRouteName() === 'references' ? 'active' : '' }}" tabindex="0">
             <a href="{{route('references')}}">References</a>
         </li>
         <li class="menuItem flexCenter {{Route::currentRouteName() === 'faq' ? 'active' : '' }}" tabindex="0">
