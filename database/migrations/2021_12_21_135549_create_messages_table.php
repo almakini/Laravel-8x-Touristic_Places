@@ -20,6 +20,7 @@ class CreateMessagesTable extends Migration
             $table->string('phone')->nullable();
             $table->string('subject')->nullable();
             $table->string('message')->nullable();
+            $table->string('note')->nullable();
             $table->string('ip')->nullable();
             $table->string('status', 5)->nullable()->default('False');
             $table->timestamps();

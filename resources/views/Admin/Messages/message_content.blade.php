@@ -37,10 +37,49 @@
                     <h3>Message</h3>
                 </div>
                 <div class="card">
-                    <form class="form-horizontal" action="{{route('admin_image_store', ['place_id'=>$place->id])}}"
-                        method="post" enctype="multipart/form-data">
+                    <div>@include('Home.message')</div>
+                    <form class="form-horizontal" action="{{route('admin_message_update', ['id'=>$message->id])}}"
+                        method="post">
                         @csrf
-                        <div class="card-body">
+                        <table id="zero_config" class="table table-striped table-bordered dataTable" role="grid"
+                            aria-describedby="zero_config_info">
+                            <tr role="row">
+                                <th><b>ID</b></th>
+                                <td>{{$message->id}}</td>
+                            </tr>
+                            <tr role="row">
+                                <th><b>Name</b></th>
+                                <td>{{$message->name}}</td>
+                            </tr>
+                            <tr role="row">
+                                <th><b>Email</b></th>
+                                <td>{{$message->email}}</td>
+                            </tr>
+                            <tr role="row">
+                                <th><b>Phone</b></th>
+                                <td>{{$message->phone}}</td>
+                            </tr>
+                            <tr role="row">
+                                <th><b>Subject</b></th>
+                                <td>{{$message->subject}}</td>
+                            </tr>
+                            <tr role="row">
+                                <th><b>Message</b></th>
+                                <td>{{$message->message}}</td>
+                            </tr>
+                            <tr role="row">
+                                <th><b>Admin Note</b></th>
+                                <td><textarea name="note" class="form-control">{{$message->note}}</textarea></td>
+                            </tr>
+
+                            <!-- <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Start date: activate to sort column ascending"
+                                                    style="width: 61.125px; text-align:center;"><b>Delete</b></th>
+                                                </tr> -->
+
+                        </table>
+                        <!-- <div class="card-body">
                             <h4 class="card-title">{{$message->title}}</h4>
                             <div class="form-group row">
                                 <label for="lname" class="col-sm-3 text-end control-label col-form-label">Title</label>
@@ -54,73 +93,11 @@
                                     <input type="file" class="form-control" name="image" id="lname" placeholder="Image">
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div style="text-align:center; float:right; margin-right:17px;" class="form-group">
-                            <button type="submit" class=" btn btn-primary" style="text-align:center;">Add</button>
+                            <button type="submit" class=" btn btn-primary" style="text-align:center;">Update</button>
                         </div>
                     </form>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table id="zero_config" class="table table-striped table-bordered dataTable"
-                                            role="grid" aria-describedby="zero_config_info">
-                                            <thead>
-                                                <tr role="row">
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 58.0781px; text-align:center;"><b>ID</b></th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 58.0781px; text-align:center;"><b>Title</b>
-                                                    </th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 58.0781px; text-align:center;"><b>Image</b>
-                                                    </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="zero_config"
-                                                        rowspan="1" colspan="1"
-                                                        aria-label="Position: activate to sort column ascending"
-                                                        style="width: 72.2969px; text-align:center;"><b>Delete</b>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($images as $image)
-                                                <tr role="row" class="odd">
-                                                    <td style="text-align:center;">
-                                                        {{$image->id}}
-                                                    </td>
-                                                    <td style="text-align:center;">
-                                                        {{$image->title}}
-                                                    </td>
-                                                    <td style="text-align:center;">
-                                                        @if ($image->image)
-                                                        <img src="{{Storage::url($image->image)}}" witdth="200"
-                                                            height="100" alt="">
-                                                        @endif
-                                                    </td>
-                                                    <td style="text-align:center;"><a
-                                                            href="{{route('admin_image_delete', ['id'=>$image->id, 'place_id'=>$image->place_id])}}"
-                                                            onclick="return confirm('Do you want to delete?')"
-                                                            class="me-2 mdi mdi-delete"></a>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Container fluid  -->

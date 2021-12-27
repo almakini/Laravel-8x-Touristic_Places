@@ -1,10 +1,14 @@
 <?php
 
 use App\http\Controllers\MainController;
-use App\http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PlaceController;
+use App\Http\Controllers\Admin\ImageController;
+use App\Http\Controllers\Admin\SettingController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +34,7 @@ Route::get('/search_place', [MainController::class, 'search_place'])->name('sear
 Route::get('/places', [MainController::class, 'places'])->name('places');
 Route::get('/signin', [MainController::class, 'signin'])->name('signin');
 Route::get('/signup', [MainController::class, 'signup'])->name('signup');
-Route::get('/place_details', [MainController::class, 'place_details'])->name('place_details');
+Route::get('/place_detail/{id}/{slug}', [MainController::class, 'place_detail'])->name('place_detail');
 Route::get('/faq', [MainController::class, 'faq'])->name('faq');
 Route::get('/references', [MainController::class, 'references'])->name('references');
 
@@ -39,34 +43,34 @@ Route::post('/sendmessage', [MainController::class, 'sendmessage'])->name('sendm
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
     //Category
-    Route::get('/logout', [App\Http\Controllers\Admin\HomeController::class, 'logout'])->name('admin_logout');
-    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin_index');
-    Route::get('category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin_category');
-    Route::get('category/add', [App\Http\Controllers\Admin\CategoryController::class, 'add'])->name('admin_category_add');
-    Route::post('category/update/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('admin_category_update');
-    Route::get('category/edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('admin_category_edit');
-    Route::get('category/delete/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('admin_category_delete');
-    Route::post('category/create', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('admin_category_create');
-    Route::get('category/show', [App\Http\Controllers\Admin\CategoryController::class, 'show'])->name('admin_category_show');
+    Route::get('/logout', [HomeController::class, 'logout'])->name('admin_logout');
+    Route::get('/', [HomeController::class, 'index'])->name('admin_index');
+    Route::get('category', [CategoryController::class, 'index'])->name('admin_category');
+    Route::get('category/add', [CategoryController::class, 'add'])->name('admin_category_add');
+    Route::post('category/update/{id}', [CategoryController::class, 'update'])->name('admin_category_update');
+    Route::get('category/edit/{id}', [CategoryController::class, 'edit'])->name('admin_category_edit');
+    Route::get('category/delete/{id}', [CategoryController::class, 'destroy'])->name('admin_category_delete');
+    Route::post('category/create', [CategoryController::class, 'create'])->name('admin_category_create');
+    Route::get('category/show', [CategoryController::class, 'show'])->name('admin_category_show');
 
     //Place
     Route::prefix('place')->group(function(){
-        Route::get('/', [App\Http\Controllers\Admin\PlaceController::class, 'index'])->name('admin_places');
-        Route::get('add', [App\Http\Controllers\Admin\PlaceController::class, 'add'])->name('admin_place_add');
-        Route::post('update/{id}', [App\Http\Controllers\Admin\PlaceController::class, 'update'])->name('admin_place_update');
-        Route::get('edit/{id}', [App\Http\Controllers\Admin\PlaceController::class, 'edit'])->name('admin_place_edit');
-        Route::get('delete/{id}', [App\Http\Controllers\Admin\PlaceController::class, 'destroy'])->name('admin_place_delete');
-        Route::post('create', [App\Http\Controllers\Admin\PlaceController::class, 'create'])->name('admin_place_create');
-        Route::get('show', [App\Http\Controllers\Admin\PlaceController::class, 'show'])->name('admin_place_show');
+        Route::get('/', [PlaceController::class, 'index'])->name('admin_places');
+        Route::get('add', [PlaceController::class, 'add'])->name('admin_place_add');
+        Route::post('update/{id}', [PlaceController::class, 'update'])->name('admin_place_update');
+        Route::get('edit/{id}', [PlaceController::class, 'edit'])->name('admin_place_edit');
+        Route::get('delete/{id}', [PlaceController::class, 'destroy'])->name('admin_place_delete');
+        Route::post('create', [PlaceController::class, 'create'])->name('admin_place_create');
+        Route::get('show', [PlaceController::class, 'show'])->name('admin_place_show');
     });
 
     //Images Galery
     Route::prefix('image')->group(function(){
-        Route::get('add/{place_id}', [App\Http\Controllers\Admin\ImageController::class, 'add'])->name('admin_image_add');
-        Route::get('delete/{place_id}/{id}', [App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('admin_image_delete');
-        Route::post('create', [App\Http\Controllers\Admin\ImageController::class, 'create'])->name('admin_image_create');
-        Route::post('store/{place_id}', [App\Http\Controllers\Admin\ImageController::class, 'store'])->name('admin_image_store');
-        Route::get('show/{place_id}', [App\Http\Controllers\Admin\ImageController::class, 'show'])->name('admin_image_show');
+        Route::get('add/{place_id}', [ImageController::class, 'add'])->name('admin_image_add');
+        Route::get('delete/{place_id}/{id}', [ImageController::class, 'destroy'])->name('admin_image_delete');
+        Route::post('create', [ImageController::class, 'create'])->name('admin_image_create');
+        Route::post('store/{place_id}', [ImageController::class, 'store'])->name('admin_image_store');
+        Route::get('show/{place_id}', [ImageController::class, 'show'])->name('admin_image_show');
     });
 
     //Message
@@ -81,33 +85,31 @@ Route::middleware('auth')->prefix('admin')->group(function (){
     });
 
     //Setting
-    Route::get('setting', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('admin_setting');
-    Route::post('setting/update/{id}', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('admin_setting_update');
+    Route::get('setting', [SettingController::class, 'index'])->name('admin_setting');
+    Route::post('setting/update/{id}', [SettingController::class, 'update'])->name('admin_setting_update');
 
-    Route::get('users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin_users');
-    Route::get('user/add', [App\Http\Controllers\Admin\UserController::class, 'add'])->name('admin_user_add');
-    Route::post('user/update/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin_user_update');
-    Route::get('user/edit/{id}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin_user_edit');
-    Route::get('user/delete/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('admin_user_delete');
-    Route::get('user/show', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('admin_user_show');
-
-    Route::get('place/detail/{id}', [App\Http\Controllers\Admin\PlaceController::class, 'detail'])->name('place_detail');
+    Route::get('users', [UserController::class, 'index'])->name('admin_users');
+    Route::get('user/add', [UserController::class, 'add'])->name('admin_user_add');
+    Route::post('user/update/{id}', [UserController::class, 'update'])->name('admin_user_update');
+    Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('admin_user_edit');
+    Route::get('user/delete/{id}', [UserController::class, 'destroy'])->name('admin_user_delete');
+    Route::get('user/show', [UserController::class, 'show'])->name('admin_user_show');
 });
 
 //User middleware
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function (){
-    Route::get('/profile', [App\Http\Controllers\UserController::class, 'index']);
-    Route::get('/myprofile', [App\Http\Controllers\UserController::class, 'index'])->name('user_profile');
-    Route::get('/myreviews', [App\Http\Controllers\UserController::class, 'myreviews'])->name('user_reviews');
-    Route::get('/mymessages', [App\Http\Controllers\UserController::class, 'mymessages'])->name('user_messages');
-    Route::get('/myplaces', [App\Http\Controllers\UserController::class, 'myplaces'])->name('user_places');
+    Route::get('/profile', [UserController::class, 'index']);
+    Route::get('/myprofile', [UserController::class, 'index'])->name('user_profile');
+    Route::get('/myreviews', [UserController::class, 'myreviews'])->name('user_reviews');
+    Route::get('/mymessages', [UserController::class, 'mymessages'])->name('user_messages');
+    Route::get('/myplaces', [UserController::class, 'myplaces'])->name('user_places');
 });
 
-Route::get('/admin/login', [App\Http\Controllers\Admin\HomeController::class, 'login'])->name('admin_login');
-Route::get('/admin/pass_forgotten', [App\Http\Controllers\Admin\HomeController::class, 'pass_forgotten'])->name('admin_pass_forgotten');
-Route::post('/admin/logincheck', [App\Http\Controllers\Admin\HomeController::class, 'logincheck'])->name('admin_logincheck');
-Route::post('/dashbord', [App\Http\Controllers\Admin\HomeController::class, 'logincheck']);
-// Route::post('/admin/logout', [App\Http\Controllers\Admin\HomeController::class, 'logout'])->name('admin_logout');
+Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');
+Route::get('/admin/pass_forgotten', [HomeController::class, 'pass_forgotten'])->name('admin_pass_forgotten');
+Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin_logincheck');
+Route::post('/dashbord', [HomeController::class, 'logincheck']);
+// Route::post('/admin/logout', [HomeController::class, 'logout'])->name('admin_logout');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

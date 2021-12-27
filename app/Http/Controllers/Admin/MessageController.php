@@ -54,7 +54,6 @@ class MessageController extends Controller
     public function show(Message $message, $id)
     {
         $message = Message::find($id);
-        
         return view('Admin.Messages.message_content', [
             'message' => $message,
         ]);
@@ -66,9 +65,14 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(Message $message)
+    public function edit(Message $message, $id)
     {
-        //
+        $message = Message::find($id);
+        $message->status = 'Read';
+        $message->save();
+        return view('Admin.Messages.message_content', [
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -78,9 +82,12 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
+    public function update(Request $request, Message $message, $id)
     {
-        //
+        $data = Message::find($id);
+        $data->note = $request->input('note');
+        $data->save();
+        return back()->with('success', 'Message updated successfully!');
     }
 
     /**
@@ -94,6 +101,6 @@ class MessageController extends Controller
         DB::table('messages')
             ->where('id', $id)
             ->delete();
-        return redirect()->intended('admin/message');
+        return redirect()->intended('admin/message')->with('success', 'Message deleted successfully!');
     }
 }

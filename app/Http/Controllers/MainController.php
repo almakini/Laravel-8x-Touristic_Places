@@ -24,11 +24,15 @@ class MainController extends Controller
 
     public function main(){
         $settings = Setting::first();
+        $sliders = Place::select('title', 'image', 'id', 'slug')->Limit(4)->get();
+        // print_r($slider);
+        // exit();
          $places = DB::select('select * from places');
         return view('Home.main', [
-            'places' => $places,
+            'sliders' => $sliders,
             'settings' => $settings,
-            'page' => 'home',
+            'places' => $places,
+            'page' => 'home'
         ]);
     }
     
@@ -52,8 +56,13 @@ class MainController extends Controller
     public function places(){
         return view('Home.places');
     }
-    public function place_details(){
-        return view('Home.place_details');
+    public function place_detail($id, $slug){
+        $place = Place::find($id);
+        return view('Home.place_detail',
+         [
+            'place' => $place
+         ]
+        );
     }
     public function signin(){
         return view('Home.signin');

@@ -8,11 +8,8 @@
 
 @section('keywords', $settings->keywords)
 
-@section('top')
-@include('Home._top')
-@endsection
-
 @section('content')
+@include('Home._slider')
 <div id="fh5co-blog-section" class="fh5co-section-gray">
     <div class="container">
         <div class="row">
@@ -27,16 +24,19 @@
             @foreach($places as $place)
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="fh5co-blog animate-box">
-                    <a href="{{route('place_detail', ['id'=>$place->id])}}">@if ($place->image)
+                    <a href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">@if ($place->image)
                         <img class="img-responsive" style="height:300px;" src="{{Storage::url($place->image)}}" alt="">
                         @endif</a>
                     <div class="blog-text">
                         <div class="prod-title">
-                            <h3><a href="{{route('place_detail', ['id'=>$place->id])}}">{{$place->title}}</a></h3>
+                            <h3><a
+                                    href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">{{$place->title}}</a>
+                            </h3>
                             <span class="posted_by">{{$place->city}}, {{$place->country}}</span>
                             <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
                             <p>{{$place->description}}</p>
-                            <p><a href="{{route('place_detail', ['id'=>$place->id])}}">Learn More...</a></p>
+                            <p><a href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">Learn
+                                    More...</a></p>
                         </div>
                     </div>
                 </div>

@@ -51,34 +51,32 @@
                             aria-describedby="zero_config_info">
                             <thead>
                                 <tr role="row">
-                                    <th style="width: 72.2969px; text-align:center;"><b>ID</b></th>
-                                    <th style="width: 72.2969px; text-align:center;"><b>Parent</b></th>
-                                    <th style="width: 58. 0781px; text-align:center;"><b>Title</b></th>
-                                    <th style="width: 25.7969px; text-align:center;"><b>Image</b></th>
-                                    <th style="width: 61.125px; text-align:center;"><b>Status</b></th>
-                                    <th style="width: 61.125px; text-align:center;"><b>Edit</b></th>
-                                    <th style="width: 61.125px; text-align:center;"><b>Delete</b></th>
+                                    <th><b>ID</b></th>
+                                    <th><b>Parent</b></th>
+                                    <th><b>Title</b></th>
+                                    <th><b>Image</b></th>
+                                    <th><b>Status</b></th>
+                                    <th><b>Edit</b></th>
+                                    <th><b>Delete</b></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($categories as $cat)
                                 <tr role="row" class="odd">
-                                    <td style="text-align:center;">{{$cat->id}}</td>
-                                    <td style="text-align:center;">
+                                    <td>{{$cat->id}}</td>
+                                    <td>
                                         {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($cat, $cat->title)}}
                                     </td>
-                                    <td style="text-align:center;">{{$cat->title}}</td>
-                                    <td style="text-align:center;">
+                                    <td>{{$cat->title}}</td>
+                                    <td>
                                         @if ($cat->image)
                                         <img src="{{Storage::url($cat->image)}}" witdth="40" height="50" alt="">
                                         @endif
                                     </td>
-                                    <td style="text-align:center;">{{$cat->status}}</td>
-                                    <td style="text-align:center;"><a
-                                            href="{{route('admin_category_edit', ['id'=>$cat->id])}}"
+                                    <td>{{$cat->status}}</td>
+                                    <td><a href="{{route('admin_category_edit', ['id'=>$cat->id])}}"
                                             class="fas fa-edit"></a></td>
-                                    <td style="text-align:center;"><a
-                                            href="{{route('admin_category_delete', ['id'=>$cat->id])}}"
+                                    <td><a href="{{route('admin_category_delete', ['id'=>$cat->id])}}"
                                             onclick="return confirm('Do you want to delete?')"
                                             class="me-2 mdi mdi-delete"></a>
                                     </td>

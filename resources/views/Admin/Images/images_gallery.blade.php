@@ -70,44 +70,31 @@
                                             role="grid" aria-describedby="zero_config_info">
                                             <thead>
                                                 <tr role="row">
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 58.0781px; text-align:center;"><b>ID</b></th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 58.0781px; text-align:center;"><b>Title</b>
+                                                    <th><b>ID</b></th>
+                                                    <th><b>Title</b>
                                                     </th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 58.0781px; text-align:center;"><b>Image</b>
+                                                    <th><b>Image</b>
                                                     </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="zero_config"
-                                                        rowspan="1" colspan="1"
-                                                        aria-label="Position: activate to sort column ascending"
-                                                        style="width: 72.2969px; text-align:center;"><b>Delete</b>
+                                                    <th><b>Delete</b>
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($images as $image)
                                                 <tr role="row" class="odd">
-                                                    <td style="text-align:center;">
+                                                    <td>
                                                         {{$image->id}}
                                                     </td>
-                                                    <td style="text-align:center;">
+                                                    <td>
                                                         {{$image->title}}
                                                     </td>
-                                                    <td style="text-align:center;">
+                                                    <td>
                                                         @if ($image->image)
                                                         <img src="{{Storage::url($image->image)}}" witdth="200"
                                                             height="100" alt="">
                                                         @endif
                                                     </td>
-                                                    <td style="text-align:center;"><a
-                                                            href="{{route('admin_image_delete', ['id'=>$image->id, 'place_id'=>$image->place_id])}}"
+                                                    <td><a href="{{route('admin_image_delete', ['id'=>$image->id, 'place_id'=>$image->place_id])}}"
                                                             onclick="return confirm('Do you want to delete?')"
                                                             class="me-2 mdi mdi-delete"></a>
                                                     </td>

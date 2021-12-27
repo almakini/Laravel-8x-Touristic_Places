@@ -34,8 +34,8 @@ Discover The Beauty of Chad
 
                             <span class="posted_by">{{$place->city}}, {{$place->country}}</span>
                             <span class="comment"><a href="#comments">21<i class="icon-bubble2"></i></a></span>
-                            <h3><i>{{$place->description}}</i></h3>
-                            <p>{{$place->detail}}</p>
+                            <h3><i>{!!$place->description!!}</i></h3>
+                            <p>{!!$place->detail!!}</p>
                             <h3 id="comments">Comments</h3>
                         </div>
                         <div class="row">

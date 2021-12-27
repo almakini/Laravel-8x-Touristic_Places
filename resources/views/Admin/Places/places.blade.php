@@ -51,82 +51,45 @@
                                 aria-describedby="zero_config_info">
                                 <thead>
                                     <tr role="row">
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px; text-align:center;"><b>ID</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px; text-align:center;"><b>Category</b></th>
-                                        <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-sort="ascending"
-                                            aria-label="Name: activate to sort column descending"
-                                            style="width: 58.0781px; text-align:center;"><b>Title</b></th>
-                                        <!-- <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 72.2969px; text-align:center;"><b>Keywords</b></th> -->
-                                        <!-- <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>Country</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>City</b></th> -->
-                                        <!-- <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>Address</b></th> -->
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>Image</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>Images Galery</b></th>
-                                        <!-- <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>Slug</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 50.5781px; text-align:center;"><b>User ID</b></th> -->
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Start date: activate to sort column ascending"
-                                            style="width: 61.125px; text-align:center;"><b>Status</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Start date: activate to sort column ascending"
-                                            style="width: 61.125px; text-align:center;"><b>Edit</b></th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Start date: activate to sort column ascending"
-                                            style="width: 61.125px; text-align:center;"><b>Delete</b></th>
+                                        <th><b>ID</b></th>
+                                        <tho sort column ascending" style="width: 72.2969px; text-align:center;">
+                                            <th><b>Category</b></th>
+                                            <th><b>Title</b></th>
+                                            <th><b>Image</b></th>
+                                            <th><b>Images Galery</b></th>
+                                            <th><b>Status</b></th>
+                                            <th><b>Edit</b></th>
+                                            <th><b>Delete</b></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($places as $place)
                                     <tr role="row" class="odd">
-                                        <td style="text-align:center;">{{$place->id}}</td>
-                                        <td style="text-align:center;">
+                                        <td>{{$place->id}}</td>
+                                        <td>
                                             {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($place->category, $place->category->title)}}
                                         </td>
-                                        <td style="text-align:center;">{{$place->title}}</td>
-                                        <!-- <td style="text-align:center;">{{$place->keywords}}</td> -->
-                                        <!-- <td style="text-align:center;">{{$place->country}}</td>
-                                        <td style="text-align:center;">{{$place->city}}</td> -->
-                                        <!-- <td style="text-align:center;">{{$place->address}}</td> -->
-                                        <td style="text-align:center;">
+                                        <td>{{$place->title}}</td>
+                                        <!-- <td>{{$place->keywords}}</td> -->
+                                        <!-- <td>{{$place->country}}</td>
+                                        <td>{{$place->city}}</td> -->
+                                        <!-- <td>{{$place->address}}</td> -->
+                                        <td>
                                             @if ($place->image)
                                             <img src="{{Storage::url($place->image)}}" witdth="50" height="70" alt="">
                                             @endif
                                         </td>
-                                        <td style="text-align:center;"><a
-                                                href="{{route('admin_image_show', ['place_id'=>$place->id])}}"
+                                        <td><a href="{{route('admin_image_show', ['place_id'=>$place->id])}}"
                                                 class="me-2 mdi mdi-folder-multiple-image"
                                                 onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=500')"></a>
                                         </td>
-                                        <!-- <td style="text-align:center;">{{$place->slug}}</td>
-                                        <td style="text-align:center;">{{$place->user_id}}</td> -->
-                                        <td style="text-align:center;">{{$place->status}}</td>
-                                        <td style="text-align:center;"><a
-                                                href="{{route('admin_place_edit', ['id'=>$place->id])}}"
+                                        <!-- <td>{{$place->slug}}</td>
+                                        <td>{{$place->user_id}}</td> -->
+                                        <td>{{$place->status}}</td>
+                                        <td><a href="{{route('admin_place_edit', ['id'=>$place->id])}}"
                                                 class="fas fa-edit"></a>
                                         </td>
-                                        <td style="text-align:center;"><a
-                                                href="{{route('admin_place_delete', ['id'=>$place->id])}}"
+                                        <td><a href="{{route('admin_place_delete', ['id'=>$place->id])}}"
                                                 onclick="return confirm('Do you want to delete?')"
                                                 class="me-2 mdi mdi-delete"></a>
                                         </td>
