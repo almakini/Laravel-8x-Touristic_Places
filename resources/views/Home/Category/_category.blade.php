@@ -5,9 +5,11 @@
     <!-- @if (!isset($page)) show-on-click @endif -->
     @foreach($parentCategories as $parent)
     <li class="subItem flexCenter" tabindex="0">
-        <a>{{$parent->title}}</a>
         @if(count($parent->children))
-        @include('Home.categoryTree', ['children'=>$parent->children])
+        <a href="#">{{$parent->title}}</a>
+        @include('Home.Category.categoryTree', ['children'=>$parent->children])
+        @else
+        <a href="{{route('category_places', ['id'=>$parent->id, 'slug'=>$parent->title])}}">{{$parent->title}}</a>
         @endif
     </li>
     @endforeach

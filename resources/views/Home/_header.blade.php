@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
         <div class="container">
             <div class="nav-header">
                 <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-                <h1 id="fh5co-logo"><a href="home"><i class="icon-airplane"></i>Baladi</a></h1>
+                <h1 id="fh5co-logo"><a href="{{route('home')}}"><i class="icon-airplane"></i>Baladi</a></h1>
                 @include('Home._menu')
             </div>
         </div>

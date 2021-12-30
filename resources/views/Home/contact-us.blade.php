@@ -38,22 +38,22 @@ use Illuminate\Support\Facades\Route;
                     <h3 class="section-title">Write To Us</h3>
                     @include('home.message')
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Name" name="name">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="Email" name="email">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Phone" name="phone">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-12 col-sm-12">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Subject" name="subject">
                             </div>

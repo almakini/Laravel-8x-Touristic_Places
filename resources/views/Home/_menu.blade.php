@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
         </li>
         <li class="flexCenter {{Route::currentRouteName() === 'categories' ? 'active' : '' }}" tabindex="0">
             <a href="#">Categories</a>
-            @include('Home._category')
+            @include('Home.Category._category')
         </li>
         <li class="menuItem flexCenter {{Route::currentRouteName() === 'references' ? 'active' : '' }}" tabindex="0">
             <a href="{{route('references')}}">References</a>

@@ -2,7 +2,7 @@
 
 use App\http\Controllers\MainController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PlaceController;
@@ -32,6 +32,7 @@ Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/contact-us', [MainController::class, 'contact'])->name('contact-us');
 Route::get('/search_place', [MainController::class, 'search_place'])->name('search_place');
 Route::get('/places', [MainController::class, 'places'])->name('places');
+Route::get('/places/{id}/{slug}', [MainController::class, 'category_places'])->name('category_places');
 Route::get('/signin', [MainController::class, 'signin'])->name('signin');
 Route::get('/signup', [MainController::class, 'signup'])->name('signup');
 Route::get('/place_detail/{id}/{slug}', [MainController::class, 'place_detail'])->name('place_detail');
@@ -98,8 +99,8 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
 //User middleware
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function (){
-    Route::get('/profile', [UserController::class, 'index']);
-    Route::get('/myprofile', [UserController::class, 'index'])->name('user_profile');
+    // Route::get('/profile', [UserController::class, 'index']);
+    Route::get('/profile', [UserController::class, 'index'])->name('user_profile');
     Route::get('/myreviews', [UserController::class, 'myreviews'])->name('user_reviews');
     Route::get('/mymessages', [UserController::class, 'mymessages'])->name('user_messages');
     Route::get('/myplaces', [UserController::class, 'myplaces'])->name('user_places');

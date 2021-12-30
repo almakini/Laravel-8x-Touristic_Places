@@ -81,4 +81,14 @@ class MainController extends Controller
         // $session::flash('message', 'This is a message!');
         return redirect()->route('contact-us')->with('success', 'Your Message is received! You will back to you later on.');
     }
+    public function category_places($id, $slug){
+        $places = Place::where('category_id', $id)->get();
+        $category = Category::find($id);
+        return view('Home.Category.category_places',
+         [
+            'places' => $places,
+            'category' => $category
+         ]
+        );
+    }
 }
