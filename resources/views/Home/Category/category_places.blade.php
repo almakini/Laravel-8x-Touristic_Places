@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 @extends('layouts.main')
 
-@section('title', $settings->title . ' | $category->title')
+@section('title', $settings->title . ' | ' . $category->title)
 
 @section('description')
 {{$settings->description}}

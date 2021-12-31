@@ -10,6 +10,7 @@ use App\Models\Place;
 use App\Models\Category;
 use App\Models\Setting;
 use App\Models\Message;
+use App\Models\Image;
 
 class MainController extends Controller
 {
@@ -25,14 +26,14 @@ class MainController extends Controller
     public function main(){
         $settings = Setting::first();
         $sliders = Place::select('title', 'image', 'id', 'slug')->Limit(4)->get();
-        // print_r($slider);
-        // exit();
-         $places = DB::select('select * from places');
+        $mostVisited = Place::select()->Limit(4)->inRandomOrder()->get();
+        $holidays = Place::select()->Limit(4)->orderByDesc('id')->get();
         return view('Home.main', [
             'sliders' => $sliders,
             'settings' => $settings,
-            'places' => $places,
-            'page' => 'home'
+            'page' => 'home',
+            'mostVisited' => $mostVisited,
+            'holidays' => $holidays
         ]);
     }
     
@@ -57,10 +58,14 @@ class MainController extends Controller
         return view('Home.places');
     }
     public function place_detail($id, $slug){
+        $images = Image::where('place_id', $id)->get();
         $place = Place::find($id);
+        $category = Category::where('id', $place->category_id)->get();
         return view('Home.place_detail',
          [
-            'place' => $place
+            'place' => $place,
+            'images' => $images,
+            'category' => $category,
          ]
         );
     }
