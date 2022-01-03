@@ -12,6 +12,12 @@
 @include('Home._slider')
 <div id="fh5co-blog-section" class="fh5co-section-gray">
     <div class="container">
+        <form action="{{route('getplace')}}" method="post">
+            @csrf
+            @livewire('search')
+            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+        </form>
+        @livewireScripts
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
                 <h3>Most Visited Tourist Attractions</h3>

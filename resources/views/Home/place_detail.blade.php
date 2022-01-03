@@ -16,7 +16,8 @@ Discover The Beauty of Chad
 <div id="fh5co-blog-section" class="fh5co-section-gray ">
     <div class="container" style="width:95%">
         <div>
-            Home / Place Detail /
+            <a href="{{route('home')}}">Home </a>
+            / Place Detail /
         </div><br><br>
         <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
             <h3>{{$place->title}}</h3>

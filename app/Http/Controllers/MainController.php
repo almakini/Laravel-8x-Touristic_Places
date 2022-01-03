@@ -86,6 +86,24 @@ class MainController extends Controller
         // $session::flash('message', 'This is a message!');
         return redirect()->route('contact-us')->with('success', 'Your Message is received! You will back to you later on.');
     }
+    public function getplace(Request $request){
+        
+        $search = $request->input('search');
+        $count = Place::where('title', $request->input('search'))->get()->count();
+
+        if($count == 1)
+        {
+            $place = Place::where('title', $request->input('search'))->first();
+            return redirect()->route('place_detail',['id' => $place->id, 'slug'=>$place->slug]);
+        }
+        else {
+            return redirect()->route('placeslist', ['search'=>$search]);
+        }
+    }
+    public function placeslist($search){
+        $places = Place::where('title', 'like', '%'. $search. '%')->get();
+        return view('Home.search_places', ['search' => $search, 'places'=>$places]);
+    }
     public function category_places($id, $slug){
         $places = Place::where('category_id', $id)->get();
         $category = Category::find($id);

@@ -40,6 +40,8 @@ Route::get('/faq', [MainController::class, 'faq'])->name('faq');
 Route::get('/references', [MainController::class, 'references'])->name('references');
 
 Route::post('/sendmessage', [MainController::class, 'sendmessage'])->name('sendmessage');
+Route::post('/getplace', [MainController::class, 'getplace'])->name('getplace');
+Route::get('/placeslist/{search}', [MainController::class, 'placeslist'])->name('placeslist');
 
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
