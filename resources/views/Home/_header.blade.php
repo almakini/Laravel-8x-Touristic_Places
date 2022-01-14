@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
     </header>
     <!-- end:header-top -->
 </div>
+@livewireScripts

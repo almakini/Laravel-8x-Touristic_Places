@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Setting;
 use App\Models\Message;
 use App\Models\Image;
+use App\Models\Review;
 
 class MainController extends Controller
 {
@@ -60,12 +61,14 @@ class MainController extends Controller
     public function place_detail($id, $slug){
         $images = Image::where('place_id', $id)->get();
         $place = Place::find($id);
+        $reviews = Review::where('place_id', $id)->get();
         $category = Category::where('id', $place->category_id)->get();
         return view('Home.place_detail',
          [
             'place' => $place,
             'images' => $images,
             'category' => $category,
+            'reviews' => $reviews
          ]
         );
     }

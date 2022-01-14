@@ -76,36 +76,26 @@ Discover The Beauty of Chad
                             <h3 id="comments">Comments</h3>
                         </div>
                         <div class="row">
-
+                            @foreach($reviews as $rs)
                             <div class="col-md-11">
                                 <div class="box-testimony animate-box">
                                     <blockquote>
                                         <span class="quote"><span><i class="icon-quotes-right"></i></span></span>
-                                        <p>&ldquo;Far far away, behind the word mountains, far from the countries
-                                            Vokalia and Consonantia, there live the blind texts. Separated they live in
-                                            Bookmarksgrove right at the coast of the Semantics, a large language
-                                            ocean.&rdquo;</p>
+                                        <p>&ldquo;{!!$rs->review!!}&rdquo;</p>
                                     </blockquote>
-                                    <p class="author">John Doe, CEO <a href="http://freehtml5.co/"
-                                            target="_blank">FREEHTML5.co</a> <span class="subtext">Creative
-                                            Director</span></p>
+                                    <p class="author">{{$rs->user->name}},
+                                        <span class="subtext">{{$rs->created_at}}</span>
+                                    <div class="form-group">
+                                        <span class="fa fa-star @if ($rs->rate >= 1) checked @endif"></span>
+                                        <span class="fa fa-star @if ($rs->rate >= 2) checked @endif"></span>
+                                        <span class="fa fa-star @if ($rs->rate >= 3) checked @endif"></span>
+                                        <span class="fa fa-star @if ($rs->rate >= 4) checked @endif"></span>
+                                        <span class="fa fa-star @if ($rs->rate >= 5) checked @endif"></span>
+                                    </div>
+                                    </p>
                                 </div>
-
                             </div>
-                            <div class="col-md-11">
-                                <div class="box-testimony animate-box">
-                                    <blockquote>
-                                        <span class="quote"><span><i class="icon-quotes-right"></i></span></span>
-                                        <p>&ldquo;Far far away, behind the word mountains, far from the countries
-                                            Vokalia and Consonantia, there live the blind texts.&rdquo;</p>
-                                    </blockquote>
-                                    <p class="author">John Doe, CEO <a href="http://freehtml5.co/"
-                                            target="_blank">FREEHTML5.co</a> <span class="subtext">Creative
-                                            Director</span></p>
-                                </div>
-
-
-                            </div>
+                            @endforeach
                             <div class="col-md-11">
                                 <div class="box-testimony animate-box">
                                     <blockquote>
@@ -121,15 +111,12 @@ Discover The Beauty of Chad
                             </div>
                             <div class="col-md-10">
                                 <h3>Leave a comment ...</h3>
-                                <div class="form-group">
+                                @livewire('review', ['id' => $place->id])
+
+                                <!-- <div class="form-group">
                                     <textarea name="" class="form-control" id="" cols="20" rows="1"
                                         placeholder="Your Comment"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="submit" value="Comment" class="btn btn-primary">
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
