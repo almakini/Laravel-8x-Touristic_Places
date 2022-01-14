@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PlaceController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\ReviewController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -86,10 +87,18 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         
         Route::get('show/{id}', [MessageController::class, 'show'])->name('admin_message_show');
     });
-
+    
     //Setting
     Route::get('setting', [SettingController::class, 'index'])->name('admin_setting');
     Route::post('setting/update/{id}', [SettingController::class, 'update'])->name('admin_setting_update');
+
+    //Review
+    Route::prefix('review')->group(function(){
+        Route::get('/', [ReviewController::class, 'index'])->name('admin_reviews');
+        Route::post('update/{id}', [ReviewController::class, 'update'])->name('admin_review_update');
+        Route::get('edit/{id}', [ReviewController::class, 'edit'])->name('admin_review_edit');
+        Route::get('delete/{id}', [ReviewController::class, 'destroy'])->name('admin_review_delete');
+    });
 
     Route::get('users', [UserController::class, 'index'])->name('admin_users');
     Route::get('user/add', [UserController::class, 'add'])->name('admin_user_add');
@@ -101,11 +110,34 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
 //User middleware
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function (){
-    // Route::get('/profile', [UserController::class, 'index']);
+    //User Profile
     Route::get('/profile', [UserController::class, 'index'])->name('user_profile');
-    Route::get('/myreviews', [UserController::class, 'myreviews'])->name('user_reviews');
-    Route::get('/mymessages', [UserController::class, 'mymessages'])->name('user_messages');
-    Route::get('/myplaces', [UserController::class, 'myplaces'])->name('user_places');
+
+    //User Review
+    Route::prefix('review')->group(function(){
+        Route::get('/', [UserController::class, 'myreviews'])->name('user_reviews');
+        Route::post('update/{id}', [UserController::class, 'updateMyReview'])->name('user_review_update');
+        Route::get('edit/{id}', [UserController::class, 'editMyReview'])->name('user_review_edit');
+        Route::get('delete/{id}', [UserController::class, 'deleteMyReview'])->name('user_review_delete');
+    });
+
+    //User Place
+    Route::prefix('place')->group(function(){
+        Route::get('/', [UserController::class, 'myplaces'])->name('user_places');
+        Route::post('update/{id}', [UserController::class, 'update'])->name('user_place_update');
+        Route::get('edit/{id}', [UserController::class, 'edit'])->name('user_place_edit');
+        Route::get('delete/{id}', [UserController::class, 'destroy'])->name('user_place_delete');
+        Route::get('show/{id}', [UserController::class, 'show'])->name('user_place_show');
+    });
+
+    //User Message
+    Route::prefix('message')->group(function(){
+        Route::get('/', [UserController::class, 'mymessages'])->name('user_messages');
+        Route::post('update/{id}', [UserController::class, 'update'])->name('user_message_update');
+        Route::get('edit/{id}', [UserController::class, 'edit'])->name('user_message_edit');
+        Route::get('delete/{id}', [UserController::class, 'destroy'])->name('user_message_delete');
+        Route::get('show/{id}', [UserController::class, 'show'])->name('user_message_show');
+    });
 });
 
 Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');

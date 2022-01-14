@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Review;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -19,7 +22,8 @@ class UserController extends Controller
 
     public function myreviews()
     {
-        return view('Home.User.user_reviews');
+        $reviews = Review::where('user_id', Auth::user()->id)->get();
+        return view('Home.User.Reviews.user_reviews', ['reviews' => $reviews]);
     }
     /**
      * Show the form for creating a new resource.
@@ -85,5 +89,29 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+    
+    public function editMyReview($id)
+    {
+        $review = Review::find($id);
+        return view('Home.User.Reviews.edit_review', ['review' => $review]);
+    }
+
+    public function deleteMyReview($id)
+    {
+        DB::table('reviews')->where('id', $id)->delete();
+        return redirect()->intended('user/review')->with('success', 'Review Deleted Successfully!');
+    }
+    
+    public function updateMyReview($id)
+    {
+        $data = Review::find($id);
+        $data->category_id = $request->input('category_id');
+        $data->title = $request->input('title');
+        $data->user_id = Auth::id();
+        $data->status = $request->input('status');
+        $data->save();
+
+        return redirect()->intended('admin/place');
     }
 }

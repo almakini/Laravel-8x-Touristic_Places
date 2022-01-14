@@ -61,15 +61,19 @@ Discover The Beauty of Chad
 
                     <div class="blog-text">
                         <div class="prod-title">
-
+                            @php
+                            $countRev = \App\Http\Controllers\MainController::countReviews($place->id);
+                            $avgRev = \App\Http\Controllers\MainController::avgReviews($place->id);
+                            @endphp
                             <span class="posted_by">{{$place->city}}, {{$place->country}}</span>
                             <span class="comment">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>(145)
-                                <span><a href=""><i class="icon-bubble2"></i></a>21</span>
+                                <span class="fa fa-star @if ($avgRev >= 1) checked @endif"></span>
+                                <span class="fa fa-star @if ($avgRev >= 2) checked @endif"></span>
+                                <span class="fa fa-star @if ($avgRev >= 3) checked @endif"></span>
+                                <span class="fa fa-star @if ($avgRev >= 4) checked @endif"></span>
+                                <span class="fa fa-star @if ($avgRev >= 5) checked @endif"></span>({{$countRev}}
+                                reviews)
+                                <span><a href=""><i class="icon-bubble2"></i></a>{{$countRev}}</span>
                             </span>
                             <h3><i>{!!$place->description!!}</i></h3>
                             <p>{!!$place->detail!!}</p>
@@ -79,9 +83,10 @@ Discover The Beauty of Chad
                             @foreach($reviews as $rs)
                             <div class="col-md-11">
                                 <div class="box-testimony animate-box">
+                                    <strong>{!!$rs->subject!!}</strong>
                                     <blockquote>
                                         <span class="quote"><span><i class="icon-quotes-right"></i></span></span>
-                                        <p>&ldquo;{!!$rs->review!!}&rdquo;</p>
+                                        <p>{!!$rs->review!!}</p>
                                     </blockquote>
                                     <p class="author">{{$rs->user->name}},
                                         <span class="subtext">{{$rs->created_at}}</span>
@@ -96,27 +101,9 @@ Discover The Beauty of Chad
                                 </div>
                             </div>
                             @endforeach
-                            <div class="col-md-11">
-                                <div class="box-testimony animate-box">
-                                    <blockquote>
-                                        <span class="quote"><span><i class="icon-quotes-right"></i></span></span>
-                                        <p>&ldquo;Far far away, behind the word mountains, far from the countries
-                                            Vokalia and Consonantia, there live the blind texts. Separated they live in
-                                            Bookmarksgrove right at the coast of the Semantics, a large language
-                                            ocean.&rdquo;</p>
-                                    </blockquote>
-                                    <p class="author">John Doe, Founder <a href="#">FREEHTML5.co</a> <span
-                                            class="subtext">Creative Director</span></p>
-                                </div>
-                            </div>
                             <div class="col-md-10">
                                 <h3>Leave a comment ...</h3>
                                 @livewire('review', ['id' => $place->id])
-
-                                <!-- <div class="form-group">
-                                    <textarea name="" class="form-control" id="" cols="20" rows="1"
-                                        placeholder="Your Comment"></textarea>
-                                </div> -->
                             </div>
                         </div>
                     </div>

@@ -42,11 +42,6 @@
                                     <input type="radio" wire:model.defer="rate" value="1" id="1" name="rating"><label
                                         for="1">☆</label>
                                 </div>
-                                <!-- <span class="fa fa-star" wire:model.defer="rate" value="5"></span>
-                                <span class="fa fa-star" wire:model.defer="rate" value="4"></span>
-                                <span class="fa fa-star" wire:model.defer="rate" value="3"></span>
-                                <span class="fa fa-star" wire:model.defer="rate" value="2"></span>
-                                <span class="fa fa-star" wire:model.defer="rate" value="1"></span> -->
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-12 col-sm-8">
@@ -65,3 +60,4 @@
         </form>
     </div>
 </div>
+@livewireScripts

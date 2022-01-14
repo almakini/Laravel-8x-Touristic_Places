@@ -58,11 +58,18 @@ class MainController extends Controller
     public function places(){
         return view('Home.places');
     }
+    public static function countReviews($id){
+        return Review::where('place_id', $id)->where('status', '=', 'Active')->count();
+    }
+    public static function avgReviews($id){
+        return Review::where('place_id', $id)->where('status', '=', 'Active')->average('rate');
+    }
     public function place_detail($id, $slug){
         $images = Image::where('place_id', $id)->get();
         $place = Place::find($id);
-        $reviews = Review::where('place_id', $id)->get();
+        $reviews = Review::where('place_id', $id)->where('status', '=', 'Active')->get();
         $category = Category::where('id', $place->category_id)->get();
+        
         return view('Home.place_detail',
          [
             'place' => $place,

@@ -38,6 +38,9 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{route('admin_messages')}}" aria-expanded="false"><i
                                     class="fas fa-users"></i><span class="hide-menu">Contact Messages</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{route('admin_reviews')}}" aria-expanded="false"><i
+                                    class="fas fa-users"></i><span class="hide-menu">Reviews</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

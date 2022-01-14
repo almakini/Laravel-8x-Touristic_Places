@@ -30,11 +30,11 @@ class Review extends Component
     
     public function store()
     {
-        // $this->validate([
-        //     'subject' => 'required|min:5',
-        //     'review' => 'required|min:10',
-        //     'rate' => 'required'
-        // ]);
+        $this->validate([
+            'subject' => 'required|min:5',
+            'review' => 'required|min:10',
+            'rate' => 'required'
+        ]);
         
         \App\Models\Review::create([
             'place_id' => $this->place_id,

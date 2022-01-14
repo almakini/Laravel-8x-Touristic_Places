@@ -55,8 +55,13 @@
 
     <!--extra-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
+    .checked {
+        color: orange;
+    }
+
     .rating {
         display: flex;
         flex-direction: row-reverse;
@@ -111,6 +116,19 @@
     //         button.textContent = whiteHeart;
     //     }
     // }
+    const whiteHeart = '\u2661';
+    const blackHeart = '\u2665';
+    const button = document.querySelector('button');
+    button.addEventListener('click', toggle);
+
+    function toggle() {
+        const like = button.textContent;
+        if (like == whiteHeart) {
+            button.textContent = blackHeart;
+        } else {
+            button.textContent = whiteHeart;
+        }
+    }
     </script>
     @yield('css')
     @yield('js')
