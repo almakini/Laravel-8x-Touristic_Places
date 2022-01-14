@@ -15,8 +15,9 @@ class CreateFAQSTable extends Migration
     {
         Schema::create('f_a_q_s', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('question')->nullable();
-            $table->string('answer')->nullable();
+            $table->string('question');
+            $table->text('answer');
+            $table->integer('position')->default(0);
             $table->string('status', 5)->nullable()->default('False');
             $table->timestamps();
         });

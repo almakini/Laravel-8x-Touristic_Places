@@ -42,19 +42,21 @@
                             <h3><a
                                     href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">{{$place->title}}</a>
                             </h3>
-                            <span class="posted_by">{{$place->city}}, {{$place->country}}</span>
-                            <span class="comment">
+                            <div class="posted_by">{{$place->city}}, {{$place->country}}</div><br>
+                            <div class="comment">
                                 <span class="fa fa-star @if ($avgRev >= 1) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 2) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 3) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 4) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 5) checked @endif"></span>({{$countRev}}
-                                reviews)
-                                <span><a href=""><i class="icon-bubble2"></i></a>{{$countRev}}</span>
-                            </span>
-                            <p>{!!$place->description!!}</p>
-                            <p><a href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">Learn
-                                    More...</a></p>
+                                @if ($countRev < 2) review @else reviews @endif) <span><a href=""><i
+                                            class="icon-bubble2"></i></a>{{$countRev}}</span>
+                            </div>
+                            <div>
+                                <p>{!!$place->description!!}</p>
+                                <p><a href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">Learn
+                                        More...</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -87,19 +89,21 @@
                             <h3><a
                                     href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">{{$place->title}}</a>
                             </h3>
-                            <span class="posted_by">{{$place->city}}, {{$place->country}}</span>
-                            <span class="comment">
+                            <div class="posted_by">{{$place->city}}, {{$place->country}}</div><br>
+                            <div class="comment">
                                 <span class="fa fa-star @if ($avgRev >= 1) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 2) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 3) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 4) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 5) checked @endif"></span>({{$countRev}}
-                                reviews)
-                                <span><a href=""><i class="icon-bubble2"></i></a>{{$countRev}}</span>
-                            </span>
-                            <p>{!!$place->description!!}</p>
-                            <p><a href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">Learn
-                                    More...</a></p>
+                                @if ($countRev < 2) review @else reviews @endif) <span><a href=""><i
+                                            class="icon-bubble2"></i></a>{{$countRev}}</span>
+                            </div>
+                            <div>
+                                <p>{!!$place->description!!}</p>
+                                <p><a href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">Learn
+                                        More...</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>

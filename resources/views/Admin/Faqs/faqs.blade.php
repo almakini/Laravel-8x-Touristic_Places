@@ -1,14 +1,21 @@
 @extends('layouts.admin')
 
-@section('title', 'Reviews List')
+@section('title', 'FAQs List')
 
 @section('content')
 <div class="container-fluid">
     <div class="row mb-2 align-items-center">
-        <h3>Reviews List</h3>
+        <h3>FAQs List</h3>
     </div>
     <div class="card">
         <div class="card-body">
+            <div>
+                <form action="{{route('admin_faq_add')}}">
+                    <button type="submit" class="btn btn-primary"
+                        style="margin-left:10px; margin-bottom:15px; height:40px;">Add a FAQ</button>
+                </form>
+            </div>
+            <div>@include('Home.message')</div>
             <div class="table-responsive">
                 <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                     <div class="row">
@@ -18,31 +25,27 @@
                                 <thead>
                                     <tr role="row">
                                         <th><b>ID</b></th>
-                                        <th><b>Place</b></th>
-                                        <th><b>Subject</b></th>
-                                        <th><b>Review</b></th>
-                                        <th><b>Rate</b></th>
+                                        <th><b>Position</b></th>
+                                        <th><b>Question</b></th>
+                                        <th><b>Answer</b></th>
                                         <th><b>Status</b></th>
-                                        <th><b>Date</b></th>
                                         <th><b>Edit</b></th>
                                         <th><b>Delete</b></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($reviews as $rs)
+                                    @foreach($faqs as $rs)
                                     <tr role="row" class="odd">
-                                        <td>{{$rs->place->id}}</td>
-                                        <td>{{$rs->place->title}}</td>
-                                        <td>{{$rs->subject}}</td>
-                                        <td>{{$rs->review}}</td>
-                                        <td>{{$rs->rate}}</td>
+                                        <td>{{$rs->id}}</td>
+                                        <td>{{$rs->position}}</td>
+                                        <td>{{$rs->question}}</td>
+                                        <td>{!!$rs->answer!!}</td>
                                         <td>{{$rs->status}}</td>
-                                        <td>{{$rs->created_at}}</td>
-                                        <td><a href="{{route('admin_review_edit', ['id'=>$rs->id])}}"
-                                                class="fas fa-edit"></a>
+                                        <td><a href="{{route('admin_faq_edit', ['id'=>$rs->id])}}" class="fas fa-edit"
+                                                onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=500')"></a>
                                         </td>
 
-                                        <td><a href="{{route('admin_review_delete', ['id'=>$rs->id])}}"
+                                        <td><a href="{{route('admin_faq_delete', ['id'=>$rs->id])}}"
                                                 onclick="return confirm('Do you want to delete?')"
                                                 class="me-2 mdi mdi-delete"></a>
                                         </td>

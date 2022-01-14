@@ -82,7 +82,7 @@ class ReviewController extends Controller
         $data = Review::find($id);
         $data->status = $request->input('status');
         $data->save();
-        return redirect()->intended('admin/review')->with('success', 'Review Updated Successfully!');
+        return redirect()->route('admin_reviews')->with('success', 'Review Updated Successfully!');
     }
 
     /**

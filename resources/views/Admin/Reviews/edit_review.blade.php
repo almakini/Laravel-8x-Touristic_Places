@@ -7,6 +7,7 @@
     <h3>Editing Review</h3>
 </div>
 <div class="card">
+    <div>@include('Home.message')</div>
     <form class="form-horizontal" action="{{route('admin_review_update', ['id'=>$review->id])}}" method="post">
         @csrf
         <table id="zero_config" class="table table-striped table-bordered dataTable" role="grid"
@@ -18,6 +19,14 @@
             <tr role="row">
                 <th><b>Place</b></th>
                 <td>{{$review->place->title}}</td>
+            </tr>
+            <tr role="row">
+                <th><b>User</b></th>
+                <td>{{$review->user->name}}</td>
+            </tr>
+            <tr role="row">
+                <th><b>IP</b></th>
+                <td>{{$review->ip}}</td>
             </tr>
             <tr role="row">
                 <th><b>Subject</b></th>

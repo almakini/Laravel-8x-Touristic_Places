@@ -19,9 +19,6 @@ class PlaceController extends Controller
      */
     public function index(Place $place)
     {
-        // $c = place::find(4);
-        // echo $c->category->title;
-        // exit();
         $places = Place::all();
         return view('Admin.Places.places', ['places' => $places]);
     }

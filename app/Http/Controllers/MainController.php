@@ -12,6 +12,7 @@ use App\Models\Setting;
 use App\Models\Message;
 use App\Models\Image;
 use App\Models\Review;
+use App\Models\FAQ;
 
 class MainController extends Controller
 {
@@ -121,6 +122,14 @@ class MainController extends Controller
          [
             'places' => $places,
             'category' => $category
+         ]
+        );
+    }
+    public function faqs(FAQ $faqs){
+        $faqs = FAQ::all()->sortBy('position');
+        return view('Home.faqs',
+         [
+            'faqs' => $faqs
          ]
         );
     }

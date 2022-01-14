@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
             <a href="{{route('references')}}">References</a>
         </li>
         <li class="menuItem flexCenter {{Route::currentRouteName() === 'faq' ? 'active' : '' }}" tabindex="0">
-            <a href="{{route('faq')}}">FAQ</a>
+            <a href="{{route('faqs')}}">FAQ</a>
         </li>
         <li class="{{Route::currentRouteName() === 'about' ? 'active' : '' }} menuItem flexCenter" tabindex="0">
             <a href="{{route('about')}}">About Us</a>

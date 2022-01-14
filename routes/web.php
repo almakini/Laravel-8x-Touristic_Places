@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PlaceController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\FAQController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -98,6 +99,18 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::post('update/{id}', [ReviewController::class, 'update'])->name('admin_review_update');
         Route::get('edit/{id}', [ReviewController::class, 'edit'])->name('admin_review_edit');
         Route::get('delete/{id}', [ReviewController::class, 'destroy'])->name('admin_review_delete');
+        Route::get('show/{id}', [ReviewController::class, 'show'])->name('admin_review_show');
+    });
+
+    //FAQ
+    Route::prefix('faq')->group(function(){
+        Route::get('/', [FAQController::class, 'index'])->name('admin_faqs');
+        Route::get('add', [FAQController::class, 'add'])->name('admin_faq_add');
+        Route::post('update/{id}', [FAQController::class, 'update'])->name('admin_faq_update');
+        Route::get('edit/{id}', [FAQController::class, 'edit'])->name('admin_faq_edit');
+        Route::get('delete/{id}', [FAQController::class, 'destroy'])->name('admin_faq_delete');
+        Route::post('create', [FAQController::class, 'create'])->name('admin_faq_create');
+        Route::get('show', [FAQController::class, 'show'])->name('admin_faq_show');
     });
 
     Route::get('users', [UserController::class, 'index'])->name('admin_users');
@@ -144,6 +157,8 @@ Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login'
 Route::get('/admin/pass_forgotten', [HomeController::class, 'pass_forgotten'])->name('admin_pass_forgotten');
 Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin_logincheck');
 Route::post('/dashbord', [HomeController::class, 'logincheck']);
+//Faqs 
+Route::get('/faqs', [MainController::class, 'faqs'])->name('faqs');
 // Route::post('/admin/logout', [HomeController::class, 'logout'])->name('admin_logout');
 
 
