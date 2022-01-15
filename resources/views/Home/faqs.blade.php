@@ -21,24 +21,25 @@
         </div>
     </div>
     <div class="container">
+        @foreach($faqs as $rs)
         <div class="row">
-            @foreach($faqs as $rs)
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                        {{$rs->question}}
-                    </a>
-                </div>
-                <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                    <div class="card-body">
-                        {!!$rs->answer!!}
-                    </div>
-                </div>
+            <p>
+            <h3><a style="color: #5a5a5a;" href="javascript:toggleElement('{{$rs->id}}')">{{$rs->question}}</a></h3>
+            </p>
+            <div id="{{$rs->id}}" style="display:none">
+                <strong>{!!$rs->answer!!}</strong>
             </div>
-            @endforeach
         </div>
+        @endforeach
     </div>
-
 </div>
-
+<script>
+function toggleElement(id) {
+    if (document.getElementById(id).style.display == 'none') {
+        document.getElementById(id).style.display = '';
+    } else {
+        document.getElementById(id).style.display = 'none';
+    }
+}
+</script>
 @endsection

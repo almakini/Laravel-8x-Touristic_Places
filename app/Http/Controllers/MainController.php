@@ -27,9 +27,9 @@ class MainController extends Controller
 
     public function main(){
         $settings = Setting::first();
-        $sliders = Place::select('title', 'image', 'id', 'slug')->Limit(4)->get();
-        $mostVisited = Place::select()->Limit(4)->inRandomOrder()->get();
-        $holidays = Place::select()->Limit(4)->orderByDesc('id')->get();
+        $sliders = Place::select('title', 'image', 'id', 'slug')->where('status', '=', 'True')->Limit(4)->get();
+        $mostVisited = Place::where('status', '=', 'True')->Limit(4)->inRandomOrder()->get();
+        $holidays = Place::where('status', '=', 'True')->Limit(4)->orderByDesc('id')->get();
         return view('Home.main', [
             'sliders' => $sliders,
             'settings' => $settings,
@@ -68,7 +68,7 @@ class MainController extends Controller
     public function place_detail($id, $slug){
         $images = Image::where('place_id', $id)->get();
         $place = Place::find($id);
-        $reviews = Review::where('place_id', $id)->where('status', '=', 'Active')->get();
+        $reviews = Review::where('place_id', $id)->get();
         $category = Category::where('id', $place->category_id)->get();
         
         return view('Home.place_detail',
@@ -100,11 +100,11 @@ class MainController extends Controller
     public function getplace(Request $request){
         
         $search = $request->input('search');
-        $count = Place::where('title', $request->input('search'))->get()->count();
+        $count = Place::where('title', $request->input('search'))->where('status', '=', 'True')->get()->count();
 
         if($count == 1)
         {
-            $place = Place::where('title', $request->input('search'))->first();
+            $place = Place::where('title', $request->input('search'))->where('status', '=', 'True')->first();
             return redirect()->route('place_detail',['id' => $place->id, 'slug'=>$place->slug]);
         }
         else {
@@ -112,12 +112,12 @@ class MainController extends Controller
         }
     }
     public function placeslist($search){
-        $places = Place::where('title', 'like', '%'. $search. '%')->get();
+        $places = Place::where('title', 'like', '%'. $search. '%')->where('status', '=', 'True')->get();
         return view('Home.search_places', ['search' => $search, 'places'=>$places]);
     }
     public function category_places($id, $slug){
-        $places = Place::where('category_id', $id)->get();
-        $category = Category::find($id);
+        $places = Place::where('category_id', $id)->where('status', '=', 'True')->get();
+        $category = Category::find($id)->where('status', '=', 'True');
         return view('Home.Category.category_places',
          [
             'places' => $places,

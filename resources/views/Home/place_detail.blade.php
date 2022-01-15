@@ -72,8 +72,8 @@ Discover The Beauty of Chad
                                 <span class="fa fa-star @if ($avgRev >= 3) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 4) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 5) checked @endif"></span>({{$countRev}}
-                                reviews)
-                                <span><a href=""><i class="icon-bubble2"></i></a>{{$countRev}}</span>
+                                @if ($countRev < 2) review @else reviews @endif) <span><a href=""><i
+                                            class="icon-bubble2"></i></a>{{$countRev}}</span>
                             </span>
                             <h3><i>{!!$place->description!!}</i></h3>
                             <p>{!!$place->detail!!}</p>
