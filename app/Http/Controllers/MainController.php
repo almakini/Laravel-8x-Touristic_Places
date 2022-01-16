@@ -24,6 +24,10 @@ class MainController extends Controller
     {
         return Setting::first();
     }
+    public static function mostVisitedAttractions()
+    {
+        return $mostVisited = Place::where('status', '=', 'True')->Limit(4)->inRandomOrder()->get();
+    }
 
     public function main(){
         $settings = Setting::first();
@@ -45,19 +49,11 @@ class MainController extends Controller
     public function contact(){
         return view('Home.contact-us');
     }
-    public function search_place(){
-        $countries = CountryListFacade::getList('en');
-
-        return view('Home.search_place', compact('countries'));
-    }
     public function faq(){
         return view('Home.faq');
     }
     public function references(){
         return view('Home.references');
-    }
-    public function places(){
-        return view('Home.places');
     }
     public static function countReviews($id){
         return Review::where('place_id', $id)->where('status', '=', 'Active')->count();
@@ -117,7 +113,7 @@ class MainController extends Controller
     }
     public function category_places($id, $slug){
         $places = Place::where('category_id', $id)->where('status', '=', 'True')->get();
-        $category = Category::find($id)->where('status', '=', 'True');
+        $category = Category::find($id);
         return view('Home.Category.category_places',
          [
             'places' => $places,

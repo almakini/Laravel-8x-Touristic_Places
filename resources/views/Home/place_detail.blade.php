@@ -1,23 +1,19 @@
 @extends('layouts.main')
 
-@section('title', 'Place Detail')
+@section('title', $place->title . ' | Detail')
 
 @section('description')
-Discover The Beauty of Chad
+{{$place->description}}
 @endsection
 
 @section('keywords', '{{$place->keywords}}')
-
-@section('top')
-@include('Home._top')
-@endsection
 
 @section('content')
 <div id="fh5co-blog-section" class="fh5co-section-gray ">
     <div class="container" style="width:95%">
         <div>
             <a href="{{route('home')}}">Home </a>
-            / Place Detail /
+            / Place Detail : {{$place->title}}
         </div><br><br>
         <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
             <h3>{{$place->title}}</h3>
@@ -53,12 +49,10 @@ Discover The Beauty of Chad
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-
         </div>
         <div class="row row-bottom-padded-md">
             <div class="">
                 <div class="fh5co-blog animate-box">
-
                     <div class="blog-text">
                         <div class="prod-title">
                             @php
@@ -72,38 +66,40 @@ Discover The Beauty of Chad
                                 <span class="fa fa-star @if ($avgRev >= 3) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 4) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 5) checked @endif"></span>({{$countRev}}
-                                @if ($countRev < 2) review @else reviews @endif) <span><a href=""><i
+                                @if ($countRev < 2) review @else reviews @endif) <span><a href="#comments"><i
                                             class="icon-bubble2"></i></a>{{$countRev}}</span>
                             </span>
-                            <h3><i>{!!$place->description!!}</i></h3>
-                            <p>{!!$place->detail!!}</p>
-                            <h3 id="comments">Comments</h3>
+                            <p><i>{!!$place->description!!}</i></p>
+                            <p>{!!$place->detail!!}</p><br><br>
+                            <h2 id="comments">Reviews</h2>
                         </div>
                         <div class="row">
                             @foreach($reviews as $rs)
                             <div class="col-md-11">
-                                <div class="box-testimony animate-box">
-                                    <strong>{!!$rs->subject!!}</strong>
+                                <div class="box-testimony animate-box"><br>
+                                    <hr>
+                                    <p class="author" style="margin:auto">
+                                        <span style="font-size:2rem;"><b>{{$rs->user->name}}</b></span> &nbsp;&nbsp;
+                                        <span class="subtext" style="margin:auto">{{$rs->created_at}}</span><br>
+                                        <span class="">
+                                            <span class="fa fa-star @if ($rs->rate >= 1) checked @endif"></span>
+                                            <span class="fa fa-star @if ($rs->rate >= 2) checked @endif"></span>
+                                            <span class="fa fa-star @if ($rs->rate >= 3) checked @endif"></span>
+                                            <span class="fa fa-star @if ($rs->rate >= 4) checked @endif"></span>
+                                            <span class="fa fa-star @if ($rs->rate >= 5) checked @endif"></span>
+                                        </span><br>
+                                    <h4>{!!$rs->subject!!}</h4>
                                     <blockquote>
-                                        <span class="quote"><span><i class="icon-quotes-right"></i></span></span>
                                         <p>{!!$rs->review!!}</p>
                                     </blockquote>
-                                    <p class="author">{{$rs->user->name}},
-                                        <span class="subtext">{{$rs->created_at}}</span>
-                                    <div class="form-group">
-                                        <span class="fa fa-star @if ($rs->rate >= 1) checked @endif"></span>
-                                        <span class="fa fa-star @if ($rs->rate >= 2) checked @endif"></span>
-                                        <span class="fa fa-star @if ($rs->rate >= 3) checked @endif"></span>
-                                        <span class="fa fa-star @if ($rs->rate >= 4) checked @endif"></span>
-                                        <span class="fa fa-star @if ($rs->rate >= 5) checked @endif"></span>
-                                    </div>
                                     </p>
-                                </div>
+                                </div><br>
                             </div>
-                            @endforeach
+                            @endforeach<br>
                             <div class="col-md-10">
-                                <h3>Leave a comment ...</h3>
+                                <h3>Write Your Review</h3>
                                 @livewire('review', ['id' => $place->id])
+
                             </div>
                         </div>
                     </div>

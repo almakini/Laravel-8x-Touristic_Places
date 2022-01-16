@@ -1,6 +1,4 @@
 <?php
-use Illuminate\Support\Facades\Route;
-
     $settings = \App\Http\Controllers\MainController::getSetting();
 ?>
 
@@ -29,7 +27,7 @@ use Illuminate\Support\Facades\Route;
         </div>
         <div class="row row-bottom-padded-md">
             @foreach($places as $place)
-            <div class="col-md-4 col-sm-6 fh5co-tours animate-box fadeInUp animated" data-animate-effect="fadeIn">
+            <div class="col-md-4 col-sm-6 fh5co-tours animate-box fadeInUp animated myBox" data-animate-effect="fadeIn">
                 <div href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}"><img
                         src="{{Storage::url($place->image)}}" alt="" class="img-responsive" width="100%" height="100%">
                     <div class="desc">

@@ -49,7 +49,7 @@
                                     <td>{{$user->address}}</td>
                                     <td>
                                         @foreach($user->roles as $role)
-                                        {{$role->name}},
+                                        {{$role->name}}&nbsp;
                                         @endforeach
                                         <a href="{{route('admin_user_roles', ['id'=>$user->id])}}" class="fas fa-edit"
                                             onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=500')"></a>

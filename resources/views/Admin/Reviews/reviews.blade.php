@@ -18,6 +18,7 @@
                                 <thead>
                                     <tr role="row">
                                         <th><b>ID</b></th>
+                                        <th><b>Name</b></th>
                                         <th><b>Place</b></th>
                                         <th><b>Subject</b></th>
                                         <th><b>Review</b></th>
@@ -32,6 +33,9 @@
                                     @foreach($reviews as $rs)
                                     <tr role="row" class="odd">
                                         <td>{{$rs->place->id}}</td>
+                                        <td><a href="{{route('admin_user_show', ['id'=>$rs->user->id])}}"
+                                                onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=500')">{{$rs->user->name}}</a>
+                                        </td>
                                         <td>{{$rs->place->title}}</td>
                                         <td>{{$rs->subject}}</td>
                                         <td>{{$rs->review}}</td>

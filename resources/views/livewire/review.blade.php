@@ -1,4 +1,4 @@
-<div id="fh5co-contact" class="fh5co-section-gray">
+<div id="" class="fh5co-section-gray">
     @if(session()->has('message'))
     <div class="alert alert-success">
         {{session('message')}}
@@ -9,7 +9,7 @@
             @csrf
             <div class="row animate-box">
                 <div class="col-md-6">
-                    <h3 class="section-title">Review</h3>
+                    <h3 class="section-title"></h3>
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-sm-8">
                             <div class="form-group">
@@ -47,7 +47,7 @@
                         <div class="col-md-12 col-lg-12 col-sm-8">
                             <div class="form-group">
                                 @auth
-                                <input type="submit" value="Rate" class="btn btn-primary">
+                                <input type="submit" value="Rate" name="submit" class="btn btn-primary">
                                 @else
                                 <button class="btn btn-primary"><a href="/login" style="color:white;">Sign in to submit
                                         review</a></button>
@@ -60,4 +60,3 @@
         </form>
     </div>
 </div>
-@livewireScripts

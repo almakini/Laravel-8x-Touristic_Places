@@ -1,23 +1,19 @@
 @php
 $settings = \App\Http\Controllers\MainController::getSetting();
+$mostVisited = \App\Http\Controllers\MainController::mostVisitedAttractions();
 @endphp
 <footer>
     <div id="footer">
         <div class="container">
             <div class="row row-bottom-padded-md">
-                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3>About Travel</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-                        live the blind texts.</p>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-                    <h3>Top Flights Routes</h3>
+                <div class="col-md-4 col-sm-4 col-xs-12 fh5co-footer-link">
+                    <h3>Top Museums</h3>
                     <ul>
-                        <li><a href="#">Manila flights</a></li>
-                        <li><a href="#">Dubai flights</a></li>
-                        <li><a href="#">Bangkok flights</a></li>
-                        <li><a href="#">Tokyo Flight</a></li>
-                        <li><a href="#">New York Flights</a></li>
+                        @foreach($mostVisited as $place)
+                        <li><a
+                                href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">{{$place->title}}</a>
+                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">

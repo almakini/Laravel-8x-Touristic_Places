@@ -34,7 +34,6 @@ Route::get('/laravel', function () {
 Route::get('/', [MainController::class, 'main'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/contact-us', [MainController::class, 'contact'])->name('contact-us');
-Route::get('/search_place', [MainController::class, 'search_place'])->name('search_place');
 Route::get('/places', [MainController::class, 'places'])->name('places');
 Route::get('/places/{id}/{slug}', [MainController::class, 'category_places'])->name('category_places');
 Route::get('/signin', [MainController::class, 'signin'])->name('signin');
@@ -125,7 +124,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::post('update/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin_user_update');
         Route::get('edit/{id}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin_user_edit');
         Route::get('delete/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('admin_user_delete');
-        Route::get('show', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('admin_user_show');
+        Route::get('show/{id}', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('admin_user_show');
         Route::get('user_role/{id}', [App\Http\Controllers\Admin\UserController::class, 'user_role'])->name('admin_user_roles');
         Route::post('user_role_add/{id}', [App\Http\Controllers\Admin\UserController::class, 'user_role_store'])->name('admin_user_role_add');
         Route::get('user_role_delete/{user_id}/{role_id}', [App\Http\Controllers\Admin\UserController::class, 'user_role_destroy'])->name('admin_user_role_delete');

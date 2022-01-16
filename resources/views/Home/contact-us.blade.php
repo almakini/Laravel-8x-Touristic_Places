@@ -1,6 +1,4 @@
 <?php
-use Illuminate\Support\Facades\Route;
-
     $settings = \App\Http\Controllers\MainController::getSetting();
 ?>
 
@@ -17,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 @section('content')
 <div id="fh5co-contact" class="fh5co-section-gray">
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top:50px;">
             <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
                 <h3>Contact Us</h3>
                 <p>{!!$settings->contact!!}</p>
@@ -37,28 +35,28 @@ use Illuminate\Support\Facades\Route;
                 <div class="col-md-6">
                     <h3 class="section-title">Write To Us</h3>
                     @include('home.message')
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="row" style="padding:10px;">
+                        <div class="">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Name" name="name">
                             </div>
                         </div>
-                        <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="">
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="Email" name="email">
                             </div>
                         </div>
-                        <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Phone" name="phone">
                             </div>
                         </div>
-                        <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Subject" name="subject">
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="">
                             <div class="form-group">
                                 <textarea name="message" class="form-control" id="" cols="30" rows="7"
                                     placeholder="Message"></textarea>

@@ -145,8 +145,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
                                 id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if(Auth::user()->profile_photo_path)
+                                <img src="{{Storage::url(Auth::user()->profile_photo_path)}}" alt="user"
+                                    class="rounded-circle" width="31">
+                                @else
                                 <img src="{{asset('admin_assets')}}/images/logo-icon.png" alt="user"
                                     class="rounded-circle" width="31">
+                                @endif
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated"
                                 aria-labelledby="navbarDropdown">

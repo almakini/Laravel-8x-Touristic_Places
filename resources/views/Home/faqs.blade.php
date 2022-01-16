@@ -3,7 +3,7 @@
 ?>
 @extends('layouts.main')
 
-@section('title', $settings->title . '| FAQs')
+@section('title', $settings->title . ' | FAQs')
 
 @section('description')
 {{$settings->description}}
@@ -14,7 +14,7 @@
 @section('content')
 <div id="fh5co-blog-section" class="fh5co-section-gray">
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top:50px;">
             <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
                 <h3>Frequently Asked Questions</h3>
             </div>

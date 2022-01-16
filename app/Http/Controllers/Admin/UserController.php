@@ -70,6 +70,16 @@ class UserController extends Controller
     {
         
     }
+    public function show($id)
+    {
+        $user = User::find($id);
+        $roles = Role::all()->sortBy('name');
+        return view('Admin.Users.user_show',
+            [
+                'user' => $user,
+                'roles' => $roles,
+            ]);
+    }
     public function user_role($id)
     {
         $user = User::find($id);

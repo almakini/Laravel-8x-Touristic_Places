@@ -400,7 +400,6 @@ figure {
   position: relative;
   z-index: 2;
   display: block;
-  float: right;
   margin-top: 15px;
 }
 #fh5co-menu-wrap .sf-menu a {
@@ -1516,7 +1515,13 @@ div.cs-select span {
 .fh5co-testimonial p .text-mute {
   color: #ccc !important;
 }
-
+.myBox{
+  height:400px; 
+  width:450px;
+}
+.myHeight{
+  height: 480px;
+}
 .fh5co-blog {
   margin-bottom: 60px;
 }
@@ -1527,6 +1532,17 @@ div.cs-select span {
   .fh5co-blog {
     width: 100%;
   }
+  .myHeight{
+    height: 350px;
+  }
+  .myBox{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 986px) {
+  .myHeight{
+  height: 360px;
+}
 }
 .fh5co-blog .blog-text {
   margin-bottom: 30px;

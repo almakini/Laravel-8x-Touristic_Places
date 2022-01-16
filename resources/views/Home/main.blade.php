@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', $settings->title . '| Welcome!')
+@section('title', $settings->title . ' | Welcome!')
 
 @section('description')
 {{$settings->description}}
@@ -9,15 +9,12 @@
 @section('keywords', $settings->keywords)
 
 @section('content')
-@include('Home._slider')
+<div>
+    @include('Home._slider')
+</div>
 <div id="fh5co-blog-section" class="fh5co-section-gray">
+
     <div class="container">
-        <form action="{{route('getplace')}}" method="post">
-            @csrf
-            @livewire('search')
-            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-        </form>
-        @livewireScripts
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
                 <h3>Most Visited Tourist Attractions</h3>
@@ -32,12 +29,12 @@
             $countRev = \App\Http\Controllers\MainController::countReviews($place->id);
             $avgRev = \App\Http\Controllers\MainController::avgReviews($place->id);
             @endphp
-            <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="col-lg-4 col-md-4 col-sm-6" style="">
                 <div class="fh5co-blog animate-box">
                     <a href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">@if ($place->image)
                         <img class="img-responsive" style="height:300px;" src="{{Storage::url($place->image)}}" alt="">
                         @endif</a>
-                    <div class="blog-text">
+                    <div class="blog-text myHeight">
                         <div class="prod-title">
                             <h3><a
                                     href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">{{$place->title}}</a>
@@ -84,7 +81,7 @@
                     <a href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">@if ($place->image)
                         <img class="img-responsive" style="height:300px;" src="{{Storage::url($place->image)}}" alt="">
                         @endif</a>
-                    <div class="blog-text">
+                    <div class="blog-text myHeight">
                         <div class="prod-title">
                             <h3><a
                                     href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">{{$place->title}}</a>
