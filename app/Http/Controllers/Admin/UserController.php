@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -16,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::select('select * from users');
+        $users = User::all();
         
         return view('Admin.Users.users', ['users' => $users]);
     }
@@ -31,7 +32,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         // $user = DB::select("select * from users where id = '$id'");
-        return view('Admin.Users.edit_user', ['user' => $user,]);
+        return view('Admin.Users.edit_user', ['user' => $user]);
     }
 
     /**
@@ -45,12 +46,18 @@ class UserController extends Controller
     {
         // $data = DB::select('select * from users where id = '$id'');
         $data = User::find($id);
-        $data->id = $request->input('id');
+        
         $data->name = $request->input('name');
         $data->email = $request->input('email');
+        $data->phone = $request->input('phone');
+        $data->address = $request->input('address');
+        if ($request->file('image') != null)
+        {
+            $data->image = Storage::putFile('profile-photos', $request->file('image'));
+        }
         $data->save();
 
-        return redirect()->intended('admin/users');
+        return redirect()->intended('admin/user')->with('success', 'User information updated successfully.');
     }
 
     /**
@@ -61,9 +68,29 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('users')
-            ->where('id', $id)
-            ->delete();
-        return redirect()->intended('admin/users');
+        
+    }
+    public function user_role($id)
+    {
+        $user = User::find($id);
+        $roles = Role::all()->sortBy('name');
+        return view('Admin.Roles.user_roles',
+            [
+                'user' => $user,
+                'roles' => $roles,
+            ]);
+    }
+    public function user_role_store(Request $request, User $user, $id)
+    {
+        $user = User::find($id);
+        $role_id = $request->input('role_id');
+        $user->roles()->attach($role_id);
+        return redirect()->back()->with('success', 'Role added to user successfully.');
+    }
+    public function user_role_destroy(Request $request, User $user, $user_id, $role_id)
+    {
+        $user = User::find($user_id);
+        $user->roles()->detach($role_id);
+        return redirect()->back()->with('success', 'Role deleted from user successfully.');
     }
 }

@@ -50,7 +50,7 @@ use Illuminate\Support\Facades\Route;
                     <a href="{{route('user_profile')}}">My Account</a>
                 </li>
                 <li class="subItem flexCenter" tabindex="0">
-                    <a href="{{route('admin_logout')}}">Logout</a>
+                    <a href="{{route('user_logout')}}">Logout</a>
                 </li>
             </ul>
             @endauth

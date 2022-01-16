@@ -30,9 +30,18 @@
             <li class="{{Route::currentRouteName() === 'user/message' ? 'active' : '' }}">
                 <a href="{{route('user_messages')}}"><i class="glyphicon glyphicon-flag"></i>Messages </a>
             </li>
+            @php
+            $userRoles = Auth::user()->roles->pluck('name')
+            @endphp
+            @if($userRoles->contains('admin'))
             <li class="">
-                <a href="{{route('admin_logout')}}"><i class="glyphicon glyphicon-flag"></i>Logout </a>
+                <a href="{{route('admin_index')}}"><i class="glyphicon glyphicon-flag"></i>Admin Panel </a>
             </li>
+            @endif
+            <li class="">
+                <a href="{{route('admin_logout')}}" target="_blank"><i class="glyphicon glyphicon-flag"></i>Logout </a>
+            </li>
+
         </ul>
     </div>
 </div>

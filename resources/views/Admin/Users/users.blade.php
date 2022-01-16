@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Categories List')
+@section('title', 'Users List')
 
 @section('content')
 <!-- ============================================================== -->
@@ -22,35 +22,42 @@
                             aria-describedby="zero_config_info">
                             <thead>
                                 <tr role="row">
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Position: activate to sort column ascending"
-                                        style="width: 72.2969px; text-align:center;"><b>ID</b></th>
-                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                        colspan="1" aria-sort="ascending"
-                                        aria-label="Name: activate to sort column descending"
-                                        style="width: 58. 0781px; text-align:center;"><b>Name</b></th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Position: activate to sort column ascending"
-                                        style="width: 72.2969px; text-align:center;"><b>Email</b></th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Start date: activate to sort column ascending"
-                                        style="width: 61.125px; text-align:center;"><b>Edit</b></th>
-                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
-                                        aria-label="Start date: activate to sort column ascending"
-                                        style="width: 61.125px; text-align:center;"><b>Delete</b></th>
+                                    <th><b>ID</b></th>
+                                    <th><b>Photo</b></th>
+                                    <th><b>Name</b></th>
+                                    <th><b>Email</b></th>
+                                    <th><b>Phone</b></th>
+                                    <th><b>Address</b></th>
+                                    <th><b>Role</b></th>
+                                    <th><b>Edit</b></th>
+                                    <th><b>Delete</b></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($users as $user)
                                 <tr role="row" class="odd">
                                     <td>{{$user->id}}</td>
+                                    <td>
+                                        @if ($user->profile_photo_path)
+                                        <img src="{{Storage::url($user->profile_photo_path)}}" witdth="20" height="30"
+                                            alt="">
+                                        @endif
+                                    </td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
-                                    <td><a
-                                            href="{{route('admin_user_edit', ['id'=>$user->id])}}"
+                                    <td>{{$user->phone}}</td>
+                                    <td>{{$user->address}}</td>
+                                    <td>
+                                        @foreach($user->roles as $role)
+                                        {{$role->name}},
+                                        @endforeach
+                                        <a href="{{route('admin_user_roles', ['id'=>$user->id])}}" class="fas fa-edit"
+                                            onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=500')"></a>
+                                    </td>
+                                    <td><a href="{{route('admin_user_edit', ['id'=>$user->id])}}"
                                             class="fas fa-edit"></a></td>
-                                    <td><a
-                                            href="{{route('admin_user_delete', ['id'=>$user->id])}}"
+                                    <td><a href="{{route('admin_user_delete', ['id'=>$user->id])}}"
+                                            onclick="return confirm('Do you want to delete?')"
                                             class="me-2 mdi mdi-delete"></a></td>
                                 </tr>
                                 @endforeach

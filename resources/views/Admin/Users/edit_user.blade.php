@@ -28,6 +28,30 @@
                         value="{{$user->email}}">
                 </div>
             </div>
+            <div class="form-group row">
+                <label for="lname" class="col-sm-3 text-end control-label col-form-label">Phone</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="phone" id="lname" placeholder="Phone"
+                        value="{{$user->phone}}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="lname" class="col-sm-3 text-end control-label col-form-label">Address</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="address" id="lname" placeholder="Address"
+                        value="{{$user->address}}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lname" class="col-sm-3 text-end control-label col-form-label">Image</label>
+            <div class="col-sm-9">
+                <input type="file" class="form-control" name="image" id="lname" placeholder="Image">
+                @if ($user->profile_photo_path)
+                <div style="margin-top:4px;"><img src="{{Storage::url($user->profile_photo_path)}}" height="70" alt="">
+                </div>
+                @endif
+            </div>
         </div>
         <div style="text-align:center; float:right; margin-right:17px;" class="form-group">
             <button type="submit" class=" btn btn-primary" style="text-align:center;">Update</button>

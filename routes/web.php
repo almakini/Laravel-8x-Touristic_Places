@@ -47,8 +47,11 @@ Route::post('/sendmessage', [MainController::class, 'sendmessage'])->name('sendm
 Route::post('/getplace', [MainController::class, 'getplace'])->name('getplace');
 Route::get('/placeslist/{search}', [MainController::class, 'placeslist'])->name('placeslist');
 
+Route::get('/logout', [HomeController::class, 'logout'])->name('user_logout');
+
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
+  Route::middleware('admin')->group(function (){
     //Category
     Route::get('/logout', [HomeController::class, 'logout'])->name('admin_logout');
     Route::get('/', [HomeController::class, 'index'])->name('admin_index');
@@ -82,7 +85,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
     //Message
     Route::prefix('message')->group(function(){
-       Route::get('/', [MessageController::class, 'index'])->name('admin_messages');
+        Route::get('/', [MessageController::class, 'index'])->name('admin_messages');
         Route::get('add', [MessageController::class, 'add'])->name('admin_message_add');
         Route::post('update/{id}', [MessageController::class, 'update'])->name('admin_message_update');
         Route::get('edit/{id}', [MessageController::class, 'edit'])->name('admin_message_edit');
@@ -115,12 +118,20 @@ Route::middleware('auth')->prefix('admin')->group(function (){
         Route::get('show', [FAQController::class, 'show'])->name('admin_faq_show');
     });
 
-    Route::get('users', [UserController::class, 'index'])->name('admin_users');
-    Route::get('user/add', [UserController::class, 'add'])->name('admin_user_add');
-    Route::post('user/update/{id}', [UserController::class, 'update'])->name('admin_user_update');
-    Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('admin_user_edit');
-    Route::get('user/delete/{id}', [UserController::class, 'destroy'])->name('admin_user_delete');
-    Route::get('user/show', [UserController::class, 'show'])->name('admin_user_show');
+    //User
+    Route::prefix('user')->group(function(){
+        Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin_users');
+        Route::get('add', [App\Http\Controllers\Admin\UserController::class, 'add'])->name('admin_user_add');
+        Route::post('update/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin_user_update');
+        Route::get('edit/{id}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin_user_edit');
+        Route::get('delete/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('admin_user_delete');
+        Route::get('show', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('admin_user_show');
+        Route::get('user_role/{id}', [App\Http\Controllers\Admin\UserController::class, 'user_role'])->name('admin_user_roles');
+        Route::post('user_role_add/{id}', [App\Http\Controllers\Admin\UserController::class, 'user_role_store'])->name('admin_user_role_add');
+        Route::get('user_role_delete/{user_id}/{role_id}', [App\Http\Controllers\Admin\UserController::class, 'user_role_destroy'])->name('admin_user_role_delete');
+    
+    });
+  });
 });
 
 //User middleware
