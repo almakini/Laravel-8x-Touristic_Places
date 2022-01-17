@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Route;
 
 @section('content')
 <div class="container">
-    <div class="row profile">
+    <div class="row myProfile"><br><br>
         <div class="col-md-3">
             @include('Home.User._user_menu')
-        </div>
+        </div><br><br>
         <div class="col-md-9">
-            <div class="profile-content">
+            <div class="myProfile-content">
                 <div>
                     <form action="{{route('user_place_add')}}">
                         <button type="submit" class="btn btn-primary"
@@ -54,13 +54,16 @@ use Illuminate\Support\Facades\Route;
                             </td>
                             <td><a href="{{route('user_place_gallery_show', ['place_id'=>$place->id])}}"
                                     class="me-2 mdi mdi-folder-multiple-image"
-                                    onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=500')">gallery</a>
+                                    onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=500')"><i
+                                        class="glyphicon glyphicon-picture"></i></a>
                             </td>
                             <td>{{$place->status}}</td>
-                            <td><a href="{{route('user_place_edit', ['id'=>$place->id])}}" class="">Edit</a>
+                            <td><a href="{{route('user_place_edit', ['id'=>$place->id])}}" class=""><i
+                                        class="glyphicon glyphicon-edit"></i></a>
                             </td>
                             <td><a href="{{route('user_place_delete', ['id'=>$place->id])}}"
-                                    onclick="return confirm('Do you want to delete?')" class="">Delete</a>
+                                    onclick="return confirm('Do you want to delete?')" class=""><i
+                                        class="glyphicon glyphicon-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

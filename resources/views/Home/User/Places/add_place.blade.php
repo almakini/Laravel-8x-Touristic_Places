@@ -1,8 +1,5 @@
 <?php
-use Illuminate\Support\Facades\Route;
-
     $settings = \App\Http\Controllers\MainController::getSetting();
-
 	$parentCategories = \App\Http\Controllers\MainController::categoryList();
 ?>
 
@@ -26,13 +23,13 @@ use Illuminate\Support\Facades\Route;
 
 @section('content')
 <div class="container">
-    <div class="row profile">
+    <div class="row myProfile"><br><br>
         <div class="col-md-3">
             @include('Home.User._user_menu')
-        </div>
+        </div><br><br>
         <div class="col-md-9">
-            <div class="profile-content">
-                <div class="row mb-2 align-items-center">
+            <div class="myProfile-content">
+                <div class="row mb-2 align-items-center" style="text-align:center;">
                     <h3>Add a Place</h3>
                 </div>
                 <div class="card">

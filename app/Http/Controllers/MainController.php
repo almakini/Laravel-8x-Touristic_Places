@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Monarobase\CountryList\CountryListFacade;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Place;
 use App\Models\Category;
 use App\Models\Setting;
@@ -58,6 +59,23 @@ class MainController extends Controller
     public static function countReviews($id){
         return Review::where('place_id', $id)->where('status', '=', 'Active')->count();
     }
+    public static function countLikes($id){
+        $reviews = Review::where('place_id', $id)->get();
+        $sumLikes = 0;
+        foreach($reviews as $cr)
+            $sumLikes += $cr->like;
+        return $sumLikes;
+    }
+    public static function checkLike($place_id){
+        if(session_id() != ''){
+        $reviews = Review::where('user_id', Auth::user()->id)->where('place_id', $place_id)->get();
+        $userLikes = 0;
+        foreach($reviews as $ul)
+           $userLikes += $ul->like;
+        return $userLikes;
+        }
+        return 0;
+    }
     public static function avgReviews($id){
         return Review::where('place_id', $id)->where('status', '=', 'Active')->average('rate');
     }
@@ -75,6 +93,23 @@ class MainController extends Controller
             'reviews' => $reviews
          ]
         );
+    }
+    public function profile_show(){
+        return view('Home.User.user_profile');
+    }
+    public function place_like($id, $liked){
+        if(session_id() != ''){
+        $reviews = Review::where('user_id', Auth::user()->id)->where('place_id', $place_id)->get();
+        $userLikes = 0;
+        foreach($reviews as $ul)
+           $userLikes += $ul->like;
+        $userLikes += $liked;
+        DB::table('reviews')
+            ->where('user_id', Auth::user()->id)->where('place_id', $place_id)
+            ->update(['like' => $userLikes]);
+        return back();
+        }
+        return redirect()->route('login');
     }
     public function signin(){
         return view('Home.signin');

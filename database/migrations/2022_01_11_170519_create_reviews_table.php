@@ -21,6 +21,7 @@ class CreateReviewsTable extends Migration
             $table->string('review')->nullable();
             $table->string('IP', 20)->nullable();
             $table->integer('rate')->default(0);
+            $table->integer('like')->nullable()->default(0);
             $table->string('status', 10)->nullable()->default('Active');
             $table->timestamps();
         });

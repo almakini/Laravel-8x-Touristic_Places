@@ -1,34 +1,27 @@
-<div class="profile-sidebar">
-    <div class="profile-usertitle">
-        <div class="profile-userpic">
-        </div>
-        <div class="profile-usertitle-name">
+<div class="myProfile-sidebar">
+    <div class="myProfile-usertitle">
+        <div class="myProfile-userpic">
+        </div><br><br>
+        <div class="myProfile-usertitle-name">
             {{Auth::user()->name}}
         </div>
-        <div class="profile-usertitle-job">
+        <div class="myProfile-usertitle-job">
         </div>
     </div>
-    <!-- END SIDEBAR USER TITLE -->
-    <!-- SIDEBAR BUTTONS -->
-    <!-- <div class="profile-userbuttons">
-                    <button type="button" class="btn btn-success btn-sm">Follow</button>
-                    <button type="button" class="btn btn-danger btn-sm">Message</button>
-                </div> -->
-    <!-- END SIDEBAR BUTTONS -->
-    <!-- SIDEBAR MENU -->
-    <div class="profile-usermenu">
+    <div class="myProfile-usermenu">
         <ul class="nav">
+            <!-- glyphicon glyphicon-home -->
             <li class="{{Route::currentRouteName() === 'user/profile' ? 'active' : '' }}">
-                <a href="{{route('user_profile')}}"><i class="glyphicon glyphicon-home"></i>My Profile </a>
+                <a href="{{route('user_profile')}}"><i class="glyphicon glyphicon-user"></i>My Profile </a>
             </li>
             <li class="{{Route::currentRouteName() === 'user/place' ? 'active' : '' }}">
-                <a href="{{route('user_places')}}"><i class="glyphicon glyphicon-user"></i>Places </a>
+                <a href="{{route('user_places')}}"><i class="glyphicon glyphicon-map-marker"></i>Places </a>
             </li>
             <li class="{{Route::currentRouteName() === 'user/review' ? 'active' : '' }}">
-                <a href="{{route('user_reviews')}}"><i class="glyphicon glyphicon-ok"></i>Reviews </a>
+                <a href="{{route('user_reviews')}}"><i class="glyphicon glyphicon-star-empty"></i>Reviews </a>
             </li>
             <li class="{{Route::currentRouteName() === 'user/message' ? 'active' : '' }}">
-                <a href="{{route('user_messages')}}"><i class="glyphicon glyphicon-flag"></i>Messages </a>
+                <a href="{{route('user_messages')}}"><i class="glyphicon glyphicon-envelope"></i>Messages </a>
             </li>
             @php
             $userRoles = Auth::user()->roles->pluck('name')

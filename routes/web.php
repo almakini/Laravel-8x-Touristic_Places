@@ -45,6 +45,9 @@ Route::get('/references', [MainController::class, 'references'])->name('referenc
 Route::post('/sendmessage', [MainController::class, 'sendmessage'])->name('sendmessage');
 Route::post('/getplace', [MainController::class, 'getplace'])->name('getplace');
 Route::get('/placeslist/{search}', [MainController::class, 'placeslist'])->name('placeslist');
+Route::get('/place_like/{id}/{liked}', [MainController::class, 'place_like'])->name('place_like');
+
+Route::get('/profile_show', [MainController::class, 'profile_show'])->name('profile.show');
 
 Route::get('/logout', [HomeController::class, 'logout'])->name('user_logout');
 

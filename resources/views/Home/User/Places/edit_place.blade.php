@@ -26,13 +26,13 @@ use Illuminate\Support\Facades\Route;
 
 @section('content')
 <div class="container">
-    <div class="row profile">
+    <div class="row myProfile"><br><br>
         <div class="col-md-3">
             @include('Home.User._user_menu')
-        </div>
+        </div><br><br>
         <div class="col-md-9">
-            <div class="profile-content">
-                <div class="row mb-2 align-items-center">
+            <div class="myProfile-content">
+                <div class="row mb-2 align-items-center" style="text-align:center;">
                     <h3>Editing Place</h3>
                 </div>
                 <div class="card">
@@ -128,7 +128,7 @@ use Illuminate\Support\Facades\Route;
                                 </div>
                             </div>
                         </div>
-                        <div style="text-align:center; float:right; margin-right:17px;" class="form-group">
+                        <div style="text-align:center; float:right; margin-right:1px;" class="form-group">
                             <button type="submit" class=" btn btn-primary" style="text-align:center;">Update</button>
                         </div>
                     </form>
