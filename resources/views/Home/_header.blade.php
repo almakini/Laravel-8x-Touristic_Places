@@ -35,10 +35,27 @@
                             tabindex="0">
                             <a>{{Auth::user()->name}}</a>
                             <ul class="fh5co-sub-menu">
-                                <li class="subItem flexCenter" tabindex="0">
-                                    <a href="{{route('user_profile')}}">My Account</a>
+                                <li class="flexCenter" tabindex="0">
+                                    <a href="{{route('user_profile')}}">My Profile </a>
                                 </li>
-                                <li class="subItem flexCenter" tabindex="0">
+                                <li class="flexCenter" tabindex="0">
+                                    <a href="{{route('user_places')}}">My Places </a>
+                                </li>
+                                <li class="flexCenter" tabindex="0">
+                                    <a href="{{route('user_reviews')}}">My Reviews </a>
+                                </li>
+                                <li class="flexCenter" tabindex="0">
+                                    <a href="{{route('user_messages')}}">My Messages </a>
+                                </li>
+                                @php
+                                $userRoles = Auth::user()->roles->pluck('name')
+                                @endphp
+                                @if($userRoles->contains('admin'))
+                                <li class="flexCenter" tabindex="0">
+                                    <a href="{{route('admin_index')}}">Admin Panel </a>
+                                </li>
+                                @endif
+                                <li class="flexCenter" tabindex="0">
                                     <a href="{{route('user_logout')}}">Logout</a>
                                 </li>
                             </ul>

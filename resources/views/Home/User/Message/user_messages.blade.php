@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 @extends('layouts.main')
 
-@section('title', $settings->title . ' | My Reviews')
+@section('title', $settings->title . ' | My Messages')
 
 @section('content')
 <div class="container">
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
         <div class="col-md-9">
             <div class="myProfile-content">
                 <div class="row mb-2 align-items-center" style="text-align:center;">
-                    <h3>My Reviews</h3>
+                    <h3>My Messages</h3>
                 </div>
                 @include('home.message')
                 <table class="table table-striped table-bordered dataTable" role="grid"
@@ -25,28 +25,24 @@ use Illuminate\Support\Facades\Route;
                     <thead>
                         <tr role="row">
                             <th><b>ID</b></th>
-                            <th><b>Place</b></th>
                             <th><b>Subject</b></th>
-                            <th><b>Review</b></th>
-                            <th><b>Rate</b></th>
-                            <th><b>Status</b></th>
-                            <th><b>Date</b></th>
+                            <th><b>Message</b></th>
+                            <th><b>Admin Note</b></th>
                             <th><b>Delete</b></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($reviews as $rs)
+                        @foreach($messages as $message)
                         <tr role="row" class="odd">
-                            <td>{{$rs->place->id}}</td>
-                            <td><a
-                                    href="{{route('place_detail', ['id'=>$rs->place->id, 'slug'=>$rs->place->slug])}}">{{$rs->place->title}}</a>
+                            <td>{{$message->id}}</td>
+                            <td>{{$message->subject}}</td>
+                            <td>{{$message->message}}</td>
+                            <td><a href="{{route('user_message_show', ['id'=>$message->id])}}"
+                                    class="me-2 mdi mdi-open-in-new"
+                                    onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=350')"><i
+                                        class="glyphicon glyphicon-new-window"></i></a>
                             </td>
-                            <td>{{$rs->subject}}</td>
-                            <td>{{$rs->review}}</td>
-                            <td>{{$rs->rate}}</td>
-                            <td>{{$rs->status}}</td>
-                            <td>{{$rs->created_at}}</td>
-                            <td><a href="{{route('user_review_delete', ['id'=>$rs->id])}}"
+                            <td><a href="{{route('user_message_delete', ['id'=>$message->id])}}"
                                     onclick="return confirm('Do you want to delete?')" class="me-2 mdi mdi-delete"><i
                                         class="glyphicon glyphicon-trash"></i></a>
                             </td>

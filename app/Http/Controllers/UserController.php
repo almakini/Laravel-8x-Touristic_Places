@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Review;
+use App\Models\Message;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,11 +21,7 @@ class UserController extends Controller
         return view('Home.User.user_profile');
     }
 
-    public function myreviews()
-    {
-        $reviews = Review::where('user_id', Auth::user()->id)->get();
-        return view('Home.User.Reviews.user_reviews', ['reviews' => $reviews]);
-    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -90,28 +87,67 @@ class UserController extends Controller
     {
         //
     }
-    
+    //Review
+    public function myreviews()
+    {
+        $reviews = Review::where('user_id', Auth::user()->id)->get();
+        return view('Home.User.Reviews.user_reviews', ['reviews' => $reviews]);
+    }
     public function editMyReview($id)
     {
-        $review = Review::find($id);
-        return view('Home.User.Reviews.edit_review', ['review' => $review]);
+        // $review = Review::find($id);
+        // return view('Home.User.Reviews.edit_review', ['review' => $review]);
     }
 
     public function deleteMyReview($id)
     {
         DB::table('reviews')->where('id', $id)->delete();
-        return redirect()->intended('user/review')->with('success', 'Review Deleted Successfully!');
+        return back()->with('success', 'Review Deleted Successfully!');
     }
     
-    public function updateMyReview($id)
+    public function updateMyReview(Request $request, $id)
     {
-        $data = Review::find($id);
-        $data->category_id = $request->input('category_id');
-        $data->title = $request->input('title');
-        $data->user_id = Auth::id();
-        $data->status = $request->input('status');
-        $data->save();
+        // $reviews = Review::where('user_id', Auth::user()->id)->get();
+        // $data = Review::find($id);
+        // $data->subject = $request->input('subject');
+        // $data->review = $request->input('review');
+        // $data->rate = $request->input('rate');
+        // $data->save();
 
-        return redirect()->intended('admin/place');
+        // return view('Home.User.Reviews.user_reviews', ['reviews' => $reviews])->with('success', 'Review Updated Successfully!');
+    }
+    //Message
+    public function mymessages()
+    {
+        $messages = Message::where('email', Auth::user()->email)->get();
+        return view('Home.User.Message.user_messages', ['messages' => $messages]);
+    }
+    public function edit_mymessage($id)
+    {
+        // $review = Review::find($id);
+        // return view('Home.User.Message.edit_message', ['review' => $review]);
+    }
+
+    public function delete_mymessage($id)
+    {
+        DB::table('messages')->where('id', $id)->delete();
+        return back()->with('success', 'Message Deleted Successfully!');
+    }
+    public function show_mymessage($id)
+    {
+        $message = Message::find($id);
+        return view('Home.User.Message.message_show', ['message'=>$message]);
+    }
+    
+    public function update_mymessage(Request $request, $id)
+    {
+        // $reviews = Review::where('user_id', Auth::user()->id)->get();
+        // $data = Review::find($id);
+        // $data->subject = $request->input('subject');
+        // $data->review = $request->input('review');
+        // $data->rate = $request->input('rate');
+        // $data->save();
+
+        // return view('Home.User.Reviews.user_reviews', ['reviews' => $reviews])->with('success', 'Review Updated Successfully!');
     }
 }

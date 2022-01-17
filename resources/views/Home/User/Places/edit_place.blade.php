@@ -1,8 +1,5 @@
 <?php
-use Illuminate\Support\Facades\Route;
-
     $settings = \App\Http\Controllers\MainController::getSetting();
-
 	$parentCategories = \App\Http\Controllers\MainController::categoryList();
 ?>
 

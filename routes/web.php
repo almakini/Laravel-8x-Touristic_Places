@@ -144,8 +144,8 @@ Route::middleware('auth')->prefix('user')->namespace('user')->group(function (){
     //User Review
     Route::prefix('review')->group(function(){
         Route::get('/', [UserController::class, 'myreviews'])->name('user_reviews');
-        Route::post('update/{id}', [UserController::class, 'updateMyReview'])->name('user_review_update');
-        Route::get('edit/{id}', [UserController::class, 'editMyReview'])->name('user_review_edit');
+        // Route::post('update/{id}', [UserController::class, 'updateMyReview'])->name('user_review_update');
+        // Route::get('edit/{id}', [UserController::class, 'editMyReview'])->name('user_review_edit');
         Route::get('delete/{id}', [UserController::class, 'deleteMyReview'])->name('user_review_delete');
     });
 
@@ -171,10 +171,10 @@ Route::middleware('auth')->prefix('user')->namespace('user')->group(function (){
     //User Message
     Route::prefix('message')->group(function(){
         Route::get('/', [UserController::class, 'mymessages'])->name('user_messages');
-        Route::post('update/{id}', [UserController::class, 'update'])->name('user_message_update');
-        Route::get('edit/{id}', [UserController::class, 'edit'])->name('user_message_edit');
-        Route::get('delete/{id}', [UserController::class, 'destroy'])->name('user_message_delete');
-        Route::get('show/{id}', [UserController::class, 'show'])->name('user_message_show');
+        // Route::post('update/{id}', [UserController::class, 'update_mymessage'])->name('user_message_update');
+        // Route::get('edit/{id}', [UserController::class, 'edit_mymessage'])->name('user_message_edit');
+        Route::get('delete/{id}', [UserController::class, 'delete_mymessage'])->name('user_message_delete');
+        Route::get('show/{id}', [UserController::class, 'show_mymessage'])->name('user_message_show');
     });
 
 });

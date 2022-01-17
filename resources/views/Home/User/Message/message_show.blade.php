@@ -1,3 +1,7 @@
+<?php
+    $settings = \App\Http\Controllers\MainController::getSetting();
+	$parentCategories = \App\Http\Controllers\MainController::categoryList();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +10,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Almakini">
-    <title>Baladi | Review</title>
+    <title>{{$settings->title}} | Message</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/logo-icon.png">
     <!-- Custom CSS -->
@@ -32,55 +36,44 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
+            <div class="container-fluid"><br>
                 <div class="row mb-2 align-items-center">
-                    <h3>Review</h3>
+                    <h3>Message</h3>
                 </div>
                 <div class="card">
-                    <div>@include('Home.message')</div>
-                    <form class="form-horizontal" action="{{route('user_review_update', ['id'=>$review->id])}}"
-                        method="post">
-                        @csrf
-                        <table id="zero_config" class="table table-striped table-bordered dataTable" role="grid"
-                            aria-describedby="zero_config_info">
-                            <tr role="row">
-                                <th><b>ID</b></th>
-                                <td>{{$review->place->id}}</td>
-                            </tr>
-                            <tr role="row">
-                                <th><b>Place</b></th>
-                                <td>{{$review->place->title}}</td>
-                            </tr>
-                            <tr role="row">
-                                <th><b>Subject</b></th>
-                                <td><input name="subject" class="form-control" value="{{$review->subject}}"></td>
-                            </tr>
-                            <tr role="row">
-                                <th><b>Review</b></th>
-                                <td><textarea name="review" class="form-control">{{$review->review}}</textarea></td>
-                            </tr>
-                            <tr role="row">
-                                <th><b>Rate</b></th>
-                                <td>{{$review->rate}}</td>
-                            </tr>
-                            <tr role="row">
-                                <th><b>Status</b></th>
-                                <td>
-                                    <select class="select2 form-select shadow-none select2-hidden-accessible"
-                                        name="status" style="">
-                                        <option data-select2-id="3" @if ($review->status == 'Active') selected
-                                            @endif>Active</option>
-                                        <option data-select2-id="3" @if ($review->status == 'Inactive') selected
-                                            @endif>Inactive</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </table>
-                        <div style="text-align:center; float:right; margin-right:17px;" class="form-group">
-                            <button type="submit" class=" btn btn-primary" style="text-align:center;">Update</button>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="zero_config" class="table table-striped table-bordered dataTable"
+                                            role="grid" aria-describedby="zero_config_info">
+                                            <tr role="row">
+                                                <th><b>ID</b></th>
+                                                <td>{{$message->id}}</td>
+                                            </tr>
+                                            <tr role="row">
+                                                <th><b>Subject</b></th>
+                                                <td>{{$message->subject}}</td>
+                                            </tr>
+                                            <tr role="row">
+                                                <th><b>Message</b></th>
+                                                <td>{{$message->message}}</td>
+                                            </tr>
+                                            <tr role="row">
+                                                <th><b>Admin Note</b></th>
+                                                <td>{{$message->note}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </form>
+
+                    </div>
                 </div>
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
             </div>
         </div>
 
@@ -112,6 +105,5 @@
     <script src="{{asset('admin_assets')}}/js/pages/chart/chart-page-init.js"></script>
 
 </body>
-
 
 </html>

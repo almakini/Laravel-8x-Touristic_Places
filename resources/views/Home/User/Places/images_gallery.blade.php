@@ -1,3 +1,7 @@
+<?php
+    $settings = \App\Http\Controllers\MainController::getSetting();
+	$parentCategories = \App\Http\Controllers\MainController::categoryList();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +10,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Almakini">
-    <title>Baladi | Images Gallery</title>
+    <title>{{$settings->title}} | Images Gallery</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/logo-icon.png">
     <!-- Custom CSS -->
@@ -32,9 +36,9 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
+            <div class="container-fluid"><br><br>
                 <div class="row mb-2 align-items-center">
-                    <h3>Images Gallery</h3>
+                    <h3>{{$place->title}} Images Gallery</h3>
                 </div>
                 <div class="card">
                     @include('Home.message')
@@ -95,7 +99,7 @@
                                                             height="100" alt="">
                                                         @endif
                                                     </td>
-                                                    <td><a href="{{route('admin_image_delete', ['id'=>$image->id, 'place_id'=>$image->place_id])}}"
+                                                    <td><a href="{{route('user_place_image_delete', ['id'=>$image->id, 'place_id'=>$image->place_id])}}"
                                                             onclick="return confirm('Do you want to delete?')"
                                                             class="me-2 mdi mdi-delete"></a>
                                                     </td>

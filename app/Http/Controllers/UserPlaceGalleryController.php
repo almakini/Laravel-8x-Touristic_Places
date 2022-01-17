@@ -46,9 +46,9 @@ class UserPlaceGalleryController extends Controller
         $data->image = Storage::putFile('image', $request->file('image'));
         $data->place_id = $place_id;
         $data->save();
-        return redirect()->route('user_image_show', ['place_id'=>$place_id])->with('success', 'Place Added successfully.');
+        return redirect()->route('user_place_gallery_show', ['place_id'=>$place_id])->with('success', 'Image Added successfully.');
     }
-    }
+    
 
     /**
      * Display the specified resource.
@@ -100,8 +100,8 @@ class UserPlaceGalleryController extends Controller
         DB::table('images')
             ->where('id', $id)
             ->delete();
-        return redirect()->route('user_image_show', [
+        return redirect()->route('user_place_gallery_show', [
             'place_id' => $place_id
-        ])->with('success', 'Place Deleted successfully.');
+        ])->with('success', 'Image Deleted successfully.');
     }
 }
