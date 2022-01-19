@@ -68,7 +68,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        
+        DB::table('users')
+            ->where('id', $id)
+            ->delete();
+        return redirect()->intended('admin/user')->with('success', 'User Deleted Successfully.');
     }
     public function show($id)
     {

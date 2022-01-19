@@ -45,25 +45,36 @@ Route::get('/references', [MainController::class, 'references'])->name('referenc
 Route::post('/sendmessage', [MainController::class, 'sendmessage'])->name('sendmessage');
 Route::post('/getplace', [MainController::class, 'getplace'])->name('getplace');
 Route::get('/placeslist/{search}', [MainController::class, 'placeslist'])->name('placeslist');
-Route::get('/place_like/{id}/{liked}', [MainController::class, 'place_like'])->name('place_like');
+
+Route::middleware('auth')->group(function (){
+    Route::get('/place_like/{id}/{liked}', [MainController::class, 'place_like'])->name('place_like');
+});
 
 Route::get('/profile_show', [MainController::class, 'profile_show'])->name('profile.show');
 
 Route::get('/logout', [HomeController::class, 'logout'])->name('user_logout');
-
+Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');
+Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin_logincheck');
 //Admin
 Route::middleware('auth')->prefix('admin')->group(function (){
   Route::middleware('admin')->group(function (){
-    //Category
-    Route::get('/logout', [HomeController::class, 'logout'])->name('admin_logout');
     Route::get('/', [HomeController::class, 'index'])->name('admin_index');
-    Route::get('category', [CategoryController::class, 'index'])->name('admin_category');
-    Route::get('category/add', [CategoryController::class, 'add'])->name('admin_category_add');
-    Route::post('category/update/{id}', [CategoryController::class, 'update'])->name('admin_category_update');
-    Route::get('category/edit/{id}', [CategoryController::class, 'edit'])->name('admin_category_edit');
-    Route::get('category/delete/{id}', [CategoryController::class, 'destroy'])->name('admin_category_delete');
-    Route::post('category/create', [CategoryController::class, 'create'])->name('admin_category_create');
-    Route::get('category/show', [CategoryController::class, 'show'])->name('admin_category_show');
+    Route::get('/logout', [HomeController::class, 'logout'])->name('admin_logout');
+    
+    Route::get('/admin/pass_forgotten', [HomeController::class, 'pass_forgotten'])->name('admin_pass_forgotten');
+    
+    Route::post('/dashbord', [HomeController::class, 'logincheck']);
+
+    //Category
+    Route::prefix('category')->group(function(){
+        Route::get('/', [CategoryController::class, 'index'])->name('admin_category');
+        Route::get('add', [CategoryController::class, 'add'])->name('admin_category_add');
+        Route::post('update/{id}', [CategoryController::class, 'update'])->name('admin_category_update');
+        Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('admin_category_edit');
+        Route::get('delete/{id}', [CategoryController::class, 'destroy'])->name('admin_category_delete');
+        Route::post('create', [CategoryController::class, 'create'])->name('admin_category_create');
+        Route::get('show', [CategoryController::class, 'show'])->name('admin_category_show');
+    });
 
     //Place
     Route::prefix('place')->group(function(){
@@ -179,10 +190,6 @@ Route::middleware('auth')->prefix('user')->namespace('user')->group(function (){
 
 });
 
-Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');
-Route::get('/admin/pass_forgotten', [HomeController::class, 'pass_forgotten'])->name('admin_pass_forgotten');
-Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin_logincheck');
-Route::post('/dashbord', [HomeController::class, 'logincheck']);
 //Faqs 
 Route::get('/faqs', [MainController::class, 'faqs'])->name('faqs');
 // Route::post('/admin/logout', [HomeController::class, 'logout'])->name('admin_logout');

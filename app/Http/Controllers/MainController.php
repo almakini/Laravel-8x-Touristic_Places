@@ -14,6 +14,7 @@ use App\Models\Message;
 use App\Models\Image;
 use App\Models\Review;
 use App\Models\FAQ;
+use App\Models\Like;
 
 class MainController extends Controller
 {
@@ -27,7 +28,27 @@ class MainController extends Controller
     }
     public static function mostVisitedAttractions()
     {
-        return $mostVisited = Place::where('status', '=', 'True')->Limit(4)->inRandomOrder()->get();
+        return Place::where('status', '=', 'True')->Limit(4)->inRandomOrder()->get();
+    }
+    public static function hotels()
+    {
+        return Place::where('status', '=', 'True')->Limit(4)->orderByDesc('id')->get();
+    }
+    public static function countReviews($id){
+        return Review::where('place_id', $id)->where('status', '=', 'Active')->count();
+    }
+    public static function countLikes($id){
+        return Like::where('place_id', $id)->count();
+    }
+    public static function checkLike($place_id){
+        if(Auth::user()){
+            return Like::where('user_id', Auth::user()->id)->where('place_id', $place_id)->count();
+        }
+        else
+            return 0;
+    }
+    public static function avgReviews($id){
+        return Review::where('place_id', $id)->where('status', '=', 'Active')->average('rate');
     }
 
     public function main(){
@@ -56,29 +77,7 @@ class MainController extends Controller
     public function references(){
         return view('Home.references');
     }
-    public static function countReviews($id){
-        return Review::where('place_id', $id)->where('status', '=', 'Active')->count();
-    }
-    public static function countLikes($id){
-        $reviews = Review::where('place_id', $id)->get();
-        $sumLikes = 0;
-        foreach($reviews as $cr)
-            $sumLikes += $cr->like;
-        return $sumLikes;
-    }
-    public static function checkLike($place_id){
-        if(session_id() != ''){
-        $reviews = Review::where('user_id', Auth::user()->id)->where('place_id', $place_id)->get();
-        $userLikes = 0;
-        foreach($reviews as $ul)
-           $userLikes += $ul->like;
-        return $userLikes;
-        }
-        return 0;
-    }
-    public static function avgReviews($id){
-        return Review::where('place_id', $id)->where('status', '=', 'Active')->average('rate');
-    }
+    
     public function place_detail($id, $slug){
         $images = Image::where('place_id', $id)->get();
         $place = Place::find($id);
@@ -98,18 +97,17 @@ class MainController extends Controller
         return view('Home.User.user_profile');
     }
     public function place_like($id, $liked){
-        if(session_id() != ''){
-        $reviews = Review::where('user_id', Auth::user()->id)->where('place_id', $place_id)->get();
-        $userLikes = 0;
-        foreach($reviews as $ul)
-           $userLikes += $ul->like;
-        $userLikes += $liked;
-        DB::table('reviews')
-            ->where('user_id', Auth::user()->id)->where('place_id', $place_id)
-            ->update(['like' => $userLikes]);
-        return back();
-        }
-        return redirect()->route('login');
+
+            if($liked == 1){
+                $data = new Like;
+                $data->user_id = Auth::user()->id;
+                $data->place_id = $id;
+                $data->save();
+            }
+            else{
+                DB::table('likes')->where('user_id', Auth::user()->id)->where('place_id', $id)->delete();
+            }
+            return back();
     }
     public function signin(){
         return view('Home.signin');
@@ -126,8 +124,9 @@ class MainController extends Controller
         $data->message = $request->input('message');
         $data->save();
         // $session::flash('message', 'This is a message!');
-        return redirect()->route('contact-us')->with('success', 'Your Message is received! You will back to you later on.');
+        return redirect()->route('contact-us')->with('success', 'Your Message is received! We will back to you later on.');
     }
+    //Place
     public function getplace(Request $request){
         
         $search = $request->input('search');
@@ -156,6 +155,7 @@ class MainController extends Controller
          ]
         );
     }
+    //FAQs
     public function faqs(FAQ $faqs){
         $faqs = FAQ::all()->sortBy('position');
         return view('Home.faqs',

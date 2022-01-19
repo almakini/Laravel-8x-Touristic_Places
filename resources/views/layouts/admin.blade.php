@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="description" content="@yield('description')">
-    <meta name="author" content="Almakini">
-    <title>Baladi | @yield('title')</title>
+    <meta name="author" content="@yield('author')">
+    <title>@yield('title')</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/logo-icon.png">
     <!-- Custom CSS -->
@@ -49,7 +49,6 @@
             </div>
         </div>
     </div>
-
     @include('Admin._script_footer')
 </body>
 

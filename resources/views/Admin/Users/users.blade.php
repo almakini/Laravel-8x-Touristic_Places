@@ -12,12 +12,12 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Users</h5>
             <div class="table-responsive">
                 <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
+                        @include('Home.message')
                         <table id="zero_config" class="table table-striped table-bordered dataTable" role="grid"
                             aria-describedby="zero_config_info">
                             <thead>
@@ -51,7 +51,8 @@
                                         @foreach($user->roles as $role)
                                         {{$role->name}}&nbsp;
                                         @endforeach
-                                        <a href="{{route('admin_user_roles', ['id'=>$user->id])}}" class="fas fa-edit"
+                                        <a href="{{route('admin_user_roles', ['id'=>$user->id])}}"
+                                            class="me-2 mdi mdi-open-in-new"
                                             onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=500')"></a>
                                     </td>
                                     <td><a href="{{route('admin_user_edit', ['id'=>$user->id])}}"

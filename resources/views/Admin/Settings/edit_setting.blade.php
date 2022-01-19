@@ -23,7 +23,7 @@
     <h3>Settings</h3>
 </div>
 <div class="card">
-    <!-- Nav tabs -->
+    @include('Home.message')
     <form class="form-horizontal" action="{{route('admin_setting_update', ['id'=>$data->id])}}" method="post"
         enctype="multipart/form-data">
         @csrf

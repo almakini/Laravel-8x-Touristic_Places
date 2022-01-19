@@ -1,12 +1,13 @@
 @php
 $settings = \App\Http\Controllers\MainController::getSetting();
 $mostVisited = \App\Http\Controllers\MainController::mostVisitedAttractions();
+$hotels = \App\Http\Controllers\MainController::hotels();
 @endphp
 <footer>
     <div id="footer">
         <div class="container">
             <div class="row row-bottom-padded-md">
-                <div class="col-md-4 col-sm-4 col-xs-12 fh5co-footer-link">
+                <div class="col-md-3 col-sm-3 col-xs-12 fh5co-footer-link">
                     <h3>Top Museums</h3>
                     <ul>
                         @foreach($mostVisited as $place)
@@ -16,13 +17,14 @@ $mostVisited = \App\Http\Controllers\MainController::mostVisitedAttractions();
                         @endforeach
                     </ul>
                 </div>
-                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                <div class="col-md-3 col-sm-3 col-xs-12 fh5co-footer-link">
                     <h3>Top Hotels</h3>
                     <ul>
-                        <li><a href="#">Boracay Hotel</a></li>
-                        <li><a href="#">Dubai Hotel</a></li>
-                        <li><a href="#">Singapore Hotel</a></li>
-                        <li><a href="#">Manila Hotel</a></li>
+                        @foreach($hotels as $place)
+                        <li><a
+                                href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">{{$place->title}}</a>
+                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 fh5co-footer-link">
@@ -60,7 +62,7 @@ $mostVisited = \App\Http\Controllers\MainController::mostVisitedAttractions();
                         @if($settings->youtube != null)
                         <a href="{{$settings->youtube}}" target="_blank"><i class="icon-youtube"></i></a>@endif
                     </p>
-                    <p>&copy; Copyright 2022 <i class="icon-heart3"></i> Baladi. All Rights Reserved.</p>
+                    <p>&copy; Copyright 2022 <i class="icon-heart3"></i> {{$settings->title}}, All Rights Reserved.</p>
                 </div>
             </div>
         </div>

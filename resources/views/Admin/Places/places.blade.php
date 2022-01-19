@@ -19,6 +19,7 @@
                 <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                     <div class="row">
                         <div class="col-sm-12">
+                            @include('Home.message')
                             <table id="zero_config" class="table table-striped table-bordered dataTable" role="grid"
                                 aria-describedby="zero_config_info">
                                 <thead>
@@ -66,7 +67,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

@@ -6,15 +6,27 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Setting;
+use App\Models\Message;
+use App\Models\User;
+use App\Models\Place;
 
 class HomeController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('admin');
-    // }
+    public static function messages(){
+        return Message::Limit(3)->orderByDesc('id')->get();
+    }
     public function index(){
-        return view('Admin.index');
+        $usersCount = User::all()->count();
+        $placesCount = Place::all()->count();
+        $smsCount = Message::where('Status', "New")->count();
+        $settings = Setting::first();
+        return view('Admin.index', [
+            'settings' => $settings, 
+            'usersCount' => $usersCount,
+            'placesCount' => $placesCount,
+            'smsCount' => $smsCount
+        ]);
     }
     public function login(){
         return view('Admin.Users.login');
@@ -23,23 +35,19 @@ class HomeController extends Controller
         return view('Admin.Users.pass_forgotten');
     }
     public function logincheck(Request $request){
+
         if ($request->isMethod('post')){
-            $admin = DB::table('users')->where('id', 1)->get();
-            $credentials = $request->validate([
-                'email' => ['required', 'email'],
-                'password' => ['required'],
-            ]);
+            $credentials = $request->only('email','password');
             if(Auth::attempt($credentials)){
                 $request->session()->regenerate();
-
-                return redirect()->intended('admin');
+                return redirect()->intended('admin')->withSuccess('Signed In');
             }
             return back()->withErrors([
                 'email' => 'Username or password incorrect.'
             ]);
         }
         else{
-            return view('Admin.Users.login');
+            return view('Admin.Users.login')->withSuccess('Login details are not valid.');
         }
     }
     public function logout(request $request){

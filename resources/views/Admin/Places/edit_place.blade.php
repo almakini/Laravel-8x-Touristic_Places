@@ -108,13 +108,6 @@
                         value="{{$place->slug}}">
                 </div>
             </div>
-            <!-- <div class="form-group row">
-                <label for="lname" class="col-sm-3 text-end control-label col-form-label">User ID</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" name="user_id" id="lname" placeholder="User ID"
-                        value="{{$place->user_id}}">
-                </div>
-            </div> -->
             <div class="form-group row">
                 <label class="col-sm-3 text-end control-label col-form-label">Status</label>
                 <div class="col-sm-9" data-select2-id="11">
@@ -130,7 +123,6 @@
         <div style="text-align:center; float:right; margin-right:17px;" class="form-group">
             <button type="submit" class=" btn btn-primary" style="text-align:center;">Update</button>
         </div>
-
     </form>
 </div>
 <script type="text/javascript">

@@ -12,7 +12,7 @@
 @section('keywords', $settings->keywords)
 
 @section('content')
-<div id="fh5co-blog-section" class="fh5co-section-gray">
+<div id="fh5co-blog-section" class="fh5co-section-gray" style="margin-top:150px">
     <div class="container">
         <div class="row" style="margin-top:50px;">
             <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">

@@ -9,7 +9,7 @@
 @section('keywords', $settings->keywords)
 
 @section('content')
-<div>
+<div class="pb-100" style=" margin-top:150px">
     @include('Home._slider')
 </div>
 <div id="fh5co-blog-section" class="fh5co-section-gray">
@@ -28,6 +28,7 @@
             $countRev = \App\Http\Controllers\MainController::countReviews($place->id);
             $avgRev = \App\Http\Controllers\MainController::avgReviews($place->id);
             $countLikes = \App\Http\Controllers\MainController::countLikes($place->id);
+
             $checkLike = \App\Http\Controllers\MainController::checkLike($place->id);
             @endphp
 

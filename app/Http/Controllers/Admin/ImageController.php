@@ -46,7 +46,7 @@ class ImageController extends Controller
         $data->image = Storage::putFile('image', $request->file('image'));
         $data->place_id = $place_id;
         $data->save();
-        return redirect()->route('admin_image_show', ['place_id'=>$place_id]);
+        return redirect()->route('admin_image_show', ['place_id'=>$place_id])->with('success', 'Image Added Successfully.');
     }
 
     /**
@@ -101,7 +101,7 @@ class ImageController extends Controller
             ->delete();
         return redirect()->route('admin_image_show', [
             'place_id' => $place_id
-        ]);
+        ])->with('success', 'Image Deleted Successfully.');
     }
     public function add(Place $place, $place_id)
     {

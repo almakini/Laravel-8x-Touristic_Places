@@ -15,11 +15,9 @@
     <!-- Custom CSS -->
     <link href="{{asset('admin_assets')}}/css/style.min.css" rel="stylesheet">
 
-    @yield('css')
-    @yield('js')
 </head>
 
-<body>
+<body style="background-color:#343a40!important; padding:50px">
     <div class="main-wrapper">
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
@@ -30,6 +28,7 @@
                 <div class="lds-pos"></div>
             </div>
         </div>
+
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
         <!-- ============================================================== -->
@@ -42,6 +41,7 @@
                     <div class="text-center pt-3 pb-3">
                         <span class="db"><img src="{{asset('admin_assets')}}/images/logo.png" alt="logo" /></span>
                     </div>
+                    @include('Home.message')
                     <!-- Form -->
                     <form class="form-horizontal mt-3" id="loginform" action="{{route('admin_logincheck')}}"
                         method="post">

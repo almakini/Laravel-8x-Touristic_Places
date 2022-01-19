@@ -62,8 +62,10 @@
 
             @yield('footer')
             @include('Home._footer')
+            @yield('lliveSc')
         </div>
         <!-- END fh5co-page -->
+
     </div>
     <!-- END fh5co-wrapper -->
 </body>

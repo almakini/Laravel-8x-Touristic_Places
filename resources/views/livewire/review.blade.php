@@ -1,4 +1,4 @@
-<div id="" class="fh5co-section-gray">
+<div>
     @if(session()->has('message'))
     <div class="alert alert-success">
         {{session('message')}}
@@ -7,7 +7,7 @@
     <div class="container">
         <form wire:submit.prevent="store">
             @csrf
-            <div class="row animate-box">
+            <div class="row">
                 <div class="col-md-6">
                     <h3 class="section-title"></h3>
                     <div class="row">

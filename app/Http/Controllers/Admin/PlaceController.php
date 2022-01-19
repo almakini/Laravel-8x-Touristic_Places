@@ -47,7 +47,7 @@ class PlaceController extends Controller
         $data->user_id = Auth::id();
         $data->status = $request->input('status');
         $data->save();
-        return redirect()->intended('admin/place');
+        return redirect()->intended('admin/place')->with('success', 'Place Added Successfully.');
     }
 
     /**
@@ -116,7 +116,7 @@ class PlaceController extends Controller
         $data->status = $request->input('status');
         $data->save();
 
-        return redirect()->intended('admin/place');
+        return redirect()->intended('admin/place')->with('success', 'Place Updated Successfully.');
     }
 
     /**
@@ -130,7 +130,7 @@ class PlaceController extends Controller
         DB::table('places')
             ->where('id', $id)
             ->delete();
-        return redirect()->intended('admin/place');
+        return redirect()->intended('admin/place')->with('success', 'Place Deleted Successfully.');
     }
     //Add
     public function add(Request $request)

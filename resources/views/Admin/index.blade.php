@@ -1,7 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'Welcome!')
+@section('title', $settings->title . ' | Welcome!')
+
+@section('description')
+{{$settings->description}}
+@endsection
+
+@section('keywords', $settings->keywords)
 
 @section('content')
-    @include('Admin._content')
+@include('Admin._content')
 @endsection

@@ -9,7 +9,7 @@
 @section('keywords', '{{$place->keywords}}')
 
 @section('content')
-<div id="fh5co-blog-section" class="fh5co-section-gray ">
+<div id="fh5co-blog-section" class="fh5co-section-gray" style="margin-top:150px">
     <div class="container" style="width:95%">
         <div>
             <a href="{{route('home')}}">Home </a>
@@ -31,23 +31,24 @@
                 <div class="carousel-inner">
                     @foreach($images as $key=>$rs)
                     <div class="item {{$key === 0 ? 'active' : '' }}">
-                        <a href="#"><img src="{{Storage::url($rs->image)}}" class="" width="100%" height="100%"
-                                alt=""></a>
+                        <a href="#"><img src="{{Storage::url($rs->image)}}" class="" width="100%" alt=""
+                                style="  height:80vh" alt=""></a>
                         <div class="carousel-caption">
 
                         </div>
                     </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                     @endforeach
                 </div>
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+
             </div>
         </div>
         <div class="row row-bottom-padded-md">
@@ -58,6 +59,8 @@
                             @php
                             $countRev = \App\Http\Controllers\MainController::countReviews($place->id);
                             $avgRev = \App\Http\Controllers\MainController::avgReviews($place->id);
+                            $countLikes = \App\Http\Controllers\MainController::countLikes($place->id);
+                            $checkLike = \App\Http\Controllers\MainController::checkLike($place->id);
                             @endphp
                             <span class="posted_by">{{$place->city}}, {{$place->country}}</span>
                             <span class="comment">
@@ -65,9 +68,21 @@
                                 <span class="fa fa-star @if ($avgRev >= 2) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 3) checked @endif"></span>
                                 <span class="fa fa-star @if ($avgRev >= 4) checked @endif"></span>
-                                <span class="fa fa-star @if ($avgRev >= 5) checked @endif"></span>({{$countRev}}
-                                @if ($countRev < 2) review @else reviews @endif) <span><a href="#comments"><i
-                                            class="icon-bubble2"></i></a>{{$countRev}}</span>
+                                <span
+                                    class="fa fa-star @if ($avgRev >= 5) checked @endif"></span>&nbsp;&nbsp;({{$countRev}}
+                                @if ($countRev < 2) review @else reviews @endif) @auth @if($checkLike> 0)
+                                    <a href="{{route('place_like', ['id'=>$place->id, 'liked'=>0])}}">
+                                        <i id="myForm" class="fa fa-heart" style="font-size:20px;"></i></a>
+                                    @else
+                                    <a href="{{route('place_like', ['id'=>$place->id, 'liked'=>1])}}">
+                                        <i id="myForm" class="fa fa-heart-o" style="font-size:20px;"></i></a>
+                                    @endif
+                                    @else
+                                    <a href="{{route('place_like', ['id'=>$place->id, 'liked'=>0])}}">
+                                        <i id="myForm" class="fa fa-heart-o" style="font-size:20px;"></i></a>
+                                    @endauth
+                                    &nbsp;
+                                    <span style="font-size:20px;">{{$countLikes}}</span>
                             </span>
                             <p><i>{!!$place->description!!}</i></p>
                             <p>{!!$place->detail!!}</p><br><br>

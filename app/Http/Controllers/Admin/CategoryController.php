@@ -53,7 +53,7 @@ class CategoryController extends Controller
         }
         $data->status = $request->input('status');
         $data->save();
-        return redirect()->intended('admin/category');
+        return redirect()->intended('admin/category')->with('success', 'Category Added Successfully.');
     }
 
     /**
@@ -118,7 +118,7 @@ class CategoryController extends Controller
         $data->description = $request->input('description');
         $data->save();
 
-        return redirect()->intended('admin/category');
+        return redirect()->intended('admin/category')->with('success', 'Category Updated Successfully.');
     }
 
     /**
@@ -132,7 +132,7 @@ class CategoryController extends Controller
         DB::table('categories')
             ->where('id', $id)
             ->delete();
-        return redirect()->intended('admin/category');
+        return redirect()->intended('admin/category')->with('success', 'Category Deleted Successfully.');
     }
     //Add
     public function add(Request $request)

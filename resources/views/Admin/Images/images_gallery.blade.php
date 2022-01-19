@@ -6,7 +6,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Almakini">
-    <title>Baladi | Images Gallery</title>
+    <title>Images Gallery</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/logo-icon.png">
     <!-- Custom CSS -->
@@ -17,9 +17,6 @@
 </head>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
@@ -29,14 +26,12 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <div>
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
             <div class="container-fluid">
                 <div class="row mb-2 align-items-center">
                     <h3>Images Gallery</h3>
                 </div>
                 <div class="card">
+                    @include('Home.message')
                     <form class="form-horizontal" action="{{route('admin_image_store', ['place_id'=>$place->id])}}"
                         method="post" enctype="multipart/form-data">
                         @csrf
@@ -109,8 +104,6 @@
 
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Container fluid  -->
             </div>
         </div>
 
