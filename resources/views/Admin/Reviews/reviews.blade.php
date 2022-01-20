@@ -9,6 +9,7 @@
     </div>
     <div class="card">
         <div class="card-body">
+            <div style="">@include('Home.message')</div>
             <div class="table-responsive">
                 <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                     <div class="row">
@@ -17,16 +18,49 @@
                                 aria-describedby="zero_config_info">
                                 <thead>
                                     <tr role="row">
-                                        <th><b>ID</b></th>
-                                        <th><b>Name</b></th>
-                                        <th><b>Place</b></th>
-                                        <th><b>Subject</b></th>
-                                        <th><b>Review</b></th>
-                                        <th><b>Rate</b></th>
-                                        <th><b>Status</b></th>
-                                        <th><b>Date</b></th>
-                                        <th><b>Edit</b></th>
-                                        <th><b>Delete</b></th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="">
+                                            <b>ID</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Position: activate to sort column ascending"
+                                            style="">
+                                            <b>Name</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending" style="">
+                                            <b>Place</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Age: activate to sort column ascending" style="">
+                                            <b>Subject</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Start date: activate to sort column ascending"
+                                            style="">
+                                            <b>Review</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Salary: activate to sort column ascending" style="">
+                                            <b>Rate</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" style="">
+                                            <b>Status</b>
+                                        </th>
+                                        <th class="sorting" aria-label="Start date: activate to sort column ascending"
+                                            tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" style="">
+                                            <b>Date</b>
+                                        </th>
+                                        <th class="" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
+                                            style="">
+                                            <b>Edit</b>
+                                        </th>
+                                        <th class="" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
+                                            style="">
+                                            <b>Delete</b>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,7 +92,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

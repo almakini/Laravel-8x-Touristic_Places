@@ -12,6 +12,8 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/logo-icon.png">
     <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{asset('admin_assets')}}/extra-libs/multicheck/multicheck.css">
+    <link href="{{asset('admin_assets')}}/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="{{asset('admin_assets')}}/libs/flot/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{asset('admin_assets')}}/css/style.min.css" rel="stylesheet">

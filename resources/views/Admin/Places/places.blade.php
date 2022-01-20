@@ -15,23 +15,49 @@
                         style="margin-left:10px; margin-bottom:15px; height:40px;">Add a place</button>
                 </form>
             </div>
+            <div style="">@include('Home.message')</div>
             <div class="table-responsive">
                 <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                     <div class="row">
                         <div class="col-sm-12">
-                            @include('Home.message')
                             <table id="zero_config" class="table table-striped table-bordered dataTable" role="grid"
                                 aria-describedby="zero_config_info">
                                 <thead>
                                     <tr role="row">
-                                        <th><b>ID</b></th>
-                                        <th><b>Category</b></th>
-                                        <th><b>Title</b></th>
-                                        <th><b>Image</b></th>
-                                        <th><b>Images Gallery</b></th>
-                                        <th><b>Status</b></th>
-                                        <th><b>Edit</b></th>
-                                        <th><b>Delete</b></th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="">
+                                            <b>ID</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Position: activate to sort column ascending"
+                                            style="">
+                                            <b>Category</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending" style="">
+                                            <b>Title</b>
+                                        </th>
+                                        <th class="" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
+                                            aria-label="Age: activate to sort column ascending" style="">
+                                            <b>Image</b>
+                                        </th>
+                                        <th class="" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
+                                            aria-label="Start date: activate to sort column ascending" style="">
+                                            <b>Images Gallery</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Salary: activate to sort column ascending" style="">
+                                            <b>Status</b>
+                                        </th>
+                                        <th class="" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
+                                            style="">
+                                            <b>Edit</b>
+                                        </th>
+                                        <th class="" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1"
+                                            style="">
+                                            <b>Delete</b>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>

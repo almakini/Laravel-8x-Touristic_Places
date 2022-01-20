@@ -10,6 +10,8 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="12x12" href="{{asset('admin_assets')}}/images/logo-icon.png">
     <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{asset('admin_assets')}}/extra-libs/multicheck/multicheck.css">
+    <link href="{{asset('admin_assets')}}/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="{{asset('admin_assets')}}/libs/flot/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{asset('admin_assets')}}/css/style.min.css" rel="stylesheet">
@@ -65,23 +67,32 @@
                                             role="grid" aria-describedby="zero_config_info">
                                             <thead>
                                                 <tr role="row">
-                                                    <th><b>ID</b></th>
-                                                    <th><b>Title</b>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending" style="">
+                                                        <b>ID</b>
                                                     </th>
-                                                    <th><b>Image</b>
+                                                    <th class="sorting" tabindex="0" aria-controls="zero_config"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Position: activate to sort column ascending"
+                                                        style="">
+                                                        <b>Title</b>
                                                     </th>
-                                                    <th><b>Delete</b>
+                                                    <th class="" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                                        colspan="1" aria-label="" style="">
+                                                        <b>Image</b>
+                                                    </th>
+                                                    <th class="" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                                        colspan="1" aria-label="" style="">
+                                                        <b>Delete</b>
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($images as $image)
                                                 <tr role="row" class="odd">
-                                                    <td>
-                                                        {{$image->id}}
-                                                    </td>
-                                                    <td>
-                                                        {{$image->title}}
+                                                    <td class="sorting_1">{{$image->id}}</td>
+                                                    <td>{{$image->title}}
                                                     </td>
                                                     <td>
                                                         @if ($image->image)
@@ -108,7 +119,6 @@
         </div>
 
     </div>
-
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="{{asset('admin_assets')}}/libs/jquery/dist/jquery.min.js"></script>
@@ -123,6 +133,15 @@
     <!--Custom JavaScript -->
     <script src="{{asset('admin_assets')}}/js/custom.min.js"></script>
     <!--This page JavaScript -->
+    <script src="{{asset('admin_assets')}}/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+    <script src="{{asset('admin_assets')}}/extra-libs/multicheck/jquery.multicheck.js"></script>
+    <script src="{{asset('admin_assets')}}/extra-libs/DataTables/datatables.min.js"></script>
+    <script>
+    /****************************************
+     *       Basic Table                   *
+     ****************************************/
+    $('#zero_config').DataTable();
+    </script>
     <!-- <script src="{{asset('admin_assets')}}/js/pages/dashboards/dashboard1.js"></script> -->
     <!-- Charts js Files -->
     <script src="{{asset('admin_assets')}}/libs/flot/excanvas.js"></script>

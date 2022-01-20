@@ -18,13 +18,37 @@
                                 aria-describedby="zero_config_info">
                                 <thead>
                                     <tr role="row">
-                                        <th><b>ID</b></th>
-                                        <th><b>Name</b></th>
-                                        <th><b>Subject</b></th>
-                                        <th><b>Message</b></th>
-                                        <th><b>Admin Note</b></th>
-                                        <th><b>Status</b></th>
-                                        <th><b>Delete</b></th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="">
+                                            <b>ID</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Position: activate to sort column ascending"
+                                            style="">
+                                            <b>Name</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending" style="">
+                                            <b>Subject</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Age: activate to sort column ascending" style="">
+                                            <b>Message</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Start date: activate to sort column ascending"
+                                            style="">
+                                            <b>Admin Note</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Salary: activate to sort column ascending" style="">
+                                            <b>Status</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" style="">
+                                            <b>Delete</b>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,9 +75,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- End Container fluid  -->
-    @endsection
+</div>
+<!-- ============================================================== -->
+<!-- End Container fluid  -->
+@endsection

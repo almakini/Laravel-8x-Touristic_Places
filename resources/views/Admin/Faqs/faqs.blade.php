@@ -24,27 +24,52 @@
                                 aria-describedby="zero_config_info">
                                 <thead>
                                     <tr role="row">
-                                        <th><b>ID</b></th>
-                                        <th><b>Position</b></th>
-                                        <th><b>Question</b></th>
-                                        <th><b>Answer</b></th>
-                                        <th><b>Status</b></th>
-                                        <th><b>Edit</b></th>
-                                        <th><b>Delete</b></th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="Name: activate to sort column descending" style="">
+                                            <b>ID</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Position: activate to sort column ascending"
+                                            style="">
+                                            <b>Position</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending" style="">
+                                            <b>Question</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Age: activate to sort column ascending" style="">
+                                            <b>Answer</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Start date: activate to sort column ascending"
+                                            style="">
+                                            <b>Status</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" aria-label="Salary: activate to sort column ascending" style="">
+                                            <b>Edit</b>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
+                                            colspan="1" style="">
+                                            <b>Delete</b>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($faqs as $rs)
                                     <tr role="row" class="odd">
-                                        <td>{{$rs->id}}</td>
-                                        <td>{{$rs->position}}</td>
+                                        <td class="sorting_1">{{$rs->id}}</td>
+                                        <td>{{$rs->position}}
+                                        </td>
                                         <td>{{$rs->question}}</td>
-                                        <td>{!!$rs->answer!!}</td>
+                                        <td>{!!$rs->answer!!}
+                                        </td>
                                         <td>{{$rs->status}}</td>
                                         <td><a href="{{route('admin_faq_edit', ['id'=>$rs->id])}}" class="fas fa-edit"
                                                 onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=500')"></a>
                                         </td>
-
                                         <td><a href="{{route('admin_faq_delete', ['id'=>$rs->id])}}"
                                                 onclick="return confirm('Do you want to delete?')"
                                                 class="me-2 mdi mdi-delete"></a>
@@ -57,7 +82,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

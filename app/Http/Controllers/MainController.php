@@ -124,7 +124,7 @@ class MainController extends Controller
         $data->message = $request->input('message');
         $data->save();
         // $session::flash('message', 'This is a message!');
-        return redirect()->route('contact-us')->with('success', 'Your Message is received! We will back to you later on.');
+        return redirect()->route('contact-us')->with('success', 'Your Message is received! We will be back to you later on.');
     }
     //Place
     public function getplace(Request $request){
