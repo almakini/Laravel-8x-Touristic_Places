@@ -32,7 +32,7 @@
             </li>
             @endif
             <li class="">
-                <a href="{{route('admin_logout')}}" target="_blank"><i class="glyphicon glyphicon-log-out"></i>Logout
+                <a href="{{route('user_logout')}}" target="_blank"><i class="glyphicon glyphicon-log-out"></i>Logout
                 </a>
             </li>
 

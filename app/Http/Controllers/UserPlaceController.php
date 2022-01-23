@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
+use App\Models\Image;
 
 class UserPlaceController extends Controller
 {
@@ -31,6 +32,8 @@ class UserPlaceController extends Controller
     public function create(Request $request)
     {
         $data = new Place;
+        $img = new Image;
+        
         $data->category_id = $request->input('category_id');
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
@@ -42,10 +45,17 @@ class UserPlaceController extends Controller
         if($request->file('image') != null)
         {
             $data->image = Storage::putFile('image', $request->file('image'));
+            $img->title = 'mainPhoto';
+            $img->image = Storage::putFile('image', $request->file('image'));
         }
         $data->slug = $request->input('slug');
         $data->user_id = Auth::id();
         $data->save();
+        if($request->file('image') != null){
+            $img->place_id = $data->id;
+            $img->save();
+        }
+
         return redirect()->intended('user/place')->with('success', 'Place added successfully.');
     }
 
@@ -98,6 +108,7 @@ class UserPlaceController extends Controller
     public function update(Request $request, Place $place, $id)
     {
         $data = place::find($id);
+        $img = new Image;
         $data->category_id = $request->input('category_id');
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
@@ -109,6 +120,10 @@ class UserPlaceController extends Controller
         if($request->file('image') != null)
         {
             $data->image = Storage::putFile('image', $request->file('image'));
+            $img->title = 'mainPhoto';
+            $img->image = Storage::putFile('image', $request->file('image'));
+            $img->place_id = $id;
+            $img->save();
         }
         $data->slug = $request->input('slug');
         $data->user_id = Auth::id();

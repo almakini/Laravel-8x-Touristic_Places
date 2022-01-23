@@ -35,7 +35,7 @@
             <div class="col-lg-4 col-md-4 col-sm-6" style="">
                 <div class="fh5co-blog animate-box">
                     <a href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">@if ($place->image)
-                        <img class="img-responsive" style="height:300px;" src="{{Storage::url($place->image)}}" alt="">
+                        <img class="img-responsive" style="height:280px;" src="{{Storage::url($place->image)}}" alt="">
                         @endif</a>
                     <div class="blog-text myHeight">
                         <div class="prod-title">
@@ -51,7 +51,7 @@
                                         <i id="myForm" class="fa fa-heart-o" style="font-size:25px;"></i></a>
                                     @endif
                                     @else
-                                    <a href="{{route('place_like', ['id'=>$place->id, 'liked'=>0])}}">
+                                    <a href="{{route('login')}}">
                                         <i id="myForm" class="fa fa-heart-o" style="font-size:25px;"></i></a>
                                     @endauth
                                     &nbsp;
@@ -73,8 +73,8 @@
                                     <div>
                                         <p>{!!$place->description!!}</p>
                                         <p><a
-                                                href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">Learn
-                                                More...</a></p>
+                                                href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">
+                                                Discover More...</a></p>
                                     </div>
                             </div>
                         </div>
@@ -155,4 +155,6 @@
                 </div>
             </div>
         </div>
-        @endsection
+    </div>
+
+    @endsection

@@ -52,7 +52,8 @@ Route::middleware('auth')->group(function (){
 
 Route::get('/profile_show', [MainController::class, 'profile_show'])->name('profile.show');
 
-Route::get('/logout', [HomeController::class, 'logout'])->name('user_logout');
+Route::get('/logout', [UserController::class, 'logout'])->name('user_logout');
+
 Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');
 Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin_logincheck');
 //Admin

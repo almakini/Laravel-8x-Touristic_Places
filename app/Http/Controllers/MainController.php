@@ -83,13 +83,15 @@ class MainController extends Controller
         $place = Place::find($id);
         $reviews = Review::where('place_id', $id)->get();
         $category = Category::where('id', $place->category_id)->get();
+        $sameCat = Place::where('id', '!=', $id)->where('category_id', $place->category_id)->get();
         
         return view('Home.place_detail',
          [
             'place' => $place,
             'images' => $images,
             'category' => $category,
-            'reviews' => $reviews
+            'reviews' => $reviews,
+            'sameCat' => $sameCat,
          ]
         );
     }

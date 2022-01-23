@@ -150,4 +150,12 @@ class UserController extends Controller
 
         // return view('Home.User.Reviews.user_reviews', ['reviews' => $reviews])->with('success', 'Review Updated Successfully!');
     }
+    public function logout(request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return back();
+    }
 }

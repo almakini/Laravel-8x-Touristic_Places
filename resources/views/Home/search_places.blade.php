@@ -23,13 +23,12 @@ use Illuminate\Support\Facades\Route;
         </div><br><br>
         <div class="row row-bottom-padded-md">
             @foreach($places as $place)
-            <div class="col-md-4 col-sm-6 fh5co-tours animate-box fadeInUp animated myBox" data-animate-effect="fadeIn">
+            <div class="col-md-4 col-sm-6 fh5co-tours animate-box fadeInUp animated" data-animate-effect="fadeIn">
                 <div href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}"><img
-                        src="{{Storage::url($place->image)}}" alt="" class="img-responsive" width="100%" height="100%">
+                        src="{{Storage::url($place->image)}}" alt="" class="img-responsive" width="100%" height="">
                     <div class="desc">
                         <span></span>
                         <h3 class="price">{{$place->title}}</h3>
-                        <span>{{$place->description}}</span>
                         <span class="">{{$place->country}}, {{$place->city}}</span>
                         <a class="btn btn-primary btn-outline"
                             href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">Read More<i
