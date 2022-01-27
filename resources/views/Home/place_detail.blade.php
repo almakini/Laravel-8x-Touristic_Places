@@ -32,7 +32,7 @@
                     @foreach($images as $key=>$rs)
                     <div class="item {{$key === 0 ? 'active' : '' }}">
                         <a href="#"><img src="{{Storage::url($rs->image)}}" class="" width="100%" alt=""
-                                style="  height:80vh" alt=""></a>
+                                style="  height:85vh" alt=""></a>
                         <div class="carousel-caption">
 
                         </div>
@@ -84,7 +84,7 @@
                                     &nbsp;
                                     <span style="font-size:20px;">{{$countLikes}}</span>
                             </span>
-                            <p><i>{!!$place->description!!}</i></p>
+                            <p><i class="glyphicon glyphicon-map-marker"></i>&nbsp;&nbsp;{{$place->address}}</p>
                             <p>{!!$place->detail!!}</p><br><br>
                             <h2 id="comments">Reviews</h2>
                         </div>
@@ -132,68 +132,44 @@
         </div>
         <div class="container">
             <div class="row row-bottom-padded-md">
-                @foreach($sameCat as $place)
-                @php
-                $countRev = \App\Http\Controllers\MainController::countReviews($place->id);
-                $avgRev = \App\Http\Controllers\MainController::avgReviews($place->id);
-                $countLikes = \App\Http\Controllers\MainController::countLikes($place->id);
-                $checkLike = \App\Http\Controllers\MainController::checkLike($place->id);
-                @endphp
-
-                <div class="col-lg-4 col-md-4 col-sm-6" style="">
-                    <div class="fh5co-blog animate-box">
-                        <a href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">
-                            @if($place->image)
-                            <img class="img-responsive" style="height:300px;" src="{{Storage::url($place->image)}}"
-                                alt="">
-                            @endif</a>
-                        <div class="blog-text myHeight">
-                            <div class="prod-title">
-                                <h3><a
-                                        href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">{{$place->title}}</a>
-                                    <span class="comment">
-                                        @auth
-                                        @if($checkLike > 0)
-                                        <a href="{{route('place_like', ['id'=>$place->id, 'liked'=>0])}}">
-                                            <i id="myForm" class="fa fa-heart" style="font-size:25px;"></i></a>
-                                        @else
-                                        <a href="{{route('place_like', ['id'=>$place->id, 'liked'=>1])}}">
-                                            <i id="myForm" class="fa fa-heart-o" style="font-size:25px;"></i></a>
-                                        @endif
-                                        @else
-                                        <a href="{{route('place_like', ['id'=>$place->id, 'liked'=>0])}}">
-                                            <i id="myForm" class="fa fa-heart-o" style="font-size:25px;"></i></a>
-                                        @endauth
-                                        &nbsp;
-                                        <span style="font-size:20px;">{{$countLikes}}</span>
-
-                                    </span>
-                                </h3>
-
-                                <div class=" posted_by">{{$place->city}}, {{$place->country}}
-                                </div><br>
-                                <div class="comment">
-                                    <span class="fa fa-star @if ($avgRev >= 1) checked @endif"></span>
-                                    <span class="fa fa-star @if ($avgRev >= 2) checked @endif"></span>
-                                    <span class="fa fa-star @if ($avgRev >= 3) checked @endif"></span>
-                                    <span class="fa fa-star @if ($avgRev >= 4) checked @endif"></span>
-                                    <span
-                                        class="fa fa-star @if ($avgRev >= 5) checked @endif"></span>&nbsp;&nbsp;&nbsp;({{$countRev}}
-                                    @if ($countRev < 2) review @else reviews @endif) </div>
-                                        <div>
-                                            <p>{!!$place->description!!}</p>
-                                            <p><a
-                                                    href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">Learn
-                                                    More...</a></p>
-                                        </div>
+                @if($sameCat->count() > 0)
+                <div class="col-lg-12">
+                    <div id="carousel" class="carousel slide">
+                        <div class="carousel-inner">
+                            @php $places1 = $sameCat->take(3); @endphp
+                            <div class="item active carousel-item">
+                                <div class="row">
+                                    @foreach($places1 as $place)
+                                    @include('Home._places')
+                                    @endforeach
                                 </div>
                             </div>
+                            @if($sameCat->count() > 3)
+                            @php $places2 = $sameCat->skip(3)->take(3); @endphp
+                            <div class="item carousel-item">
+                                <div class="row">
+                                    @foreach($places2 as $place)
+                                    @include('Home._places')
+                                    @endforeach
+                                </div>
+                            </div>
+                            @endif
                         </div>
+                        @if($sameCat->count() > 3)
+                        <a data-slide="prev" href="#carousel" class="left carousel-control"
+                            style="margin-top:281px; height:35px; width: 30px;">&#x2039;</a>
+                        <a data-slide="next" href="#carousel" class="right carousel-control"
+                            style="margin-top:281px; height:35px; width: 30px;">&#x203A;</a>
+                        @endif
                     </div>
-                    @endforeach
                 </div>
+                @endif
             </div>
         </div>
         @endif
+        <div style="text-align:center">
+            <a class="btn btn-primary" href="{{route('user_place_add')}}">Add a place</a>
+        </div><br><br>
     </div>
-    @endsection
+</div>
+@endsection

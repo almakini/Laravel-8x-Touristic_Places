@@ -10,7 +10,7 @@
         @foreach($sliders as $key=>$rs)
         <div class="item {{$key === 0 ? 'active' : '' }}">
             <a href="{{route('place_detail', ['id'=>$rs->id, 'slug'=>$rs->slug])}}">
-                <img src="{{Storage::url($rs->image)}}" class="" width="100%" alt="" style="  height:80vh">
+                <img src="{{Storage::url($rs->image)}}" class="" width="100%" alt="" style="  height:85vh">
             </a>
             <div class="carousel-caption">
                 <h3 style="color:white">{{$rs->title}}</h3>

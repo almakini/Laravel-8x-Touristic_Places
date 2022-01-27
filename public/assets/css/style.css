@@ -1520,7 +1520,7 @@ div.cs-select span {
   width:450px;
 }
 .myHeight{
-  height: 350px;
+  height: 250px;
 }
 .fh5co-blog {
   margin-bottom: 60px;
@@ -1533,7 +1533,7 @@ div.cs-select span {
     width: 100%;
   }
   .myHeight{
-    height: 350px;
+    height: 250px;
   }
   .myBox{
     width: 100%;
@@ -1541,7 +1541,7 @@ div.cs-select span {
 }
 @media screen and (max-width: 986px) {
   .myHeight{
-  height: 360px;
+  height: 260px;
 }
 }
 .fh5co-blog .blog-text {

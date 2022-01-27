@@ -14,42 +14,7 @@
 
 @section('js')
 <style>
-.carousel {
-    margin-bottom: 0;
-    padding: 0 40px 30px 40px;
-}
 
-/* The controlsy */
-.carousel-control {
-    left: -12px;
-    height: 40px;
-    width: 40px;
-    background: none repeat scroll 0 0 #222222;
-    border: 4px solid #FFFFFF;
-    border-radius: 23px 23px 23px 23px;
-    margin-top: 90px;
-}
-
-.carousel-control.right {
-    right: -12px;
-}
-
-/* The indicators */
-.carousel-indicators {
-    right: 50%;
-    top: auto;
-    bottom: -10px;
-    margin-right: -19px;
-}
-
-/* The colour of the indicators */
-.carousel-indicators li {
-    background: #cecece;
-}
-
-.carousel-indicators .active {
-    background: #428bca;
-}
 
 </style>
 @endsection
@@ -57,18 +22,15 @@
 <div id="fh5co-contact" class="fh5co-section-gray" style="margin-top:150px">
     <div class="container">
         <div>
-            Home / Places List / <a>
-                {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($category, $category->title)}}</a>
+            <a href="{{route('home')}}">Home </a>
+            / Places in {{$city}}
         </div><br><br>
-
-        @if($places->count() > 0)
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box fadeInUp animated">
-                <h3>{{$category->title}} Tourist Attractions</h3>
-                <p></p>
-            </div>
+        <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+            <h3>Places That You Can Visit In {{$city}}</h3>
+            <p></p>
         </div>
         <div class="row">
+            @if($places->count() > 0)
             <div class="col-lg-12">
                 <div id="carousel" class="carousel slide">
                     <!-- carousel items -->
@@ -131,24 +93,69 @@
                 </div>
                 <!--.carousel-->
             </div>
+            @else
+            <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                <h3>There is not any place in this category.</h3>
+                <p></p>
+                <div style="text-align:center">
+                    <a class="btn btn-primary" href="{{route('user_place_add')}}">Add a place</a>
+                </div>
+            </div>
+            @endif
+        </div><br><br>
+        @if($mostVisited->count() != 0)
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                    <h3>Places You Might Want To Visit</h3>
+                    <p></p>
+                </div>
+            </div>
         </div>
-        @else
-        <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-            <h3>There is not any place in this category.</h3>
-            <p></p>
-            <div style="text-align:center">
-                <a class="btn btn-primary" href="{{route('user_place_add')}}">Add a place</a>
+        <div class="container">
+            <div class="row row-bottom-padded-md">
+                @if($mostVisited->count() > 0)
+                <div class="col-lg-12">
+                    <div id="carousel" class="carousel slide">
+                        <div class="carousel-inner">
+                            @php $places1 = $mostVisited->take(3); @endphp
+                            <div class="item active carousel-item">
+                                <div class="row">
+                                    @foreach($places1 as $place)
+                                    @include('Home._places')
+                                    @endforeach
+                                </div>
+                            </div>
+                            @if($mostVisited->count() > 3)
+                            @php $places2 = $mostVisited->skip(3)->take(3); @endphp
+                            <div class="item carousel-item">
+                                <div class="row">
+                                    @foreach($places2 as $place)
+                                    @include('Home._places')
+                                    @endforeach
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+                        @if($mostVisited->count() > 3)
+                        <a data-slide="prev" href="#carousel" class="left carousel-control"
+                            style="margin-top:281px; height:35px; width: 30px;">&#x2039;</a>
+                        <a data-slide="next" href="#carousel" class="right carousel-control"
+                            style="margin-top:281px; height:35px; width: 30px;">&#x203A;</a>
+                        @endif
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
         @endif
     </div>
+    <div style="text-align:center">
+        <a class="btn btn-primary" href="{{route('user_place_add')}}">Add a place</a>
+    </div>
 </div>
 <script>
-$(document).ready(function() {
-    $('#carousel').carousel({
-        interval: 500000
-    })
-});
+
 </script>
 <!--.container-->
 @endsection

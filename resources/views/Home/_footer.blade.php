@@ -1,7 +1,7 @@
 @php
 $settings = \App\Http\Controllers\MainController::getSetting();
 $mostVisited = \App\Http\Controllers\MainController::mostVisitedAttractions();
-$hotels = \App\Http\Controllers\MainController::hotels();
+$towers = \App\Http\Controllers\MainController::towers();
 @endphp
 <footer>
     <div id="footer">
@@ -18,9 +18,9 @@ $hotels = \App\Http\Controllers\MainController::hotels();
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 fh5co-footer-link">
-                    <h3>Top Hotels</h3>
+                    <h3>Top Towers</h3>
                     <ul>
-                        @foreach($hotels as $place)
+                        @foreach($towers as $place)
                         <li><a
                                 href="{{route('place_detail', ['id'=>$place->id, 'slug'=>$place->slug])}}">{{$place->title}}</a>
                         </li>

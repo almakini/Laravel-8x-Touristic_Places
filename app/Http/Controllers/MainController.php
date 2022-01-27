@@ -34,6 +34,10 @@ class MainController extends Controller
     {
         return Place::where('status', '=', 'True')->Limit(4)->orderByDesc('id')->get();
     }
+    public static function towers()
+    {
+        return Place::where('category_id', 14)->where('status', '=', 'True')->Limit(4)->orderByDesc('id')->get();
+    }
     public static function countReviews($id){
         return Review::where('place_id', $id)->where('status', '=', 'Active')->count();
     }
@@ -53,9 +57,9 @@ class MainController extends Controller
 
     public function main(){
         $settings = Setting::first();
-        $sliders = Place::select('title', 'image', 'id', 'slug')->where('status', '=', 'True')->Limit(4)->get();
-        $mostVisited = Place::where('status', '=', 'True')->Limit(4)->inRandomOrder()->get();
-        $holidays = Place::where('status', '=', 'True')->Limit(4)->orderByDesc('id')->get();
+        $sliders = Place::select('title', 'image', 'id', 'slug')->where('status', '=', 'True')->Limit(3)->inRandomOrder()->get();
+        $mostVisited = Place::where('status', '=', 'True')->Limit(6)->inRandomOrder()->get();
+        $holidays = Place::where('status', '=', 'True')->Limit(3)->orderByDesc('id')->get();
         return view('Home.main', [
             'sliders' => $sliders,
             'settings' => $settings,
@@ -154,6 +158,17 @@ class MainController extends Controller
          [
             'places' => $places,
             'category' => $category
+         ]
+        );
+    }
+    public function destination_places($city){
+        $places = Place::where('city', $city)->where('status', '=', 'True')->get();
+        $mostVisited = Place::where('status', '=', 'True')->Limit(3)->inRandomOrder()->get();
+        return view('Home.destination_places',
+         [
+            'places' => $places,
+            'city' => $city,
+            'mostVisited' => $mostVisited
          ]
         );
     }

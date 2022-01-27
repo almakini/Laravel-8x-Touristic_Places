@@ -36,6 +36,7 @@ Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/contact-us', [MainController::class, 'contact'])->name('contact-us');
 Route::get('/places', [MainController::class, 'places'])->name('places');
 Route::get('/places/{id}/{slug}', [MainController::class, 'category_places'])->name('category_places');
+Route::get('/places/{city}', [MainController::class, 'destination_places'])->name('destination_places');
 Route::get('/signin', [MainController::class, 'signin'])->name('signin');
 Route::get('/signup', [MainController::class, 'signup'])->name('signup');
 Route::get('/place_detail/{id}/{slug}', [MainController::class, 'place_detail'])->name('place_detail');
