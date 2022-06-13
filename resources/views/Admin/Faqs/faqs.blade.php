@@ -48,10 +48,6 @@
                                             <b>Status</b>
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
-                                            colspan="1" aria-label="Salary: activate to sort column ascending" style="">
-                                            <b>Edit</b>
-                                        </th>
-                                        <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1"
                                             colspan="1" style="">
                                             <b>Delete</b>
                                         </th>
@@ -64,12 +60,10 @@
                                         <td>{{$rs->position}}
                                         </td>
                                         <td>{{$rs->question}}</td>
-                                        <td>{!!$rs->answer!!}
-                                        </td>
-                                        <td>{{$rs->status}}</td>
                                         <td><a href="{{route('admin_faq_edit', ['id'=>$rs->id])}}" class="fas fa-edit"
                                                 onclick="return !window.open(this.href, '', 'top=50 left=100 width=800, height=500')"></a>
                                         </td>
+                                        <td>{{$rs->status}}</td>
                                         <td><a href="{{route('admin_faq_delete', ['id'=>$rs->id])}}"
                                                 onclick="return confirm('Do you want to delete?')"
                                                 class="me-2 mdi mdi-delete"></a>

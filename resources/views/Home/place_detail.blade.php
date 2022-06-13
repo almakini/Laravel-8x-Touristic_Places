@@ -24,8 +24,10 @@
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    @php $c = $images->count() - 1; @endphp
+                    @for($i = 0; $i < $c; $i++) <li data-target="#myCarousel" data-slide-to="1">
+                        </li>
+                        @endfor
                 </ol>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
@@ -121,6 +123,52 @@
                 </div>
             </div>
         </div>
+        @if($hotels->count() != 0)
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                    <h3>Hotels in {{$place->city}}</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row row-bottom-padded-md">
+                @if($hotels->count() > 0)
+                <div class="col-lg-12">
+                    <div id="carousel" class="carousel slide">
+                        <div class="carousel-inner">
+                            @php $places1 = $hotels->take(3); @endphp
+                            <div class="item active carousel-item">
+                                <div class="row">
+                                    @foreach($places1 as $place)
+                                    @include('Home._places')
+                                    @endforeach
+                                </div>
+                            </div>
+                            @if($hotels->count() > 3)
+                            @php $places2 = $hotels->skip(3)->take(3); @endphp
+                            <div class="item carousel-item">
+                                <div class="row">
+                                    @foreach($places2 as $place)
+                                    @include('Home._places')
+                                    @endforeach
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+                        @if($hotels->count() > 3)
+                        <a data-slide="prev" href="#carousel" class="left carousel-control"
+                            style="margin-top:281px; height:35px; width: 30px;">&#x2039;</a>
+                        <a data-slide="next" href="#carousel" class="right carousel-control"
+                            style="margin-top:281px; height:35px; width: 30px;">&#x203A;</a>
+                        @endif
+                    </div>
+                </div>
+                @endif
+            </div>
+        </div>
+        @endif
         @if($sameCat->count() != 0)
         <div class="container">
             <div class="row">

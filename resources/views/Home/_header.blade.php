@@ -1,4 +1,4 @@
-@section('lliveSc')
+<!-- @section('lliveSc')
 @livewireScripts
 @endsection
 
@@ -7,9 +7,9 @@
 
 </div>
 
-<div class="sticky-wrapper" style="height:10px">
+<div class="sticky-wrapper" style="height:10px"> -->
 
-    <!--Start of header-->
+<!--Start of header
     <header id="fh5co-header-section" style="padding-bottom:0">
         <div class="container" style="padding-bottom:0">
             <span style="  padding-left: 30px;padding-top:20px " class="col-md-6 col-lg-6 col-sm-6">
@@ -81,4 +81,4 @@
         </div>
     </header>
     <!-- end:header-top -->
-</div>
+<!-- </div> --> -->

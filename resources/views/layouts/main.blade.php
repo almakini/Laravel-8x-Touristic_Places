@@ -2,72 +2,58 @@
 <html lang="en">
 
 <head>
-    <title>@yield('title')</title>
+            
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta type="description" content="@yield('description')">
-    <meta type="keywords" content="@yield('keywords')">
-    <meta name="author" content="@yield('author')">
+            <title>@yield("title")</title>
+            
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            
+    <meta content="Bootstrap News Template - Free HTML Templates" name="keywords">
+            
+    <meta content="Bootstrap News Template - Free HTML Templates" name="description">
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="favicon.ico">
+            
+    <!-- Favicon -->
+            
+    <link href="{{asset('assets')}}/template/img/favicon.ico" rel="icon">
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+            
+    <!-- Google Fonts -->
+            
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&amp;display=swap" rel="stylesheet">
 
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="{{asset('assets')}}/css/animate.css">
-    <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="{{asset('assets')}}/css/icomoon.css">
-    <!-- Bootstrap  -->
-    <link rel="stylesheet" href="{{asset('assets')}}/css/bootstrap.css">
-    <!-- Superfish -->
-    <link rel="stylesheet" href="{{asset('assets')}}/css/superfish.css">
-    <!-- Magnific Popup -->
-    <link rel="stylesheet" href="{{asset('assets')}}/css/magnific-popup.css">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="{{asset('assets')}}/css/bootstrap-datepicker.min.css">
-    <!-- CS Select -->
-    <link rel="stylesheet" href="{{asset('assets')}}/css/cs-select.css">
-    <link rel="stylesheet" href="{{asset('assets')}}/css/cs-skin-border.css">
+            
+    <!-- CSS Libraries -->
+            
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+            
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+            
+    <link href="{{asset('assets')}}/template/lib/slick/slick.css" rel="stylesheet">
+            
+    <link href="{{asset('assets')}}/template/lib/slick/slick-theme.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('assets')}}/css/style.css">
-
-    <!-- My Css and Js -->
-    <link rel="stylesheet" href="{{asset('assets')}}/css/myCss.css">
-    <link rel="stylesheet" href="{{asset('assets')}}/js/myJs.js">
-    <!-- End -->
-
-    <!-- Modernizr JS -->
-    <script src="{{asset('assets')}}/js/modernizr-2.6.2.min.js"></script>
-
-    <!-- Extra -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <script>
-    </script>
-    @yield('css')
-    @yield('js')
+            
+    <!-- Template Stylesheet -->
+            
+    <link href="{{asset('assets')}}/template/css/style.css" rel="stylesheet">
 
 </head>
 
 <body>
-    <div id="fh5co-wrapper">
-        <div id="fh5co-page">
-            @yield('header')
-            @include('Home._header')
+    @include("home.topbare")
+    @include("home._brand")
+    @include("home._navbar")
+    @include("home.topnews")
+    @include("home._category11")
+    @include("home._category22")
+    @include("home._tabnews")
+    @include("home._mainnews")
 
-            @section('content')
-            @show
+    @yield('content')
 
-            @yield('footer')
-            @include('Home._footer')
-            @yield('lliveSc')
-        </div>
-        <!-- END fh5co-page -->
-
-    </div>
-    <!-- END fh5co-wrapper -->
+    @include("home._footer")
+    @include("home._footermenu")
 </body>
 
 </html>

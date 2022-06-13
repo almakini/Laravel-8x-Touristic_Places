@@ -20,7 +20,7 @@ class MainController extends Controller
 {
     public static function categoryList()
     {
-        return Category::where('parent_id','=', 0)->with('children')->get();
+        return Category::where('parent_id','=', 0)->where('status','=', 'True')->with('children')->get();
     }
     public static function getSetting()
     {
@@ -28,7 +28,7 @@ class MainController extends Controller
     }
     public static function mostVisitedAttractions()
     {
-        return Place::where('status', '=', 'True')->Limit(4)->inRandomOrder()->get();
+        return Place::where('status', '=', 'True')->where('category_id', '!=', 20)->Limit(4)->inRandomOrder()->get();
     }
     public static function hotels()
     {
@@ -58,8 +58,8 @@ class MainController extends Controller
     public function main(){
         $settings = Setting::first();
         $sliders = Place::select('title', 'image', 'id', 'slug')->where('status', '=', 'True')->Limit(3)->inRandomOrder()->get();
-        $mostVisited = Place::where('status', '=', 'True')->Limit(6)->inRandomOrder()->get();
-        $holidays = Place::where('status', '=', 'True')->Limit(3)->orderByDesc('id')->get();
+        $mostVisited = Place::where('status', '=', 'True')->where('category_id', '!=', 20)->Limit(6)->inRandomOrder()->get();
+        $holidays = Place::where('status', '=', 'True')->where('category_id', '!=', 20)->Limit(3)->orderByDesc('id')->get();
         return view('Home.main', [
             'sliders' => $sliders,
             'settings' => $settings,
@@ -88,6 +88,7 @@ class MainController extends Controller
         $reviews = Review::where('place_id', $id)->get();
         $category = Category::where('id', $place->category_id)->get();
         $sameCat = Place::where('id', '!=', $id)->where('category_id', $place->category_id)->get();
+        $hotels = Place::where('id', '!=', $id)->where('category_id', 20)->where('city', $place->city)->get();
         
         return view('Home.place_detail',
          [
@@ -96,6 +97,7 @@ class MainController extends Controller
             'category' => $category,
             'reviews' => $reviews,
             'sameCat' => $sameCat,
+            'hotels' => $hotels,
          ]
         );
     }
@@ -174,7 +176,7 @@ class MainController extends Controller
     }
     //FAQs
     public function faqs(FAQ $faqs){
-        $faqs = FAQ::all()->sortBy('position');
+        $faqs = FAQ::all()->sortBy('position')->where('status', '=', 'True');
         return view('Home.faqs',
          [
             'faqs' => $faqs

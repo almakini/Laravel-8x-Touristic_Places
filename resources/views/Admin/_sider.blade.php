@@ -22,10 +22,7 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{route('admin_places')}}" aria-expanded="false"><i
-                                    class="me-2 mdi mdi-map-marker"></i><span class="hide-menu">Places</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{route('admin_setting')}}" aria-expanded="false"><i
-                                    class="me-2 mdi mdi-settings"></i><span class="hide-menu">Settings</span></a></li>
+                                    class="me-2 mdi mdi-map-marker"></i><span class="hide-menu">News</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{route('admin_users')}}" aria-expanded="false"><i
                                     class="me-2 mdi mdi-account-multiple"></i><span class="hide-menu">Users</span></a>
@@ -41,6 +38,9 @@
                                 href="{{route('admin_faqs')}}" aria-expanded="false"><i
                                     class="me-2 mdi mdi-comment-question-outline"></i><span
                                     class="hide-menu">FAQs</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{route('admin_setting')}}" aria-expanded="false"><i
+                                    class="me-2 mdi mdi-settings"></i><span class="hide-menu">Settings</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
